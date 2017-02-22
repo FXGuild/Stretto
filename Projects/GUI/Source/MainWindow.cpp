@@ -27,6 +27,7 @@ namespace GUI {
 MainWindow::MainWindow()
 : juce::DocumentWindow{ "Stretto", juce::Colours::darkgrey, juce::DocumentWindow::allButtons, true }
 {
+   setUsingNativeTitleBar(true);
    setContentOwned(new MainComponent(), true);
    centreWithSize(getWidth(), getHeight());
    setVisible(true);

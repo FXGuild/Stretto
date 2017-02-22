@@ -35,7 +35,8 @@ public:
    void resized() override;
 
 private:
-   juce::ScopedPointer<juce::Label> m_HelloWorldLabel;
+   juce::WildcardFileFilter m_MidiFileFilter;
+   juce::ScopedPointer<juce::FileBrowserComponent> m_FileBrowser;
 
    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainComponent)
 };

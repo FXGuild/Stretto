@@ -27,34 +27,34 @@ namespace Stretto {
 namespace GUI {
 
 MainComponent::MainComponent()
+: juce::Component{}
+, m_MidiFileFilter{ "*mid;*midi", "", "Midi Files" }
+, m_FileBrowser{ nullptr }
 {
    using namespace FXG::Stretto::Theory;
    CountSubDurations(NoteDuration::QUARTER, NoteDuration::SIXTYSECOND);
 
-   addAndMakeVisible(m_HelloWorldLabel = new juce::Label(juce::String(), "Stretto"));
-   m_HelloWorldLabel->setFont(juce::Font(40.00f, juce::Font::bold));
-   m_HelloWorldLabel->setJustificationType(juce::Justification::centred);
-   m_HelloWorldLabel->setEditable(false, false, false);
-   m_HelloWorldLabel->setColour(juce::Label::textColourId, juce::Colours::black);
-   m_HelloWorldLabel->setColour(juce::TextEditor::textColourId, juce::Colours::black);
-   m_HelloWorldLabel->setColour(juce::TextEditor::backgroundColourId, juce::Colour(0x00000000));
+   addAndMakeVisible(
+      m_FileBrowser = new juce::FileBrowserComponent{
+         juce::FileBrowserComponent::openMode | juce::FileBrowserComponent::canSelectFiles,
+         juce::File{}, &m_MidiFileFilter, nullptr });
 
-   setSize(600, 300);
+   setSize(600, 400);
 }
 
 MainComponent::~MainComponent()
 {
-   m_HelloWorldLabel = nullptr;
+   m_FileBrowser = nullptr;
 }
 
 void MainComponent::paint(juce::Graphics & a_Graphics)
 {
-    a_Graphics.fillAll(juce::Colour(0xffc1d0ff));
+   a_Graphics.fillAll(juce::Colour(0xffc1d0ff));
 }
 
 void MainComponent::resized()
 {
-   m_HelloWorldLabel->setBounds(152, 80, 296, 48);
+   m_FileBrowser->setBounds(0, 0, getWidth(), getHeight());
 }
 
 }  // Namespace end
