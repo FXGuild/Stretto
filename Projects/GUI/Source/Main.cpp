@@ -1,115 +1,22 @@
-/*
-  ==============================================================================
+// MIT License
+//
+// Copyright (c) 2017 FXGuild
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+// associated documentation files (the "Software"), to deal in the Software without restriction,
+// including without limitation the rights to use, copy, modify, merge, publish, distribute,
+// sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT
+// NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-   Demonstration "Hello World" application in JUCE
-   Copyright 2008 by Julian Storer.
+#include <FXG/Stretto/GUI/Internal/MainApplication.h>
 
-  ==============================================================================
-*/
-
-#include <FXG/Stretto/GUI/Internal/MainComponent.h>
-
-//==============================================================================
-/**
-    This is the top-level window that we'll pop up. Inside it, we'll create and
-    show a component from the MainComponent.cpp file (you can open this file using
-    the Jucer to edit it).
-*/
-class HelloWorldWindow  : public DocumentWindow
-{
-public:
-    //==============================================================================
-    HelloWorldWindow()
-        : DocumentWindow ("JUCE Hello World!",
-                          Colours::lightgrey,
-                          DocumentWindow::allButtons,
-                          true)
-    {
-        // Create an instance of our main content component, and add it to our window..
-        setContentOwned (new MainComponent(), true);
-
-        // Centre the window on the screen
-        centreWithSize (getWidth(), getHeight());
-
-        // And show it!
-        setVisible (true);
-    }
-
-    ~HelloWorldWindow()
-    {
-        // (the content component will be deleted automatically, so no need to do it here)
-    }
-
-    //==============================================================================
-    void closeButtonPressed() override
-    {
-        // When the user presses the close button, we'll tell the app to quit. This
-        // HelloWorldWindow object will be deleted by the JUCEHelloWorldApplication class.
-        JUCEApplication::quit();
-    }
-};
-
-//==============================================================================
-/** This is the application object that is started up when Juce starts. It handles
-    the initialisation and shutdown of the whole application.
-*/
-class JUCEHelloWorldApplication : public JUCEApplication
-{
-public:
-    //==============================================================================
-    JUCEHelloWorldApplication() {}
-
-    //==============================================================================
-    void initialise (const String& commandLine) override
-    {
-        // For this demo, we'll just create the main window...
-        helloWorldWindow = new HelloWorldWindow();
-
-        /*  ..and now return, which will fall into to the main event
-            dispatch loop, and this will run until something calls
-            JUCEAppliction::quit().
-
-            In this case, JUCEAppliction::quit() will be called by the
-            hello world window being clicked.
-        */
-    }
-
-    void shutdown() override
-    {
-        // This method is where you should clear-up your app's resources..
-
-        // The helloWorldWindow variable is a ScopedPointer, so setting it to a null
-        // pointer will delete the window.
-        helloWorldWindow = nullptr;
-    }
-
-    //==============================================================================
-    const String getApplicationName() override
-    {
-        return "Hello World for JUCE";
-    }
-
-    const String getApplicationVersion() override
-    {
-        // The ProjectInfo::versionString value is automatically updated by the Jucer, and
-        // can be found in the JuceHeader.h file that it generates for our project.
-        return ProjectInfo::versionString;
-    }
-
-    bool moreThanOneInstanceAllowed() override
-    {
-        return true;
-    }
-
-    void anotherInstanceStarted (const String& commandLine) override
-    {
-    }
-
-private:
-    ScopedPointer<HelloWorldWindow> helloWorldWindow;
-};
-
-
-//==============================================================================
-// This macro creates the application's main() function..
-START_JUCE_APPLICATION (JUCEHelloWorldApplication)
+START_JUCE_APPLICATION (FXG::Stretto::GUI::MainApplication)

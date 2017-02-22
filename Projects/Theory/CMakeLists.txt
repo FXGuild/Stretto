@@ -23,5 +23,5 @@ add_library(${MODULE_NAME} ${JUCE_FILES} ${HEADER_FILES} ${SOURCE_FILES})
 target_link_libraries(${MODULE_NAME} Juce)
 
 # Add include directory
-target_include_directories(${MODULE_NAME} PUBLIC "${CMAKE_SOURCE_DIR}/Include")
-
+include_directories("${CMAKE_SOURCE_DIR}/Include")
+include_directories(${CMAKE_CURRENT_BINARY_DIR}/ProjucerFiles/JuceLibraryCode)

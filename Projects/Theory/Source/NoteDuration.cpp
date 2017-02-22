@@ -23,7 +23,7 @@ namespace FXG {
 namespace Stretto {
 namespace Theory {
 
-uint32_t CountSubDurations(NoteDuration a_DurationToDivide, NoteDuration a_SubDuration)
+uint32_t CountSubDurations(NoteDuration a_DurationToDivide, NoteDuration a_SubDuration) noexcept
 {
    uint8_t delta = static_cast<uint8_t>(a_SubDuration) - static_cast<uint8_t>(a_DurationToDivide);
    return delta >= 0 ? 1 << delta : 0;

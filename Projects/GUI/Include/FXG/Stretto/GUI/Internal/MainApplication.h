@@ -19,24 +19,34 @@
 
 #pragma once
 
-#include <stdint.h>
+#include <JuceHeader.h>
+
+#include <FXG/Stretto/GUI/Internal/MainWindow.h>
 
 namespace FXG {
 namespace Stretto {
-namespace Theory {
+namespace GUI {
 
-enum class NoteDuration : uint8_t
+class MainApplication final : public juce::JUCEApplication
 {
-   WHOLE,
-   HALF,
-   QUARTER,
-   EIGHT,
-   SIXTEENTH,
-   THIRTYSECOND,
-   SIXTYSECOND
+public:
+   explicit MainApplication() = default;
+   ~MainApplication() = default;
+
+   void initialise(const juce::String & a_CmdLine) override;
+   void shutdown() override;
+
+   const juce::String getApplicationName() noexcept override;
+   const juce::String getApplicationVersion() noexcept override;
+
+   bool moreThanOneInstanceAllowed() noexcept override;
+
+private:
+   juce::ScopedPointer<MainWindow> m_MainWindow;
+
+   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainApplication)
 };
 
-uint32_t CountSubDurations(NoteDuration a_DurationToDivide, NoteDuration a_SubDuration) noexcept;
 
 }  // Namespace end
 }

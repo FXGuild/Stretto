@@ -17,26 +17,36 @@
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#pragma once
-
-#include <stdint.h>
+#include <FXG/Stretto/GUI/Internal/MainApplication.h>
 
 namespace FXG {
 namespace Stretto {
-namespace Theory {
+namespace GUI {
 
-enum class NoteDuration : uint8_t
+void MainApplication::initialise(const juce::String & /*a_CmdLine*/)
 {
-   WHOLE,
-   HALF,
-   QUARTER,
-   EIGHT,
-   SIXTEENTH,
-   THIRTYSECOND,
-   SIXTYSECOND
-};
+   m_MainWindow = new MainWindow();
+}
 
-uint32_t CountSubDurations(NoteDuration a_DurationToDivide, NoteDuration a_SubDuration) noexcept;
+void MainApplication::shutdown()
+{
+   m_MainWindow = nullptr;
+}
+
+const juce::String MainApplication::getApplicationName() noexcept
+{
+   return "Hello World for JUCE";
+}
+
+const juce::String MainApplication::getApplicationVersion() noexcept
+{
+   return "Implement me";
+}
+
+bool MainApplication::moreThanOneInstanceAllowed() noexcept
+{
+   return true;
+}
 
 }  // Namespace end
 }

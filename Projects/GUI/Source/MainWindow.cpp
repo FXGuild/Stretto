@@ -17,26 +17,25 @@
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#pragma once
-
-#include <stdint.h>
+#include <FXG/Stretto/GUI/Internal/MainComponent.h>
+#include <FXG/Stretto/GUI/Internal/MainWindow.h>
 
 namespace FXG {
 namespace Stretto {
-namespace Theory {
+namespace GUI {
 
-enum class NoteDuration : uint8_t
+MainWindow::MainWindow()
+: juce::DocumentWindow{ "Stretto", juce::Colours::darkgrey, juce::DocumentWindow::allButtons, true }
 {
-   WHOLE,
-   HALF,
-   QUARTER,
-   EIGHT,
-   SIXTEENTH,
-   THIRTYSECOND,
-   SIXTYSECOND
-};
+   setContentOwned(new MainComponent(), true);
+   centreWithSize(getWidth(), getHeight());
+   setVisible(true);
+}
 
-uint32_t CountSubDurations(NoteDuration a_DurationToDivide, NoteDuration a_SubDuration) noexcept;
+void MainWindow::closeButtonPressed()
+{
+   juce::JUCEApplication::quit();
+}
 
 }  // Namespace end
 }

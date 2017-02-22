@@ -1,168 +1,62 @@
-/*
-  ==============================================================================
+// MIT License
+//
+// Copyright (c) 2017 FXGuild
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+// associated documentation files (the "Software"), to deal in the Software without restriction,
+// including without limitation the rights to use, copy, modify, merge, publish, distribute,
+// sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT
+// NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-  This is an automatically generated GUI class created by the Projucer!
-
-  Be careful when adding custom code to these files, as only the code within
-  the "//[xyz]" and "//[/xyz]" sections will be retained when the file is loaded
-  and re-saved.
-
-  Created with Projucer version: 4.3.0
-
-  ------------------------------------------------------------------------------
-
-  The Projucer is part of the JUCE library - "Jules' Utility Class Extensions"
-  Copyright (c) 2015 - ROLI Ltd.
-
-  ==============================================================================
-*/
-
-//[Headers] You can add your ownextra header files here...
-//[/Headers]
+#pragma once
 
 #include <FXG/Stretto/GUI/Internal/MainComponent.h>
 #include <FXG/Stretto/Theory/NoteDuration.h>
 
+namespace FXG {
+namespace Stretto {
+namespace GUI {
 
-//[MiscUserDefs] You can add your own user definitions and misc code here...
-//[/MiscUserDefs]
-
-//==============================================================================
-MainComponent::MainComponent ()
+MainComponent::MainComponent()
 {
-    //[Constructor_pre] You can add your own custom stuff here..
-    //[/Constructor_pre]
-    using namespace FXG::Stretto::Theory;
-    CountSubDurations(NoteDuration::QUARTER, NoteDuration::SIXTYSECOND);
-    addAndMakeVisible (helloWorldLabel = new Label (String(), "Stretto"));
-    helloWorldLabel->setFont (Font (40.00f, Font::bold));
-    helloWorldLabel->setJustificationType (Justification::centred);
-    helloWorldLabel->setEditable (false, false, false);
-    helloWorldLabel->setColour (Label::textColourId, Colours::black);
-    helloWorldLabel->setColour (TextEditor::textColourId, Colours::black);
-    helloWorldLabel->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+   using namespace FXG::Stretto::Theory;
+   CountSubDurations(NoteDuration::QUARTER, NoteDuration::SIXTYSECOND);
 
-    addAndMakeVisible (quitButton = new TextButton (String()));
-    quitButton->setButtonText (TRANS("Quit"));
-    quitButton->addListener (this);
+   addAndMakeVisible(m_HelloWorldLabel = new juce::Label(juce::String(), "Stretto"));
+   m_HelloWorldLabel->setFont(juce::Font(40.00f, juce::Font::bold));
+   m_HelloWorldLabel->setJustificationType(juce::Justification::centred);
+   m_HelloWorldLabel->setEditable(false, false, false);
+   m_HelloWorldLabel->setColour(juce::Label::textColourId, juce::Colours::black);
+   m_HelloWorldLabel->setColour(juce::TextEditor::textColourId, juce::Colours::black);
+   m_HelloWorldLabel->setColour(juce::TextEditor::backgroundColourId, juce::Colour(0x00000000));
 
-
-    //[UserPreSize]
-    //[/UserPreSize]
-
-    setSize (600, 300);
-
-
-    //[Constructor] You can add your own custom stuff here..
-    //[/Constructor]
+   setSize(600, 300);
 }
 
 MainComponent::~MainComponent()
 {
-    //[Destructor_pre]. You can add your own custom destruction code here..
-    //[/Destructor_pre]
-
-    helloWorldLabel = nullptr;
-    quitButton = nullptr;
-
-
-    //[Destructor]. You can add your own custom destruction code here..
-    //[/Destructor]
+   m_HelloWorldLabel = nullptr;
 }
 
-//==============================================================================
-void MainComponent::paint (Graphics& g)
+void MainComponent::paint(juce::Graphics & a_Graphics)
 {
-    //[UserPrePaint] Add your own custom painting code here..
-    //[/UserPrePaint]
-
-    g.fillAll (Colour (0xffc1d0ff));
-
-    g.setColour (Colours::white);
-    g.fillPath (internalPath1);
-    g.setColour (Colour (0xff6f6f6f));
-    g.strokePath (internalPath1, PathStrokeType (5.200f));
-
-    //[UserPaint] Add your own custom painting code here..
-    //[/UserPaint]
+    a_Graphics.fillAll(juce::Colour(0xffc1d0ff));
 }
 
 void MainComponent::resized()
 {
-    //[UserPreResize] Add your own custom resize code here..
-    //[/UserPreResize]
-
-    helloWorldLabel->setBounds (152, 80, 296, 48);
-    quitButton->setBounds (getWidth() - 176, getHeight() - 60, 120, 32);
-    internalPath1.clear();
-    internalPath1.startNewSubPath (136.0f, 80.0f);
-    internalPath1.quadraticTo (176.0f, 24.0f, 328.0f, 32.0f);
-    internalPath1.quadraticTo (472.0f, 40.0f, 472.0f, 104.0f);
-    internalPath1.quadraticTo (472.0f, 192.0f, 232.0f, 176.0f);
-    internalPath1.lineTo (184.0f, 216.0f);
-    internalPath1.lineTo (200.0f, 168.0f);
-    internalPath1.quadraticTo (96.0f, 136.0f, 136.0f, 80.0f);
-    internalPath1.closeSubPath();
-
-    //[UserResized] Add your own custom resize handling here..
-    //[/UserResized]
+   m_HelloWorldLabel->setBounds(152, 80, 296, 48);
 }
 
-void MainComponent::buttonClicked (Button* buttonThatWasClicked)
-{
-    //[UserbuttonClicked_Pre]
-    //[/UserbuttonClicked_Pre]
-
-    if (buttonThatWasClicked == quitButton)
-    {
-        //[UserButtonCode_quitButton] -- add your button handler code here..
-
-        JUCEApplication::quit();
-
-        //[/UserButtonCode_quitButton]
-    }
-
-    //[UserbuttonClicked_Post]
-    //[/UserbuttonClicked_Post]
+}  // Namespace end
 }
-
-
-
-//[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
-//[/MiscUserCode]
-
-
-//==============================================================================
-#if 0
-/*  -- Projucer information section --
-
-    This is where the Projucer stores the metadata that describe this GUI layout, so
-    make changes in here at your peril!
-
-BEGIN_JUCER_METADATA
-
-<JUCER_COMPONENT documentType="Component" className="MainComponent" componentName=""
-                 parentClasses="public Component" constructorParams="" variableInitialisers=""
-                 snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
-                 fixedSize="1" initialWidth="600" initialHeight="300">
-  <BACKGROUND backgroundColour="ffc1d0ff">
-    <PATH pos="0 0 100 100" fill="solid: ffffffff" hasStroke="1" stroke="5.2, mitered, butt"
-          strokeColour="solid: ff6f6f6f" nonZeroWinding="1">s 136 80 q 176 24 328 32 q 472 40 472 104 q 472 192 232 176 l 184 216 l 200 168 q 96 136 136 80 x</PATH>
-  </BACKGROUND>
-  <LABEL name="" id="be4f6f2e5725a063" memberName="helloWorldLabel" virtualName=""
-         explicitFocusOrder="0" pos="152 80 296 48" textCol="ff000000"
-         edTextCol="ff000000" edBkgCol="0" labelText="Hello World!" editableSingleClick="0"
-         editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
-         fontsize="40" bold="1" italic="0" justification="36"/>
-  <TEXTBUTTON name="" id="bcf4f7b0888effe5" memberName="quitButton" virtualName=""
-              explicitFocusOrder="0" pos="176R 60R 120 32" buttonText="Quit"
-              connectedEdges="0" needsCallback="1" radioGroupId="0"/>
-</JUCER_COMPONENT>
-
-END_JUCER_METADATA
-*/
-#endif
-
-
-//[EndFile] You can add extra defines here...
-//[/EndFile]
+}

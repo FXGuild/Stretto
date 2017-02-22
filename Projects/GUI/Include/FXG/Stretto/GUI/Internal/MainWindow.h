@@ -19,24 +19,19 @@
 
 #pragma once
 
-#include <stdint.h>
+#include <JuceHeader.h>
 
 namespace FXG {
 namespace Stretto {
-namespace Theory {
+namespace GUI {
 
-enum class NoteDuration : uint8_t
+class MainWindow final : public juce::DocumentWindow
 {
-   WHOLE,
-   HALF,
-   QUARTER,
-   EIGHT,
-   SIXTEENTH,
-   THIRTYSECOND,
-   SIXTYSECOND
-};
+public:
+   explicit MainWindow();
 
-uint32_t CountSubDurations(NoteDuration a_DurationToDivide, NoteDuration a_SubDuration) noexcept;
+   void closeButtonPressed() override;
+};
 
 }  // Namespace end
 }
