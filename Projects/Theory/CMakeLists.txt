@@ -9,7 +9,7 @@ collect_juce_files("Stretto.${MODULE_NAME}" ${CMAKE_CURRENT_SOURCE_DIR} JUCE_FIL
 source_group("JUCE Files" FILES ${JUCE_FILES})
 
 # Gather project headers
-file(GLOB HEADER_FILES "${CMAKE_SOURCE_DIR}/Include/FXG/Stretto/Theory/*.h")
+file(GLOB HEADER_FILES "${CMAKE_SOURCE_DIR}/Include/FXG/Stretto/${MODULE_NAME}/*.h")
 source_group("Header Files" FILES ${HEADER_FILES})
 
 # Gather project source

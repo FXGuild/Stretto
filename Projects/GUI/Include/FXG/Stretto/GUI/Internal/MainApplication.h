@@ -1,21 +1,12 @@
-// MIT License
-//
-// Copyright (c) 2017 FXGuild
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
-// associated documentation files (the "Software"), to deal in the Software without restriction,
-// including without limitation the rights to use, copy, modify, merge, publish, distribute,
-// sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in all copies or
-// substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT
-// NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+/**************************************************************************************************\
+ MIT License
+ Copyright (c) 2017 FXGuild
+ See file "LICENSE.txt" at project root for complete license
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ Creation  : February 25, 2017
+ Namespace : FXG::Stretto::GUI
+ Content   : class MainApplication
+\**************************************************************************************************/
 
 #pragma once
 
@@ -23,31 +14,41 @@
 
 #include <FXG/Stretto/GUI/Internal/MainWindow.h>
 
-namespace FXG {
-namespace Stretto {
-namespace GUI {
-
-class MainApplication final : public juce::JUCEApplication
+namespace FXG::Stretto::GUI
 {
-public:
-   explicit MainApplication() = default;
-   ~MainApplication() = default;
+   class MainApplication final : public juce::JUCEApplication
+   {
+   public:
+      /************************************************************************/
+      /* Constructors / Destructor / Assignment Operators                     */
+      /************************************************************************/
 
-   void initialise(const juce::String & a_CmdLine) override;
-   void shutdown() override;
+      MainApplication()  = default;
+      ~MainApplication() = default;
 
-   const juce::String getApplicationName() noexcept override;
-   const juce::String getApplicationVersion() noexcept override;
+      /************************************************************************/
+      /* Init / Shutdown                                                      */
+      /************************************************************************/
 
-   bool moreThanOneInstanceAllowed() noexcept override;
+      void initialise(const juce::String & a_CmdLine) override;
+      void shutdown() override;
 
-private:
-   juce::ScopedPointer<MainWindow> m_MainWindow;
+      /************************************************************************/
+      /* Getters                                                              */
+      /************************************************************************/
 
-   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainApplication)
-};
+      juce::String const getApplicationName() override;
+      juce::String const getApplicationVersion() override;
 
+      /************************************************************************/
+      /* Status                                                               */
+      /************************************************************************/
 
-}  // Namespace end
-}
+      bool moreThanOneInstanceAllowed() override;
+
+   private:
+      juce::ScopedPointer<MainWindow> m_MainWindow;
+
+      JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainApplication)
+   };
 }
