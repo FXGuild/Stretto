@@ -26,6 +26,9 @@ endif()
 # Create MSCVC solution
 project(Stretto)
 
+#Use solution folders.
+set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+
 # Set Juce lib include directory
 set(JUCE_LIB_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/../ThirdParty/JUCE/modules)
 
@@ -44,5 +47,31 @@ set(CMAKE_SHARED_LINKER_FLAGS_DEBUG ${CMAKE_SHARED_LINKER_FLAGS_DEBUG} " /NODEFA
 set(CMAKE_EXE_LINKER_FLAGS_DEBUG ${CMAKE_EXE_LINKER_FLAGS_DEBUG} " /NODEFAULTLIB:\"libcmt.lib\" /NODEFAULTLIB:\"msvcrt.lib\"")
 set(CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS} " /SUBSYSTEM:WINDOWS")
 
+# Download and unpack googletest at configure time
+configure_file(Projects/UnitTests/CMakeLists.txt.in ${CMAKE_BINARY_DIR}/googletest-download/CMakeLists.txt)
+execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" . RESULT_VARIABLE result WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/googletest-download )
+if(result)
+  message(FATAL_ERROR "CMake step for googletest failed: ${result}")
+endif()
+execute_process(COMMAND ${CMAKE_COMMAND} --build . RESULT_VARIABLE result WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/googletest-download )
+if(result)
+  message(FATAL_ERROR "Build step for googletest failed: ${result}")
+endif()
+
+# Tell Google Test that were have at least C++11
+add_definitions(-D GTEST_LANG_CXX11)
+    
+# Prevent overriding the parent project's compiler/linker
+# settings on Windows
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+
+# Add googletest directly to our build. This defines the gtest and gtest_main targets.
+add_subdirectory(${CMAKE_BINARY_DIR}/googletest-src
+                 ${CMAKE_BINARY_DIR}/googletest-build)
+set_target_properties(gmock      PROPERTIES FOLDER GoogleTest)
+set_target_properties(gmock_main PROPERTIES FOLDER GoogleTest)
+set_target_properties(gtest      PROPERTIES FOLDER GoogleTest)
+set_target_properties(gtest_main PROPERTIES FOLDER GoogleTest)
+                 
 # Create projects
 add_subdirectory(Projects)

@@ -18,6 +18,7 @@ source_group("Source Files" FILES ${SOURCE_FILES})
 	
 # Create static library MSVC project
 add_library(${MODULE_NAME} ${JUCE_FILES} ${HEADER_FILES} ${SOURCE_FILES})
+set_target_properties(${MODULE_NAME} PROPERTIES FOLDER Stretto)
 
 # Add dependencies
 target_link_libraries(${MODULE_NAME} Juce)

@@ -18,6 +18,7 @@ source_group("Source Files" FILES ${SOURCE_FILES})
 
 # Create MSVC executable
 add_executable(${MODULE_NAME} ${JUCE_FILES} ${HEADER_FILES} ${SOURCE_FILES})
+set_target_properties(${MODULE_NAME} PROPERTIES FOLDER Stretto)
 
 # Add dependecies
 target_link_libraries(${MODULE_NAME} Juce)
