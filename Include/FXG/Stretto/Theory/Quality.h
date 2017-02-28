@@ -39,15 +39,15 @@ namespace FXG::Stretto::Theory
       /* Getters                                                              */
       /************************************************************************/
 
-      ImperfectQuality GetImperfectQuality() const;
-      PerfectQuality   GetPerfectQuality() const;
+      ImperfectQuality getImperfectQuality() const;
+      PerfectQuality   getPerfectQuality() const;
 
       /************************************************************************/
       /* Status                                                               */
       /************************************************************************/
 
-      bool IsImperfect() const;
-      bool IsPerfect() const;
+      bool isImperfect() const;
+      bool isPerfect() const;
 
    private:
       uint8_t m_Quality;

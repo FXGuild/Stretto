@@ -24,25 +24,25 @@ namespace FXG::Stretto::Theory
    {
    }
 
-   ImperfectQuality Quality::GetImperfectQuality() const
+   ImperfectQuality Quality::getImperfectQuality() const
    {
-      assert(IsImperfect());
+      assert(isImperfect());
       return ImperfectQuality(m_Quality);
    }
 
-   PerfectQuality Quality::GetPerfectQuality() const
+   PerfectQuality Quality::getPerfectQuality() const
    {
-      assert(IsPerfect());
+      assert(isPerfect());
       return PerfectQuality(m_Quality);
    }
 
-   bool Quality::IsImperfect() const
+   bool Quality::isImperfect() const
    {
       return m_Quality <= static_cast<uint8_t>(ImperfectQuality::MAJOR);
    }
 
-   bool Quality::IsPerfect() const
+   bool Quality::isPerfect() const
    {
-      return !IsImperfect();
+      return !isImperfect();
    }
 }

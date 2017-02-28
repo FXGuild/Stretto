@@ -26,5 +26,5 @@ namespace FXG::Stretto::Theory
       SIXTYSECOND
    };
 
-   uint32_t CountSubDurations(NoteDuration a_DurationToDivide, NoteDuration a_SubDuration);
+   uint32_t countSubDurations(NoteDuration a_DurationToDivide, NoteDuration a_SubDuration);
 }

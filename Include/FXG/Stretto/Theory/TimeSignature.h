@@ -35,7 +35,7 @@ namespace FXG::Stretto::Theory
       /* Getters                                                              */
       /************************************************************************/
 
-      uint32_t GetNumTimeUnitsInABar(NoteDuration a_TimeUnitDuration) const;
+      uint32_t getNumTimeUnitsInABar(NoteDuration a_TimeUnitDuration) const;
 
    private:
       uint8_t m_Numerator;

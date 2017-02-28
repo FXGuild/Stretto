@@ -20,9 +20,9 @@ namespace FXG::Stretto::Theory
    {
    }
 
-   uint32_t TimeSignature::GetNumTimeUnitsInABar(NoteDuration a_TimeUnitDuration) const
+   uint32_t TimeSignature::getNumTimeUnitsInABar(NoteDuration a_TimeUnitDuration) const
    {
-      uint32_t count = CountSubDurations(NoteDuration(m_DenominatorPower), a_TimeUnitDuration);
+      uint32_t count = countSubDurations(NoteDuration(m_DenominatorPower), a_TimeUnitDuration);
       assert(count != 0);
       return m_Numerator * count;
    }
