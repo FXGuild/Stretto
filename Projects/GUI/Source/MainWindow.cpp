@@ -13,6 +13,10 @@
 
 namespace FXG::Stretto::GUI
 {
+   /************************************************************************/
+   /* Constructors / Destructor / Assignment Operators                     */
+   /************************************************************************/
+
    MainWindow::MainWindow()
    : juce::DocumentWindow{ "Stretto", juce::Colours::darkgrey, juce::DocumentWindow::allButtons,
                            true }
@@ -22,6 +26,11 @@ namespace FXG::Stretto::GUI
       centreWithSize(getWidth(), getHeight());
       setVisible(true);
    }
+
+
+   /************************************************************************/
+   /* GUI callbacks                                                        */
+   /************************************************************************/
 
    void MainWindow::closeButtonPressed()
    {

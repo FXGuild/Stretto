@@ -12,11 +12,20 @@
 
 namespace FXG::Stretto::Theory
 {
+   /************************************************************************/
+   /* Constructors / Destructor / Assignment Operators                     */
+   /************************************************************************/
+
    Pitch::Pitch(Tone a_Tone, uint8_t a_Octave) noexcept
    : m_Tone{ a_Tone }
    , m_Octave{ a_Octave }
    {
    }
+
+
+   /************************************************************************/
+   /* Getters                                                              */
+   /************************************************************************/
 
    Tone const & Pitch::getTone() const
    {
@@ -27,4 +36,11 @@ namespace FXG::Stretto::Theory
    {
       return m_Octave;
    }
+
+
+   /************************************************************************/
+   /* Helper constants                                                     */
+   /************************************************************************/
+
+   const Pitch Pitch::A_440HZ { { NoteLetter::A }, 4 };
 }

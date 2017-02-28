@@ -34,12 +34,14 @@ namespace FXG::Stretto::Theory
       BasicNote & operator=(BasicNote const &) noexcept = default;
       BasicNote & operator=(BasicNote &&) noexcept = default;
 
+
       /************************************************************************/
       /* Getters                                                              */
       /************************************************************************/
 
       Pitch const &        getPitch() const;
       NoteDuration const & getDuration() const;
+      uint64_t getDurationTU(NoteDuration a_DurationUnit) const;
 
    private:
       Pitch        m_Pitch;

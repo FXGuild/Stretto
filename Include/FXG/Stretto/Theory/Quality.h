@@ -35,12 +35,14 @@ namespace FXG::Stretto::Theory
       Quality & operator=(Quality const &) noexcept = default;
       Quality & operator=(Quality &&) noexcept = default;
 
+
       /************************************************************************/
       /* Getters                                                              */
       /************************************************************************/
 
       ImperfectQuality getImperfectQuality() const;
       PerfectQuality   getPerfectQuality() const;
+
 
       /************************************************************************/
       /* Status                                                               */

@@ -14,6 +14,10 @@
 
 namespace FXG::Stretto::Theory
 {
+   /************************************************************************/
+   /* Constructors / Destructor / Assignment Operators                     */
+   /************************************************************************/
+
    Quality::Quality(ImperfectQuality a_ImperfectQuality) noexcept
    : m_Quality{ static_cast<uint8_t>(a_ImperfectQuality) }
    {
@@ -23,6 +27,11 @@ namespace FXG::Stretto::Theory
    : m_Quality{ static_cast<uint8_t>(a_PerfectQuality) }
    {
    }
+
+
+   /************************************************************************/
+   /* Getters                                                              */
+   /************************************************************************/
 
    ImperfectQuality Quality::getImperfectQuality() const
    {
@@ -35,6 +44,11 @@ namespace FXG::Stretto::Theory
       assert(isPerfect());
       return PerfectQuality(m_Quality);
    }
+
+
+   /************************************************************************/
+   /* Status                                                               */
+   /************************************************************************/
 
    bool Quality::isImperfect() const
    {

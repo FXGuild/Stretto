@@ -12,11 +12,20 @@
 
 namespace FXG::Stretto::Theory
 {
+   /************************************************************************/
+   /* Constructors / Destructor / Assignment Operators                     */
+   /************************************************************************/
+
    Tone::Tone(NoteLetter a_NoteLetter, Accidental a_Accidental /* = Accidental::NATURAL */) noexcept
    : m_NoteLetter{ a_NoteLetter }
    , m_Accidental{ a_Accidental }
    {
    }
+
+
+   /************************************************************************/
+   /* Getters                                                              */
+   /************************************************************************/
 
    NoteLetter Tone::getNoteLetter() const
    {

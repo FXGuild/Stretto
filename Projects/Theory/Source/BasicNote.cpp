@@ -12,6 +12,10 @@
 
 namespace FXG::Stretto::Theory
 {
+   /************************************************************************/
+   /* Constructors / Destructor / Assignment Operators                     */
+   /************************************************************************/
+
    BasicNote::BasicNote(Pitch a_Pitch, NoteDuration a_Duration) noexcept
    : m_Pitch{ a_Pitch }
    , m_Duration{ a_Duration }
@@ -27,6 +31,11 @@ namespace FXG::Stretto::Theory
    {
    }
 
+
+   /************************************************************************/
+   /* Getters                                                              */
+   /************************************************************************/
+
    Pitch const & BasicNote::getPitch() const
    {
       return m_Pitch;
@@ -35,5 +44,10 @@ namespace FXG::Stretto::Theory
    NoteDuration const & BasicNote::getDuration() const
    {
       return m_Duration;
+   }
+
+   uint64_t BasicNote::getDurationTU(NoteDuration a_DurationUnit) const
+   {
+      return convertDurationToTU(m_Duration, a_DurationUnit);
    }
 }

@@ -12,7 +12,7 @@
 
 namespace FXG::Stretto::Theory
 {
-   uint32_t countSubDurations(NoteDuration a_DurationToDivide, NoteDuration a_SubDuration)
+   uint32_t convertDurationToTU(NoteDuration a_DurationToDivide, NoteDuration a_SubDuration)
    {
       uint8_t subDur  = static_cast<uint8_t>(a_SubDuration);
       uint8_t dur2Div = static_cast<uint8_t>(a_DurationToDivide);

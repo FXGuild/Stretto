@@ -29,12 +29,20 @@ namespace FXG::Stretto::Theory
       Pitch & operator=(Pitch const &) noexcept = default;
       Pitch & operator=(Pitch &&) noexcept = default;
 
+
       /************************************************************************/
       /* Getters                                                              */
       /************************************************************************/
 
       Tone const &    getTone() const;
       uint8_t const & getOctave() const;
+
+
+      /************************************************************************/
+      /* Helper constants                                                     */
+      /************************************************************************/
+
+      static Pitch const A_440HZ;
 
    private:
       Tone    m_Tone;

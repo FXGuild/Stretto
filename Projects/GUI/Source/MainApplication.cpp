@@ -12,6 +12,10 @@
 
 namespace FXG::Stretto::GUI
 {
+   /************************************************************************/
+   /* Init / Shutdown                                                      */
+   /************************************************************************/
+
    void MainApplication::initialise(const juce::String & /*a_CmdLine*/)
    {
       m_MainWindow = new MainWindow();
@@ -22,6 +26,11 @@ namespace FXG::Stretto::GUI
       m_MainWindow = nullptr;
    }
 
+
+   /************************************************************************/
+   /* Getters                                                              */
+   /************************************************************************/
+
    juce::String const MainApplication::getApplicationName()
    {
       return "Hello World for JUCE";
@@ -31,6 +40,11 @@ namespace FXG::Stretto::GUI
    {
       return "Implement me";
    }
+
+
+   /************************************************************************/
+   /* Status                                                               */
+   /************************************************************************/
 
    bool MainApplication::moreThanOneInstanceAllowed()
    {

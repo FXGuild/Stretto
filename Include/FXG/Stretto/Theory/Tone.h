@@ -30,6 +30,7 @@ namespace FXG::Stretto::Theory
       Tone & operator=(Tone const &) noexcept = default;
       Tone & operator=(Tone &&) noexcept = default;
 
+
       /************************************************************************/
       /* Getters                                                              */
       /************************************************************************/

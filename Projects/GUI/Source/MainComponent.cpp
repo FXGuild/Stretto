@@ -13,13 +13,17 @@
 
 namespace FXG::Stretto::GUI
 {
+   /************************************************************************/
+   /* Constructors / Destructor / Assignment Operators                     */
+   /************************************************************************/
+
    MainComponent::MainComponent()
    : juce::Component{}
    , m_MidiFileFilter{ "*mid;*midi", "", "Midi Files" }
    , m_FileBrowser{ nullptr }
    {
       using namespace FXG::Stretto::Theory;
-      countSubDurations(NoteDuration::QUARTER, NoteDuration::SIXTYSECOND);
+      convertDurationToTU(NoteDuration::QUARTER, NoteDuration::SIXTYSECOND);
 
       addAndMakeVisible(
          m_FileBrowser = new juce::FileBrowserComponent{
@@ -33,6 +37,11 @@ namespace FXG::Stretto::GUI
    {
       m_FileBrowser = nullptr;
    }
+
+
+   /************************************************************************/
+   /* GUI                                                                  */
+   /************************************************************************/
 
    void MainComponent::paint(juce::Graphics & a_Graphics)
    {

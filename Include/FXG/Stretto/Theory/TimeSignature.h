@@ -31,11 +31,19 @@ namespace FXG::Stretto::Theory
       TimeSignature & operator=(TimeSignature const &) noexcept = default;
       TimeSignature & operator=(TimeSignature &&) noexcept = default;
 
+
       /************************************************************************/
       /* Getters                                                              */
       /************************************************************************/
 
       uint32_t getNumTimeUnitsInABar(NoteDuration a_TimeUnitDuration) const;
+
+
+      /************************************************************************/
+      /* Helper constants                                                     */
+      /************************************************************************/
+
+      static TimeSignature const STANDARD_4_4;
 
    private:
       uint8_t m_Numerator;

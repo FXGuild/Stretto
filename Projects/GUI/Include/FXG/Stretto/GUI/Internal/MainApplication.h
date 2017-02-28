@@ -26,6 +26,7 @@ namespace FXG::Stretto::GUI
       MainApplication()  = default;
       ~MainApplication() = default;
 
+
       /************************************************************************/
       /* Init / Shutdown                                                      */
       /************************************************************************/
@@ -33,12 +34,14 @@ namespace FXG::Stretto::GUI
       void initialise(const juce::String & a_CmdLine) override;
       void shutdown() override;
 
+
       /************************************************************************/
       /* Getters                                                              */
       /************************************************************************/
 
       juce::String const getApplicationName() override;
       juce::String const getApplicationVersion() override;
+
 
       /************************************************************************/
       /* Status                                                               */
