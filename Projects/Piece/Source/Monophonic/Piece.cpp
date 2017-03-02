@@ -4,12 +4,12 @@
  See file "LICENSE.txt" at project root for complete license
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  Creation  : February 26, 2017
- Namespace : FXG::Stretto::Piece
- Content   : class MonophonicPart
+ Namespace : FXG::Stretto::Piece::Monophonic
+ Content   : class Piece
 \**************************************************************************************************/
 
-#include <FXG/Stretto/Piece/MonophonicPiece.h>
+#include <FXG/Stretto/Piece/Monophonic/Piece.h>
 
-namespace FXG::Stretto::Piece
+namespace FXG::Stretto::Piece::Monophonic
 {
 }

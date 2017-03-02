@@ -4,56 +4,49 @@
  See file "LICENSE.txt" at project root for complete license
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  Creation  : February 25, 2017
- Namespace : FXG::Stretto::Theory
- Content   : class Pitch
+ Namespace : FXG::Stretto::Piece::Monophonic
+ Content   : class AggregatedNode
 \**************************************************************************************************/
 
 #pragma once
 
-#include <FXG/Stretto/Theory/Tone.h>
+#include <FXG/Stretto/Theory/AggregatedNote.h>
 
-namespace FXG::Stretto::Theory
+namespace FXG::Stretto::Piece::Monophonic
 {
-   class Pitch final
+   class AggregatedNode final
    {
    public:
       /************************************************************************/
       /* Constructors / Destructor / Assignment Operators                     */
       /************************************************************************/
 
-      Pitch(Tone a_Tone, uint8_t a_Octave) noexcept;
-      Pitch(Pitch const &) noexcept = default;
-      Pitch(Pitch &&) noexcept      = default;
-      ~Pitch() noexcept             = default;
+      AggregatedNode(Theory::AggregatedNote const & a_Note) noexcept;
+      AggregatedNode(uint32_t a_RestDuration) noexcept;
+      AggregatedNode(AggregatedNode const &) noexcept = default;
+      AggregatedNode(AggregatedNode &&) noexcept      = default;
+      ~AggregatedNode() noexcept                      = default;
 
-      Pitch & operator=(Pitch const &) noexcept = default;
-      Pitch & operator=(Pitch &&) noexcept = default;
+      AggregatedNode & operator=(AggregatedNode const &) noexcept = default;
+      AggregatedNode & operator=(AggregatedNode &&) noexcept = default;
 
 
       /************************************************************************/
       /* Getters                                                              */
       /************************************************************************/
 
-      Tone const &    getTone() const;
-      uint8_t const & getOctave() const;
+      Theory::AggregatedNote const & getNote() const;
+      uint32_t                       getDurationTU() const;
 
 
       /************************************************************************/
-      /* Comparison Operators                                                 */
+      /* Status                                                               */
       /************************************************************************/
 
-      bool operator==(Pitch const & a_Other) const;
-      bool operator!=(Pitch const & a_Other) const;
-
-
-      /************************************************************************/
-      /* Helper constants                                                     */
-      /************************************************************************/
-
-      static Pitch const A_440HZ;
+      bool isRest() const;
 
    private:
-      Tone    m_Tone;
-      uint8_t m_Octave;
+      Theory::AggregatedNote m_Note;
+      bool                   m_IsRest;
    };
 }

@@ -5,7 +5,7 @@
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  Creation  : February 25, 2017
  Namespace : FXG::Stretto::Theory
- Content   : class BasicNote
+ Content   : class AggregatedNote
 \**************************************************************************************************/
 
 #pragma once
@@ -15,36 +15,31 @@
 
 namespace FXG::Stretto::Theory
 {
-   class BasicNote final
+   class AggregatedNote final
    {
    public:
       /************************************************************************/
       /* Constructors / Destructor / Assignment Operators                     */
       /************************************************************************/
 
-      BasicNote(Pitch a_Pitch, NoteDuration a_Duration) noexcept;
-      BasicNote(NoteLetter   a_NoteLetter,
-                Accidental   a_Accidental,
-                uint8_t      a_Octave,
-                NoteDuration a_Duration) noexcept;
-      BasicNote(BasicNote const &) noexcept = default;
-      BasicNote(BasicNote &&) noexcept      = default;
-      ~BasicNote() noexcept                 = default;
+      AggregatedNote(Pitch const & a_Pitch, uint32_t m_DurationTU) noexcept;
+      AggregatedNote(AggregatedNote const &) noexcept = default;
+      AggregatedNote(AggregatedNote &&) noexcept      = default;
+      ~AggregatedNote() noexcept                      = default;
 
-      BasicNote & operator=(BasicNote const &) noexcept = default;
-      BasicNote & operator=(BasicNote &&) noexcept = default;
+      AggregatedNote & operator=(AggregatedNote const &) noexcept = default;
+      AggregatedNote & operator=(AggregatedNote &&) noexcept = default;
 
 
       /************************************************************************/
       /* Getters                                                              */
       /************************************************************************/
 
-      Pitch const &        getPitch() const;
-      NoteDuration const & getDuration() const;
-      uint64_t getDurationTU(NoteDuration a_DurationUnit) const;
+      Pitch const & getPitch() const;
+      uint32_t      getDurationTU() const;
 
    private:
-      Pitch        m_Pitch;
-      NoteDuration m_Duration;
+      Pitch    m_Pitch;
+      uint32_t m_DurationTU;
    };
 }

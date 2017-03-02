@@ -3,16 +3,18 @@
  Copyright (c) 2017 FXGuild
  See file "LICENSE.txt" at project root for complete license
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- Creation  : February 26, 2017
- Namespace : FXG::Stretto::Piece
- Content   : class MonophonicPart
+ Creation  : February 27, 2017
+ Namespace : FXG::Stretto::Utils
+ Content   : Utilities for std containers
 \**************************************************************************************************/
 
 #pragma once
 
-namespace FXG::Stretto::Piece
+#include <functional>
+#include <set>
+
+namespace FXG::Stretto::Utils
 {
-   class MonophonicPart final
-   {
-   };
+   template <typename T>
+   using CustomComparatorSet = std::set<T, std::function<bool(T const &, T const &)>>;
 }

@@ -3,43 +3,43 @@
  Copyright (c) 2017 FXGuild
  See file "LICENSE.txt" at project root for complete license
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- Creation  : February 26, 2017
- Namespace : FXG::Stretto::Piece
- Content   : class MonophonicPiece
+ Creation  : February 27, 2017
+ Namespace : FXG::Stretto::Piece::Monophonic
+ Content   : class PartBuilder
 \**************************************************************************************************/
 
 #pragma once
 
-#include <vector>
+#include <FXG/Stretto/Piece/Monophonic/Part.h>
 
-#include <FXG/Stretto/Piece/MonophonicPart.h>
-#include <FXG/Stretto/Utils/ClassDeclHelpers.h>
-
-namespace FXG::Stretto::Piece
+namespace FXG::Stretto::Piece::Monophonic
 {
-   class MonophonicPiece final
+   class PartBuilder final
    {
    public:
       /************************************************************************/
       /* Constructors / Destructor / Assignment Operators                     */
       /************************************************************************/
 
-      MonophonicPiece() noexcept                   = default;
-      MonophonicPiece(MonophonicPiece const &)     = default;
-      MonophonicPiece(MonophonicPiece &&) noexcept = default;
-      ~MonophonicPiece() noexcept                  = default;
+      PartBuilder(Theory::NoteDuration a_DurationUnit) noexcept;
+      PartBuilder(PartBuilder const &)     = default;
+      PartBuilder(PartBuilder &&) noexcept = default;
+      ~PartBuilder() noexcept              = default;
 
-      MonophonicPiece & operator=(MonophonicPiece const &) = default;
-      MonophonicPiece & operator=(MonophonicPiece &&) noexcept = default;
+      PartBuilder & operator=(PartBuilder const &) = default;
+      PartBuilder & operator=(PartBuilder &&) noexcept = default;
+
+
+      /************************************************************************/
+      /* Builder methods                                                      */
+      /************************************************************************/
+
+      void addNote(Theory::AggregatedNote a_Note);
+      void addRest(uint32_t a_DurationTU);
+
+      Part build();
 
    private:
-      std::vector<MonophonicPart> m_Parts;
-
-   public:
-      /************************************************************************/
-      /* Iteration                                                            */
-      /************************************************************************/
-
-      DEFINE_ITERABLE_BASED_ON(m_Parts)
+      Part m_Part;
    };
 }

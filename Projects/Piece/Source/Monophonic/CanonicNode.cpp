@@ -4,21 +4,29 @@
  See file "LICENSE.txt" at project root for complete license
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  Creation  : February 25, 2017
- Namespace : FXG::Stretto::Theory
- Content   : class Pitch
+ Namespace : FXG::Stretto::Piece::Monophonic
+ Content   : class CanonicNode
 \**************************************************************************************************/
 
-#include <FXG/Stretto/Theory/Pitch.h>
+#include <assert.h>
 
-namespace FXG::Stretto::Theory
+#include <FXG/Stretto/Piece/Monophonic/CanonicNode.h>
+
+namespace FXG::Stretto::Piece::Monophonic
 {
    /************************************************************************/
    /* Constructors / Destructor / Assignment Operators                     */
    /************************************************************************/
 
-   Pitch::Pitch(Tone a_Tone, uint8_t a_Octave) noexcept
-   : m_Tone{ a_Tone }
-   , m_Octave{ a_Octave }
+   CanonicNode::CanonicNode(Theory::CanonicNote const & a_Note, bool a_IsTied) noexcept
+   : m_Note{ a_Note }
+   , m_Type{ a_IsTied ? Type::TIED_NOTE : Type::STARTING_NOTE }
+   {
+   }
+
+   CanonicNode::CanonicNode(Theory::NoteDuration a_RestDuration) noexcept
+   : m_Note{ Theory::CanonicNote{ Theory::Pitch::A_440HZ, a_RestDuration } }
+   , m_Type{ Type::REST }
    {
    }
 
@@ -27,35 +35,29 @@ namespace FXG::Stretto::Theory
    /* Getters                                                              */
    /************************************************************************/
 
-   Tone const & Pitch::getTone() const
+   Theory::CanonicNote const & CanonicNode::getNote() const
    {
-      return m_Tone;
+      assert(!isRest());
+      return m_Note;
    }
 
-   uint8_t const & Pitch::getOctave() const
+   Theory::NoteDuration CanonicNode::getDuration() const
    {
-      return m_Octave;
+      return m_Note.getDuration();
    }
 
-
-   /************************************************************************/
-   /* Comparison Operators                                                 */
-   /************************************************************************/
-
-   bool Pitch::operator==(Pitch const & a_Other) const
+   CanonicNode::Type CanonicNode::getType() const
    {
-      return !(*this != a_Other);
-   }
-
-   bool Pitch::operator!=(Pitch const & a_Other) const
-   {
-      return m_Tone != a_Other.m_Tone && m_Octave != a_Other.m_Octave;
+      return m_Type;
    }
 
 
    /************************************************************************/
-   /* Helper constants                                                     */
+   /* Status                                                               */
    /************************************************************************/
 
-   const Pitch Pitch::A_440HZ{ { NoteLetter::A }, 4 };
+   bool CanonicNode::isRest() const
+   {
+      return m_Type == Type::REST;
+   }
 }

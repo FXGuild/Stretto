@@ -5,10 +5,10 @@
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  Creation  : February 25, 2017
  Namespace : FXG::Stretto::Theory
- Content   : class BasicNote
+ Content   : class AggregatedNote
 \**************************************************************************************************/
 
-#include <FXG/Stretto/Theory/BasicNote.h>
+#include <FXG/Stretto/Theory/AggregatedNote.h>
 
 namespace FXG::Stretto::Theory
 {
@@ -16,18 +16,9 @@ namespace FXG::Stretto::Theory
    /* Constructors / Destructor / Assignment Operators                     */
    /************************************************************************/
 
-   BasicNote::BasicNote(Pitch a_Pitch, NoteDuration a_Duration) noexcept
+   AggregatedNote::AggregatedNote(Pitch const & a_Pitch, uint32_t a_DurationTU) noexcept
    : m_Pitch{ a_Pitch }
-   , m_Duration{ a_Duration }
-   {
-   }
-
-   BasicNote::BasicNote(NoteLetter   a_NoteLetter,
-                        Accidental   a_Accidental,
-                        uint8_t      a_Octave,
-                        NoteDuration a_Duration) noexcept
-   : m_Pitch{ Tone{ a_NoteLetter, a_Accidental }, a_Octave }
-   , m_Duration{ a_Duration }
+   , m_DurationTU{ a_DurationTU }
    {
    }
 
@@ -36,18 +27,13 @@ namespace FXG::Stretto::Theory
    /* Getters                                                              */
    /************************************************************************/
 
-   Pitch const & BasicNote::getPitch() const
+   Pitch const & AggregatedNote::getPitch() const
    {
       return m_Pitch;
    }
 
-   NoteDuration const & BasicNote::getDuration() const
+   uint32_t AggregatedNote::getDurationTU() const
    {
-      return m_Duration;
-   }
-
-   uint64_t BasicNote::getDurationTU(NoteDuration a_DurationUnit) const
-   {
-      return convertDurationToTU(m_Duration, a_DurationUnit);
+      return m_DurationTU;
    }
 }

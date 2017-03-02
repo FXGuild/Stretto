@@ -4,21 +4,29 @@
  See file "LICENSE.txt" at project root for complete license
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  Creation  : February 25, 2017
- Namespace : FXG::Stretto::Theory
- Content   : class Pitch
+ Namespace : FXG::Stretto::Piece::Monophonic
+ Content   : class AggregatedNode
 \**************************************************************************************************/
 
-#include <FXG/Stretto/Theory/Pitch.h>
+#include <assert.h>
 
-namespace FXG::Stretto::Theory
+#include <FXG/Stretto/Piece/Monophonic/AggregatedNode.h>
+
+namespace FXG::Stretto::Piece::Monophonic
 {
    /************************************************************************/
    /* Constructors / Destructor / Assignment Operators                     */
    /************************************************************************/
 
-   Pitch::Pitch(Tone a_Tone, uint8_t a_Octave) noexcept
-   : m_Tone{ a_Tone }
-   , m_Octave{ a_Octave }
+   AggregatedNode::AggregatedNode(Theory::AggregatedNote const & a_Note) noexcept
+   : m_Note{ a_Note }
+   , m_IsRest{ false }
+   {
+   }
+
+   AggregatedNode::AggregatedNode(uint32_t a_RestDuration) noexcept
+   : m_Note{ Theory::AggregatedNote{ Theory::Pitch::A_440HZ, a_RestDuration } }
+   , m_IsRest{ true }
    {
    }
 
@@ -27,35 +35,24 @@ namespace FXG::Stretto::Theory
    /* Getters                                                              */
    /************************************************************************/
 
-   Tone const & Pitch::getTone() const
+   Theory::AggregatedNote const & AggregatedNode::getNote() const
    {
-      return m_Tone;
+      assert(!isRest());
+      return m_Note;
    }
 
-   uint8_t const & Pitch::getOctave() const
+   uint32_t AggregatedNode::getDurationTU() const
    {
-      return m_Octave;
-   }
-
-
-   /************************************************************************/
-   /* Comparison Operators                                                 */
-   /************************************************************************/
-
-   bool Pitch::operator==(Pitch const & a_Other) const
-   {
-      return !(*this != a_Other);
-   }
-
-   bool Pitch::operator!=(Pitch const & a_Other) const
-   {
-      return m_Tone != a_Other.m_Tone && m_Octave != a_Other.m_Octave;
+      return m_Note.getDurationTU();
    }
 
 
    /************************************************************************/
-   /* Helper constants                                                     */
+   /* Status                                                               */
    /************************************************************************/
 
-   const Pitch Pitch::A_440HZ{ { NoteLetter::A }, 4 };
+   bool AggregatedNode::isRest() const
+   {
+      return m_IsRest;
+   }
 }

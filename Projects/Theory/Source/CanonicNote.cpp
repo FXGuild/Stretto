@@ -5,10 +5,10 @@
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  Creation  : February 25, 2017
  Namespace : FXG::Stretto::Theory
- Content   : class Tone
+ Content   : class BasicNote
 \**************************************************************************************************/
 
-#include <FXG/Stretto/Theory/Tone.h>
+#include <FXG/Stretto/Theory/CanonicNote.h>
 
 namespace FXG::Stretto::Theory
 {
@@ -16,9 +16,9 @@ namespace FXG::Stretto::Theory
    /* Constructors / Destructor / Assignment Operators                     */
    /************************************************************************/
 
-   Tone::Tone(NoteLetter a_NoteLetter, Accidental a_Accidental /* = Accidental::NATURAL */) noexcept
-   : m_NoteLetter{ a_NoteLetter }
-   , m_Accidental{ a_Accidental }
+   CanonicNote::CanonicNote(Pitch const & a_Pitch, NoteDuration a_Duration) noexcept
+   : m_Pitch{ a_Pitch }
+   , m_Duration{ a_Duration }
    {
    }
 
@@ -27,28 +27,18 @@ namespace FXG::Stretto::Theory
    /* Getters                                                              */
    /************************************************************************/
 
-   NoteLetter Tone::getNoteLetter() const
+   Pitch const & CanonicNote::getPitch() const
    {
-      return m_NoteLetter;
+      return m_Pitch;
    }
 
-   Accidental Tone::getAccidental() const
+   NoteDuration const & CanonicNote::getDuration() const
    {
-      return m_Accidental;
+      return m_Duration;
    }
 
-
-   /************************************************************************/
-   /* Comparison Operators                                                 */
-   /************************************************************************/
-
-   bool Tone::operator==(Tone const & a_Other) const
+   uint64_t CanonicNote::getDurationTU(NoteDuration a_DurationUnit) const
    {
-      return !(*this != a_Other);
-   }
-
-   bool Tone::operator!=(Tone const & a_Other) const
-   {
-      return m_NoteLetter != a_Other.m_NoteLetter && m_Accidental != a_Other.m_Accidental;
+      return convertDurationToTU(m_Duration, a_DurationUnit);
    }
 }
