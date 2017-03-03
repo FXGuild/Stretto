@@ -9,11 +9,11 @@ collect_juce_files("Stretto.${MODULE_NAME}" ${CMAKE_CURRENT_SOURCE_DIR} JUCE_FIL
 source_group("JUCE Files" FILES ${JUCE_FILES})
 
 # Gather project headers
-file(GLOB HEADER_FILES "${CMAKE_SOURCE_DIR}/Include/FXG/Stretto/${MODULE_NAME}/*/*.h")
+file(GLOB_RECURSE HEADER_FILES "${CMAKE_SOURCE_DIR}/Include/FXG/Stretto/${MODULE_NAME}/*.h")
 source_group("Header Files" FILES ${HEADER_FILES})
 
 # Gather project source
-file(GLOB SOURCE_FILES "Source/*/*.cpp")
+file(GLOB_RECURSE SOURCE_FILES "Source/*.cpp")
 source_group("Source Files" FILES ${SOURCE_FILES})
 	
 # Create static library MSVC project

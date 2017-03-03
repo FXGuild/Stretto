@@ -21,4 +21,5 @@ include_directories("${CMAKE_SOURCE_DIR}/Include")
 
 # Add dependant libraries
 target_link_libraries(${MODULE_NAME} gtest_main)
+target_link_libraries(${MODULE_NAME} Piece)
 target_link_libraries(${MODULE_NAME} Theory)
