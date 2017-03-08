@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source\Monophonic">
+      <UniqueIdentifier>{07a21b24-cf38-4aee-aa9e-cf18dcedd48a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Include">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Include\Monophonic">
+      <UniqueIdentifier>{278f3ae0-3822-4d17-972b-3098b82d6c86}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Include\FXG\Stretto\Piece\Monophonic\AggregatedNode.h">
+      <Filter>Include\Monophonic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\FXG\Stretto\Piece\Monophonic\CanonicNode.h">
+      <Filter>Include\Monophonic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\FXG\Stretto\Piece\Monophonic\Part.h">
+      <Filter>Include\Monophonic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\FXG\Stretto\Piece\Monophonic\PartBuilder.h">
+      <Filter>Include\Monophonic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\FXG\Stretto\Piece\Monophonic\Piece.h">
+      <Filter>Include\Monophonic</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Source\Piece\Monophonic\CanonicNode.cpp">
+      <Filter>Source\Monophonic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Piece\Monophonic\Part.cpp">
+      <Filter>Source\Monophonic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Piece\Monophonic\PartBuilder.cpp">
+      <Filter>Source\Monophonic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Piece\Monophonic\Piece.cpp">
+      <Filter>Source\Monophonic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Piece\Monophonic\AggregatedNode.cpp">
+      <Filter>Source\Monophonic</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
