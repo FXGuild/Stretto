@@ -12,4 +12,12 @@
 
 namespace FXG::Stretto::Piece::Monophonic
 {
+   /************************************************************************/
+   /* Add                                                                  */
+   /************************************************************************/
+
+   void Piece::addPart(Part && a_Part)
+   {
+      m_Parts.emplace_back(std::move(a_Part));
+   }
 }

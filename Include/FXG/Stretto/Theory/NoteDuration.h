@@ -23,7 +23,7 @@ namespace FXG::Stretto::Theory
       EIGHT,
       SIXTEENTH,
       THIRTYSECOND,
-      SIXTYSECOND
+      SIXTYFOURTH
    };
 
    uint32_t convertDurationToTU(NoteDuration a_Duration, NoteDuration a_DurationUnit);

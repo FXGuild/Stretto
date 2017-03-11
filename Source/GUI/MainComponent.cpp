@@ -23,7 +23,7 @@ namespace FXG::Stretto::GUI
    , m_FileBrowser{ nullptr }
    {
       using namespace FXG::Stretto::Theory;
-      convertDurationToTU(NoteDuration::QUARTER, NoteDuration::SIXTYSECOND);
+      convertDurationToTU(NoteDuration::QUARTER, NoteDuration::SIXTYFOURTH);
 
       addAndMakeVisible(
          m_FileBrowser = new juce::FileBrowserComponent{

@@ -32,6 +32,12 @@ namespace FXG::Stretto::Piece::Monophonic
       Piece & operator=(Piece const &) = default;
       Piece & operator=(Piece &&) noexcept = default;
 
+      /************************************************************************/
+      /* Add                                                                  */
+      /************************************************************************/
+
+      void addPart(Part && a_Part);
+
    private:
       std::vector<Part> m_Parts;
 

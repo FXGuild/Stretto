@@ -26,7 +26,7 @@ namespace FXG::Stretto::Piece::Monophonic
    /* Builder methods                                                      */
    /************************************************************************/
 
-   void PartBuilder::addNote(Theory::AggregatedNote a_Note)
+   void PartBuilder::addNote(Theory::AggregatedNote && a_Note)
    {
       // TODO
    }

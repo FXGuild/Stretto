@@ -21,7 +21,7 @@ namespace FXG::Stretto::Theory
       /* Constructors / Destructor / Assignment Operators                     */
       /************************************************************************/
 
-      Pitch(Tone a_Tone, uint8_t a_Octave) noexcept;
+      Pitch(Tone a_Tone, int8_t a_Octave) noexcept;
       Pitch(Pitch const &) noexcept = default;
       Pitch(Pitch &&) noexcept      = default;
       ~Pitch() noexcept             = default;
@@ -35,7 +35,7 @@ namespace FXG::Stretto::Theory
       /************************************************************************/
 
       Tone const &    getTone() const;
-      uint8_t const & getOctave() const;
+      int8_t const & getOctave() const;
 
 
       /************************************************************************/
@@ -54,6 +54,6 @@ namespace FXG::Stretto::Theory
 
    private:
       Tone    m_Tone;
-      uint8_t m_Octave;
+      int8_t m_Octave;
    };
 }
