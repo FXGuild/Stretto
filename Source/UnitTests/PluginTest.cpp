@@ -10,14 +10,14 @@ Content   : Unit tests for plugin framework
 
 #include <gtest/gtest.h>
 
-#include <FXG/Stretto/Analysis/PluginUtils.h>
+#include <FXG/Stretto/Analysis/PluginDllRAII.h>
 
 namespace FXG::Stretto::Analysis
 {
    TEST(Analysis_Plugin, General)
    {
-      PluginDllRAII pluginDll { "BuiltinPlugin.dll" };
-      auto plugin = pluginDll.createPluginInstance();
+      PluginDllRAII pluginDll{ "BuiltinPlugin.dll" };
+      auto          plugin = pluginDll.createPluginInstance();
       plugin->doStuff();
    }
 }

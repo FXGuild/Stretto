@@ -10,9 +10,6 @@ Content   : Plugin utilities
 
 #pragma once
 
-#include <string>
-#include <memory>
-
 #include <JUCE/Core.h>
 
 #include <FXG/Stretto/PluginAPI/IPlugin.h>

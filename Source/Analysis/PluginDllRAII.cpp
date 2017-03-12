@@ -10,18 +10,19 @@ Content   : Plugin utilities
 
 #include <functional>
 
-#include <FXG/Stretto/Analysis/PluginUtils.h>
+#include <FXG/Stretto/Analysis/PluginDllRAII.h>
 
 namespace FXG::Stretto::Analysis
 {
-   PluginDllRAII::PluginDllRAII(std::string const & a_PluginName) noexcept 
-   : juce::DynamicLibrary { a_PluginName }
-   {}
+   PluginDllRAII::PluginDllRAII(std::string const & a_PluginName) noexcept
+   : juce::DynamicLibrary{ a_PluginName }
+   {
+   }
 
    std::unique_ptr<PluginAPI::IPlugin> PluginDllRAII::createPluginInstance()
    {
       std::string const factoryFuncName = "CreatePluginClassInstance";
-      auto factory = static_cast<PluginAPI::IPlugin *(*)()>(getFunction(factoryFuncName));
+      auto factory = static_cast<PluginAPI::IPlugin * (*) ()>(getFunction(factoryFuncName));
       if (factory == nullptr)
       {
          return nullptr;

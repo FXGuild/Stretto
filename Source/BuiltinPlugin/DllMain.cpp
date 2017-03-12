@@ -13,7 +13,7 @@ Content   : Dll entry point
 #include <FXG/Stretto/BuiltinPlugin/Internal/BuiltinPlugin.h>
 #include <FXG/Stretto/PluginAPI/DllAPI.h>
 
-int WINAPI DllEntryPoint(HINSTANCE, unsigned long, void*)
+int WINAPI DllEntryPoint(HINSTANCE, unsigned long, void *)
 {
    return 1;
 }

@@ -65,10 +65,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\Include\FXG\Stretto\Analysis\PluginUtils.h" />
+    <ClInclude Include="..\Include\FXG\Stretto\Analysis\PluginDllRAII.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Source\Analysis\PluginUtils.cpp" />
+    <ClCompile Include="..\Source\Analysis\PluginDllRAII.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="JUCE.vcxproj">
