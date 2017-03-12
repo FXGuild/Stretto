@@ -9,7 +9,7 @@
 \**************************************************************************************************/
 
 #include <FXG/Stretto/GUI/Internal/MainComponent.h>
-#include <FXG/Stretto/Theory/NoteDuration.h>
+#include <FXG/Stretto/Midi/MidiReader.h>
 
 namespace FXG::Stretto::GUI
 {
@@ -19,28 +19,25 @@ namespace FXG::Stretto::GUI
 
    MainComponent::MainComponent()
    : juce::Component{}
-   , m_MidiFileFilter{ "*mid;*midi", "", "Midi Files" }
-   , m_FileBrowser{ nullptr }
+   , m_FileChooser{ "Open MIDI file", juce::File(), "*.mid", true, false }
+   , m_OpenFileButton{ "Open MIDI file", "Opens a file browser dialog for choosing a .mid file" }
+   , m_FileNameLabel{ "File name label", "No file selected" }
    {
-      using namespace FXG::Stretto::Theory;
-      convertDurationToTU(NoteDuration::QUARTER, NoteDuration::SIXTYFOURTH);
+      addAndMakeVisible(m_OpenFileButton);
+      addAndMakeVisible(m_FileNameLabel);
 
-      addAndMakeVisible(
-         m_FileBrowser = new juce::FileBrowserComponent{
-            juce::FileBrowserComponent::openMode | juce::FileBrowserComponent::canSelectFiles,
-            juce::File{}, &m_MidiFileFilter, nullptr });
+      m_OpenFileButton.addListener(this);
 
       setSize(600, 400);
    }
 
    MainComponent::~MainComponent()
    {
-      m_FileBrowser = nullptr;
    }
 
 
    /************************************************************************/
-   /* GUI                                                                  */
+   /* GUI appearance                                                       */
    /************************************************************************/
 
    void MainComponent::paint(juce::Graphics & a_Graphics)
@@ -50,6 +47,39 @@ namespace FXG::Stretto::GUI
 
    void MainComponent::resized()
    {
-      m_FileBrowser->setBounds(0, 0, getWidth(), getHeight());
+      m_OpenFileButton.setBounds(10, 10, getWidth() - 20, 40);
+      m_FileNameLabel.setBounds(10, 60, getWidth() - 20, 40);
+   }
+
+
+   /************************************************************************/
+   /* GUI callbacks                                                        */
+   /************************************************************************/
+
+   void MainComponent::buttonClicked(juce::Button * a_Button)
+   {
+      // Open file browser
+      if (!m_FileChooser.browseForFileToOpen())
+      {
+         m_FileNameLabel.setText("No file selected", juce::sendNotification);
+         return;
+      }
+
+      // Get result
+      juce::File file = m_FileChooser.getResult();
+
+      // Read midi file content
+      juce::MidiFile midiFile;
+      if (!Midi::readMidiFile(file, midiFile))
+      {
+         m_FileNameLabel.setText("Invalid midi file", juce::sendNotification);
+         return;
+      }
+
+      // Build monophonic piece structure
+      Midi::buildMonophonicPiece(midiFile, Theory::NoteDuration::THIRTYSECOND);
+
+      // Update label
+      m_FileNameLabel.setText(file.getFileName(), juce::sendNotification);
    }
 }

@@ -14,7 +14,7 @@
 
 namespace FXG::Stretto::GUI
 {
-   class MainComponent final : public juce::Component
+   class MainComponent final : public juce::Component, public juce::Button::Listener
    {
    public:
       /************************************************************************/
@@ -26,15 +26,23 @@ namespace FXG::Stretto::GUI
 
 
       /************************************************************************/
-      /* GUI                                                                  */
+      /* GUI appearance                                                       */
       /************************************************************************/
 
       void paint(juce::Graphics & a_Graphics) override;
       void resized() override;
 
+
+      /************************************************************************/
+      /* GUI callbacks                                                        */
+      /************************************************************************/
+
+      void buttonClicked(juce::Button * a_Button) override;
+
    private:
-      juce::WildcardFileFilter                        m_MidiFileFilter;
-      juce::ScopedPointer<juce::FileBrowserComponent> m_FileBrowser;
+      juce::FileChooser m_FileChooser;
+      juce::TextButton  m_OpenFileButton;
+      juce::Label       m_FileNameLabel;
 
       JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainComponent)
    };

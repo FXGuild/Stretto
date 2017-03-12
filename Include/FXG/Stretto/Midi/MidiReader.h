@@ -16,8 +16,8 @@
 
 namespace FXG::Stretto::Midi
 {
-   bool readMidiFile(std::string const & a_FilePath, juce::MidiFile & a_MidiFile);
+   bool readMidiFile(juce::File const & a_File, juce::MidiFile & a_MidiFile);
 
-   Piece::Monophonic::Piece readMonophonicPiece(juce::MidiFile const & a_MidiFile,
+   Piece::Monophonic::Piece buildMonophonicPiece(juce::MidiFile const & a_MidiFile,
                                                 Theory::NoteDuration   a_DurationUnit);
 }

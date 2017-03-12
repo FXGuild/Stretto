@@ -10,7 +10,6 @@
 
 #include <assert.h>
 
-#include <FXG/Stretto/JUCEUtils/FileUtils.h>
 #include <FXG/Stretto/Midi/MidiReader.h>
 #include <FXG/Stretto/Piece/Monophonic/PartBuilder.h>
 
@@ -154,18 +153,13 @@ namespace FXG::Stretto::Midi
       return assemblePart(pitches, ticks, a_DurationUnit);
    }
 
-   bool readMidiFile(std::string const & a_FilePath, juce::MidiFile & a_MidiFile)
+   bool readMidiFile(juce::File const & a_File, juce::MidiFile & a_MidiFile)
    {
-      juce::FileInputStream stream{ JUCEUtils::createFileReference(a_FilePath) };
-      if (stream.openedOk())
-      {
-         a_MidiFile.readFrom(stream);
-         return true;
-      }
-      return false;
+      juce::FileInputStream stream{ a_File };
+      return stream.openedOk() && a_MidiFile.readFrom(stream);
    }
 
-   Piece::Monophonic::Piece readMonophonicPiece(juce::MidiFile const & a_MidiFile,
+   Piece::Monophonic::Piece buildMonophonicPiece(juce::MidiFile const & a_MidiFile,
                                                 Theory::NoteDuration   a_DurationUnit)
    {
       // Check if time format is supported

@@ -10,6 +10,7 @@
 
 #include <gtest/gtest.h>
 
+#include <FXG/Stretto/JUCEUtils/FileUtils.h>
 #include <FXG/Stretto/Midi/MidiReader.h>
 
 namespace FXG::Stretto::Midi
@@ -17,9 +18,10 @@ namespace FXG::Stretto::Midi
    TEST(Piece_MidiReader, General)
    {
       std::string const testFilePath = "../Resource/UnitTests/runascape.mid";
+      juce::File        file         = JUCEUtils::createFileReference(testFilePath);
       juce::MidiFile    midiFile;
-      EXPECT_TRUE(readMidiFile(testFilePath, midiFile));
-      auto piece = readMonophonicPiece(midiFile, Theory::NoteDuration::SIXTYFOURTH);
+      EXPECT_TRUE(readMidiFile(file, midiFile));
+      auto piece = buildMonophonicPiece(midiFile, Theory::NoteDuration::SIXTYFOURTH);
       for (auto const & part : piece)
       {
          std::cout << part.aggregatedView() << std::endl;
