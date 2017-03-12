@@ -19,5 +19,8 @@
     <ClCompile Include="..\Source\UnitTests\PluginTest.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\UnitTests\StringEnum.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

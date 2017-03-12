@@ -50,4 +50,11 @@ namespace FXG::Stretto::Theory
       NoteLetter m_NoteLetter : 3;
       Accidental m_Accidental : 2;
    };
+
+
+   /************************************************************************/
+   /* Serialization                                                        */
+   /************************************************************************/
+
+   std::ostream & operator<<(std::ostream & a_OS, Tone const & a_Tone);
 }

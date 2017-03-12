@@ -10,6 +10,8 @@
 
 #pragma once
 
+#include <iostream>
+
 #include <FXG/Stretto/Theory/AggregatedNote.h>
 
 namespace FXG::Stretto::Piece::Monophonic
@@ -49,4 +51,11 @@ namespace FXG::Stretto::Piece::Monophonic
       Theory::AggregatedNote m_Note;
       bool                   m_IsRest;
    };
+
+
+   /************************************************************************/
+   /* Serialization                                                        */
+   /************************************************************************/
+
+   std::ostream & operator<<(std::ostream & a_OS, AggregatedNode const & a_Node);
 }

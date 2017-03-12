@@ -100,6 +100,7 @@
     <ClCompile Include="..\Source\UnitTests\MidiReaderTest.cpp" />
     <ClCompile Include="..\Source\UnitTests\PluginTest.cpp" />
     <ClCompile Include="..\Source\UnitTests\QualityTest.cpp" />
+    <ClCompile Include="..\Source\UnitTests\StringEnum.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

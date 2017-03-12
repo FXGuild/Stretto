@@ -43,4 +43,11 @@ namespace FXG::Stretto::Theory
       Pitch        m_Pitch;
       NoteDuration m_Duration;
    };
+
+
+   /************************************************************************/
+   /* Serialization                                                        */
+   /************************************************************************/
+
+   std::ostream & operator<<(std::ostream & a_OS, CanonicNote const & a_Note);
 }

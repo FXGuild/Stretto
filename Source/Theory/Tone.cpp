@@ -51,4 +51,15 @@ namespace FXG::Stretto::Theory
    {
       return m_NoteLetter != a_Other.m_NoteLetter && m_Accidental != a_Other.m_Accidental;
    }
+
+
+   /************************************************************************/
+   /* Serialization                                                        */
+   /************************************************************************/
+
+   std::ostream & operator<<(std::ostream & a_OS, Tone const & a_Tone)
+   {
+      a_OS << a_Tone.getNoteLetter() << a_Tone.getAccidental();
+      return a_OS;
+   }
 }

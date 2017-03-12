@@ -9,6 +9,7 @@
 \**************************************************************************************************/
 
 #include <assert.h>
+#include <sstream>
 
 #include <FXG/Stretto/Piece/Monophonic/AggregatedNode.h>
 
@@ -54,5 +55,23 @@ namespace FXG::Stretto::Piece::Monophonic
    bool AggregatedNode::isRest() const
    {
       return m_IsRest;
+   }
+
+
+   /************************************************************************/
+   /* Serialization                                                        */
+   /************************************************************************/
+
+   std::ostream & operator<<(std::ostream & a_OS, AggregatedNode const & a_Node)
+   {
+      if (a_Node.isRest())
+      {
+         a_OS << "-R- " << a_Node.getDurationTU();
+      }
+      else
+      {
+         a_OS << a_Node.getNote();
+      }
+      return a_OS;
    }
 }

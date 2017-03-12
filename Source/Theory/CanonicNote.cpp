@@ -41,4 +41,15 @@ namespace FXG::Stretto::Theory
    {
       return convertDurationToTU(m_Duration, a_DurationUnit);
    }
+
+
+   /************************************************************************/
+   /* Serialization                                                        */
+   /************************************************************************/
+
+   std::ostream & operator<<(std::ostream & a_OS, CanonicNote const & a_Note)
+   {
+      a_OS << a_Note.getPitch() << " " << a_Note.getDuration();
+      return a_OS;
+   }
 }

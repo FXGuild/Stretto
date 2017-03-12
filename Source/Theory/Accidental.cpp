@@ -3,39 +3,33 @@
  Copyright (c) 2017 FXGuild
  See file "LICENSE.txt" at project root for complete license
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- Creation  : February 25, 2017
+ Creation  : March 12, 2017
  Namespace : FXG::Stretto::Theory
- Content   : - enum NoteDuration
-             - Utility methods for NoteDuration
+ Content   : class Accidental
 \**************************************************************************************************/
 
-#pragma once
-
-#include <iostream>
+#include <FXG/Stretto/Theory/Accidental.h>
 
 namespace FXG::Stretto::Theory
 {
-   enum class NoteDuration : uint8_t
-   {
-      WHOLE,
-      HALF,
-      QUARTER,
-      EIGHT,
-      SIXTEENTH,
-      THIRTYSECOND,
-      SIXTYFOURTH
-   };
-
-   /************************************************************************/
-   /* Conversions                                                          */
-   /************************************************************************/
-
-   uint32_t convertDurationToTU(NoteDuration a_Duration, NoteDuration a_DurationUnit);
-
-
    /************************************************************************/
    /* Serialization                                                        */
    /************************************************************************/
 
-   std::ostream & operator<<(std::ostream & a_OS, NoteDuration const & a_Note);
+   std::ostream & operator<<(std::ostream & a_OS, Accidental const & a_Accidental)
+   {
+      if (a_Accidental == Accidental::FLAT)
+      {
+         a_OS << 'b';
+      }
+      else if (a_Accidental == Accidental::SHARP)
+      {
+         a_OS << '#';
+      }
+      else
+      {
+         a_OS << ' ';
+      }
+      return a_OS;
+   }
 }

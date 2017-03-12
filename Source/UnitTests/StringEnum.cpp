@@ -3,16 +3,22 @@
  Copyright (c) 2017 FXGuild
  See file "LICENSE.txt" at project root for complete license
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- Creation  : February 25, 2017
- Namespace : FXG::Stretto::Theory
- Content   : enum NoteLetter
+ Creation  : March 11, 2017
+ Namespace : FXG::Stretto::Utils
+ Content   : Unit tests for string enum utilities
 \**************************************************************************************************/
 
-#pragma once
+#include <gtest/gtest.h>
 
+#include <FXG/Stretto/Theory/Accidental.h>
+#include <FXG/Stretto/Theory/NoteLetter.h>
 #include <FXG/Stretto/Utils/StringEnum.h>
 
-namespace FXG::Stretto::Theory
+namespace FXG::Stretto::Utils
 {
-   DECLARE_STRING_ENUM_OF_EXPLICIT_TYPE(NoteLetter, uint8_t, C, D, E, F, G, A, B);
+   TEST(Utils_StringEnum, General)
+   {
+      EXPECT_STREQ(toString(Theory::NoteLetter::C).c_str(), "C");
+      EXPECT_STRNE(toString(Theory::NoteLetter::D).c_str(), "G");
+   }
 }

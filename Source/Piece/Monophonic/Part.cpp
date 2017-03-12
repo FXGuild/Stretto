@@ -19,50 +19,80 @@ namespace FXG::Stretto::Piece::Monophonic
    /************************************************************************/
 
    Part::Part(Theory::NoteDuration a_DurationUnit) noexcept
-   : m_Nodes{}
+   : m_AggregatedNodes{}
+   , m_CanonicNodes{}
    , m_DurationUnit{ a_DurationUnit }
    {
    }
 
 
    /************************************************************************/
-   /* For-each Algorithms                                                  */
+   /* Access views                                                         */
    /************************************************************************/
 
-   void Part::forEachCanonicNode(std::function<void(CanonicNode const &)> a_Func) const
+   Part::AggregatedView Part::aggregatedView() const
    {
-      for (auto const & node : m_Nodes)
-      {
-         a_Func(node);
-      }
+      return { m_AggregatedNodes };
    }
 
-   void Part::forEachAggregatedNode(std::function<void(AggregatedNode const &)> a_Func) const
+   Part::CanonicView Part::canonicView() const
    {
-      for (auto it = m_Nodes.cbegin(); it != m_Nodes.cend();)
+      return { m_CanonicNodes };
+   }
+
+
+   /************************************************************************/
+   /* AggregatedView                                                       */
+   /************************************************************************/
+
+   /************************************************************************/
+   /* Constructors / Destructor / Assignment Operators                     */
+   /************************************************************************/
+
+   Part::AggregatedView::AggregatedView(std::vector<AggregatedNode> const & a_Nodes) noexcept
+   : m_Nodes{ a_Nodes }
+   {
+   }
+
+
+   /************************************************************************/
+   /* Serialization                                                        */
+   /************************************************************************/
+
+   std::ostream & operator<<(std::ostream & a_OS, Part::AggregatedView const & a_View)
+   {
+      for (auto const & node : a_View)
       {
-         uint32_t duration = 0;
-         if (it->isRest())
-         {
-            do
-            {
-               duration += Theory::convertDurationToTU(it->getDuration(), m_DurationUnit);
-               ++it;
-            } while (it != m_Nodes.cend() && it->isRest());
-
-            a_Func(AggregatedNode{ duration });
-         }
-         else
-         {
-            auto const & pitch = it->getNote().getPitch();
-            do
-            {
-               duration += Theory::convertDurationToTU(it->getDuration(), m_DurationUnit);
-               ++it;
-            } while (it != m_Nodes.cend() && !it->isRest() && it->getNote().getPitch() == pitch);
-
-            a_Func(AggregatedNode{ { pitch, duration } });
-         }
+         a_OS << node << std::endl;
       }
+      return a_OS;
+   }
+
+
+   /************************************************************************/
+   /* CanonicView                                                       */
+   /************************************************************************/
+
+   /************************************************************************/
+   /* Constructors / Destructor / Assignment Operators                     */
+   /************************************************************************/
+
+   Part::CanonicView::CanonicView(std::vector<CanonicNode> const & a_Nodes) noexcept
+   : m_Nodes{ a_Nodes }
+   {
+   }
+
+
+   /************************************************************************/
+   /* Serialization                                                        */
+   /************************************************************************/
+
+   std::ostream & operator<<(std::ostream & a_OS, Part::CanonicView const & a_View)
+   {
+      for (auto const & node : a_View)
+      {
+         a_OS << node << std::endl;
+      }
+      return a_OS;
    }
 }

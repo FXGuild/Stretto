@@ -40,7 +40,8 @@ namespace FXG::Stretto::Midi
          }
 
          // Add note to part
-         builder.addNote({ a_Pitches[i], noteEnd - noteBeg });
+         Theory::AggregatedNote note{ a_Pitches[i], noteEnd - noteBeg };
+         builder.addNote(note);
 
          // Update previous note end
          prevNoteEnd = noteEnd;

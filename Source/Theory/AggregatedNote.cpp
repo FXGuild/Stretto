@@ -8,6 +8,8 @@
  Content   : class AggregatedNote
 \**************************************************************************************************/
 
+#include <iomanip>
+
 #include <FXG/Stretto/Theory/AggregatedNote.h>
 
 namespace FXG::Stretto::Theory
@@ -35,5 +37,16 @@ namespace FXG::Stretto::Theory
    uint32_t AggregatedNote::getDurationTU() const
    {
       return m_DurationTU;
+   }
+
+
+   /************************************************************************/
+   /* Serialization                                                        */
+   /************************************************************************/
+
+   std::ostream & operator<<(std::ostream & a_OS, AggregatedNote const & a_Note)
+   {
+      a_OS << a_Note.getPitch() << " " << a_Note.getDurationTU();
+      return a_OS;
    }
 }

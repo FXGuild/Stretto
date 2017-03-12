@@ -10,11 +10,11 @@
 
 #pragma once
 
-#include <functional>
 #include <vector>
 
 #include <FXG/Stretto/Piece/Monophonic/AggregatedNode.h>
 #include <FXG/Stretto/Piece/Monophonic/CanonicNode.h>
+#include <FXG/Stretto/Utils/ClassDeclHelpers.h>
 
 namespace FXG::Stretto::Piece::Monophonic
 {
@@ -22,6 +22,11 @@ namespace FXG::Stretto::Piece::Monophonic
    {
       friend class PartBuilder;
 
+   public:
+      class AggregatedView;
+      class CanonicView;
+
+   private:
       /************************************************************************/
       /* Constructors / Destructor / Assignment Operators                     */
       /************************************************************************/
@@ -38,14 +43,81 @@ namespace FXG::Stretto::Piece::Monophonic
 
 
       /************************************************************************/
-      /* For-each Algorithms                                                  */
+      /* Access views                                                         */
       /************************************************************************/
 
-      void forEachCanonicNode(std::function<void(CanonicNode const &)> a_Func) const;
-      void forEachAggregatedNode(std::function<void(AggregatedNode const &)> a_Func) const;
+      AggregatedView aggregatedView() const;
+      CanonicView    canonicView() const;
 
    private:
-      std::vector<CanonicNode> m_Nodes;
-      Theory::NoteDuration     m_DurationUnit;
+      std::vector<AggregatedNode> m_AggregatedNodes;
+      std::vector<CanonicNode>    m_CanonicNodes;
+      Theory::NoteDuration        m_DurationUnit;
    };
+
+   class Part::AggregatedView
+   {
+   public:
+      /************************************************************************/
+      /* Constructors / Destructor / Assignment Operators                     */
+      /************************************************************************/
+
+      AggregatedView(std::vector<AggregatedNode> const & a_Nodes) noexcept;
+      AggregatedView(AggregatedView const &) noexcept = default;
+      AggregatedView(AggregatedView &&) noexcept      = default;
+      ~AggregatedView() noexcept                      = default;
+
+      AggregatedView & operator=(AggregatedView const &) noexcept = default;
+      AggregatedView & operator=(AggregatedView &&) noexcept = default;
+
+   private:
+      std::vector<AggregatedNode> const & m_Nodes;
+
+   public:
+      /************************************************************************/
+      /* Iteration                                                            */
+      /************************************************************************/
+
+      DEFINE_ITERABLE_BASED_ON(m_Nodes);
+   };
+
+   /************************************************************************/
+   /* Serialization                                                        */
+   /************************************************************************/
+
+   std::ostream & operator<<(std::ostream & a_OS, Part::AggregatedView const & a_View);
+
+
+   class Part::CanonicView
+   {
+   public:
+      /************************************************************************/
+      /* Constructors / Destructor / Assignment Operators                     */
+      /************************************************************************/
+
+      CanonicView(std::vector<CanonicNode> const & a_Nodes) noexcept;
+      CanonicView(CanonicView const &) noexcept = default;
+      CanonicView(CanonicView &&) noexcept      = default;
+      ~CanonicView() noexcept                   = default;
+
+      CanonicView & operator=(CanonicView const &) noexcept = default;
+      CanonicView & operator=(CanonicView &&) noexcept = default;
+
+   private:
+      std::vector<CanonicNode> const & m_Nodes;
+
+   public:
+      /************************************************************************/
+      /* Iteration                                                            */
+      /************************************************************************/
+
+      DEFINE_ITERABLE_BASED_ON(m_Nodes);
+   };
+
+
+   /************************************************************************/
+   /* Serialization                                                        */
+   /************************************************************************/
+
+   std::ostream & operator<<(std::ostream & a_OS, Part::CanonicView const & a_View);
 }

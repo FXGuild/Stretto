@@ -34,7 +34,7 @@ namespace FXG::Stretto::Theory
       /* Getters                                                              */
       /************************************************************************/
 
-      Tone const &    getTone() const;
+      Tone const &   getTone() const;
       int8_t const & getOctave() const;
 
 
@@ -53,7 +53,14 @@ namespace FXG::Stretto::Theory
       static Pitch const A_440HZ;
 
    private:
-      Tone    m_Tone;
+      Tone   m_Tone;
       int8_t m_Octave;
    };
+
+
+   /************************************************************************/
+   /* Serialization                                                        */
+   /************************************************************************/
+
+   std::ostream & operator<<(std::ostream & a_OS, Pitch const & a_Pitch);
 }

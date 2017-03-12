@@ -20,9 +20,12 @@
     <ClInclude Include="..\Include\FXG\Stretto\Utils\StdContainersUtils.h">
       <Filter>Include</Filter>
     </ClInclude>
+    <ClInclude Include="..\Include\FXG\Stretto\Utils\StringEnum.h">
+      <Filter>Include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Source\Utils\__placeholder__.cpp">
+    <ClCompile Include="..\Source\Utils\StringEnum.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>

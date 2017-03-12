@@ -26,20 +26,22 @@ namespace FXG::Stretto::Piece::Monophonic
    /* Builder methods                                                      */
    /************************************************************************/
 
-   void PartBuilder::addNote(Theory::AggregatedNote && a_Note)
+   void PartBuilder::addNote(Theory::AggregatedNote const & a_Note)
    {
-      // TODO
+      m_Part.m_AggregatedNodes.emplace_back(a_Note);
+      // TODO: canonic view
    }
 
    void PartBuilder::addRest(uint32_t a_Duration)
    {
-      // TODO
+      m_Part.m_AggregatedNodes.emplace_back(a_Duration);
+      // TODO: canonic view
    }
 
    Part PartBuilder::build()
    {
-      Part && output = std::move(m_Part);
-      m_Part         = { output.m_DurationUnit };
+      Part output{ std::move(m_Part) };
+      m_Part = { output.m_DurationUnit };
       return output;
    }
 }

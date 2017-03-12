@@ -42,4 +42,11 @@ namespace FXG::Stretto::Theory
       Pitch    m_Pitch;
       uint32_t m_DurationTU;
    };
+
+
+   /************************************************************************/
+   /* Serialization                                                        */
+   /************************************************************************/
+
+   std::ostream & operator<<(std::ostream & a_OS, AggregatedNote const & a_Note);
 }

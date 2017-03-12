@@ -34,7 +34,7 @@ namespace FXG::Stretto::Piece::Monophonic
       /* Builder methods                                                      */
       /************************************************************************/
 
-      void addNote(Theory::AggregatedNote && a_Note);
+      void addNote(Theory::AggregatedNote const & a_Note);
       void addRest(uint32_t a_DurationTU);
 
       Part build();

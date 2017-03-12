@@ -75,6 +75,7 @@
     <ClInclude Include="..\Include\FXG\Stretto\Theory\Tone.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Source\Theory\Accidental.cpp" />
     <ClCompile Include="..\Source\Theory\AggregatedNote.cpp" />
     <ClCompile Include="..\Source\Theory\CanonicNote.cpp" />
     <ClCompile Include="..\Source\Theory\NoteDuration.cpp" />

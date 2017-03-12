@@ -17,8 +17,12 @@ namespace FXG::Stretto::Midi
    TEST(Piece_MidiReader, General)
    {
       std::string const testFilePath = "../Resource/UnitTests/runascape.mid";
-      juce::MidiFile midiFile;
+      juce::MidiFile    midiFile;
       EXPECT_TRUE(readMidiFile(testFilePath, midiFile));
-      readMonophonicPiece(midiFile, Theory::NoteDuration::SIXTYFOURTH);
+      auto piece = readMonophonicPiece(midiFile, Theory::NoteDuration::SIXTYFOURTH);
+      for (auto const & part : piece)
+      {
+         std::cout << part.aggregatedView() << std::endl;
+      }
    }
 }

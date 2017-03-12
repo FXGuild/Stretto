@@ -8,6 +8,8 @@
  Content   : class Pitch
 \**************************************************************************************************/
 
+#include <string>
+
 #include <FXG/Stretto/Theory/Pitch.h>
 
 namespace FXG::Stretto::Theory
@@ -58,4 +60,15 @@ namespace FXG::Stretto::Theory
    /************************************************************************/
 
    const Pitch Pitch::A_440HZ{ { NoteLetter::A }, 4 };
+
+
+   /************************************************************************/
+   /* Serialization                                                        */
+   /************************************************************************/
+
+   std::ostream & operator<<(std::ostream & a_OS, Pitch const & a_Pitch)
+   {
+      a_OS << a_Pitch.getTone() << std::to_string(a_Pitch.getOctave());
+      return a_OS;
+   }
 }

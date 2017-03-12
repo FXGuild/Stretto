@@ -62,4 +62,11 @@ namespace FXG::Stretto::Piece::Monophonic
       Theory::CanonicNote m_Note;
       Type                m_Type;
    };
+
+
+   /************************************************************************/
+   /* Serialization                                                        */
+   /************************************************************************/
+
+   std::ostream & operator<<(std::ostream & a_OS, CanonicNode const & a_Node);
 }

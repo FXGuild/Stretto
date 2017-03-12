@@ -60,4 +60,26 @@ namespace FXG::Stretto::Piece::Monophonic
    {
       return m_Type == Type::REST;
    }
+
+
+   /************************************************************************/
+   /* Serialization                                                        */
+   /************************************************************************/
+
+   std::ostream & operator<<(std::ostream & a_OS, CanonicNode const & a_Node)
+   {
+      if (a_Node.getType() == CanonicNode::Type::REST)
+      {
+         a_OS << "Rest" << a_Node.getDuration();
+      }
+      else if (a_Node.getType() == CanonicNode::Type::STARTING_NOTE)
+      {
+         a_OS << '_' << a_Node.getNote();
+      }
+      else
+      {
+         a_OS << a_Node.getNote();
+      }
+      return a_OS;
+   }
 }
