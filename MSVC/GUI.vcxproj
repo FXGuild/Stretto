@@ -36,12 +36,12 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="Property Sheets\Stretto\Stretto.props" />
     <Import Project="Property Sheets\Include JUCE.props" />
-    <Import Project="Property Sheets\GUI Internal Include.props" />
+    <Import Project="Property Sheets\Internal Include.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="Property Sheets\Stretto\Stretto.props" />
     <Import Project="Property Sheets\Include JUCE.props" />
-    <Import Project="Property Sheets\GUI Internal Include.props" />
+    <Import Project="Property Sheets\Internal Include.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup />

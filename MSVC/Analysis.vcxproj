@@ -11,18 +11,19 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{50F3EC2E-55BA-4774-9042-37471E971914}</ProjectGuid>
-    <RootNamespace>UnitTests</RootNamespace>
+    <ProjectGuid>{5C9C5484-3EE6-4032-A285-991CF7DF7DE5}</ProjectGuid>
+    <RootNamespace>Analysis</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -34,18 +35,12 @@
   <ImportGroup Label="Shared">
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <Import Project="Property Sheets\Include JUCE.props" />
-    <Import Project="Property Sheets\Include googletest.props" />
     <Import Project="Property Sheets\Stretto\Stretto.props" />
-    <Import Project="Property Sheets\Google Test Compilation Flags.props" />
-    <Import Project="Property Sheets\UnitTests Properties.props" />
+    <Import Project="Property Sheets\Include JUCE.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <Import Project="Property Sheets\Include JUCE.props" />
-    <Import Project="Property Sheets\Include googletest.props" />
     <Import Project="Property Sheets\Stretto\Stretto.props" />
-    <Import Project="Property Sheets\Google Test Compilation Flags.props" />
-    <Import Project="Property Sheets\UnitTests Properties.props" />
+    <Import Project="Property Sheets\Include JUCE.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup />
@@ -70,12 +65,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ProjectReference Include="Analysis.vcxproj">
-      <Project>{5c9c5484-3ee6-4032-a285-991cf7df7de5}</Project>
-    </ProjectReference>
-    <ProjectReference Include="googletest.vcxproj">
-      <Project>{0709308f-cbe6-4dd9-b0ee-f0085415fb9b}</Project>
-    </ProjectReference>
+    <ClInclude Include="..\Include\FXG\Stretto\Analysis\PluginUtils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Source\Analysis\PluginUtils.cpp" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="JUCE.vcxproj">
       <Project>{2013a954-b865-454c-8b47-8a40564e01ad}</Project>
     </ProjectReference>
@@ -94,12 +89,6 @@
     <ProjectReference Include="Utils.vcxproj">
       <Project>{b86cec5d-3e31-4ae6-9dcf-c336447d5dd5}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\Source\UnitTests\Main.cpp" />
-    <ClCompile Include="..\Source\UnitTests\MidiReaderTest.cpp" />
-    <ClCompile Include="..\Source\UnitTests\PluginTest.cpp" />
-    <ClCompile Include="..\Source\UnitTests\QualityTest.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
