@@ -19,7 +19,10 @@
     <ClCompile Include="..\Source\UnitTests\PluginTest.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\UnitTests\StringEnum.cpp">
+    <ClCompile Include="..\Source\UnitTests\IntervalTest.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\UnitTests\StringEnumTest.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>

@@ -65,10 +65,9 @@
     <ClInclude Include="..\Include\FXG\Stretto\Theory\Accidental.h" />
     <ClInclude Include="..\Include\FXG\Stretto\Theory\AggregatedNote.h" />
     <ClInclude Include="..\Include\FXG\Stretto\Theory\CanonicNote.h" />
-    <ClInclude Include="..\Include\FXG\Stretto\Theory\ImperfectQuality.h" />
+    <ClInclude Include="..\Include\FXG\Stretto\Theory\Interval.h" />
     <ClInclude Include="..\Include\FXG\Stretto\Theory\NoteDuration.h" />
     <ClInclude Include="..\Include\FXG\Stretto\Theory\NoteLetter.h" />
-    <ClInclude Include="..\Include\FXG\Stretto\Theory\PerfectQuality.h" />
     <ClInclude Include="..\Include\FXG\Stretto\Theory\Pitch.h" />
     <ClInclude Include="..\Include\FXG\Stretto\Theory\Quality.h" />
     <ClInclude Include="..\Include\FXG\Stretto\Theory\TimeSignature.h" />
@@ -78,6 +77,7 @@
     <ClCompile Include="..\Source\Theory\Accidental.cpp" />
     <ClCompile Include="..\Source\Theory\AggregatedNote.cpp" />
     <ClCompile Include="..\Source\Theory\CanonicNote.cpp" />
+    <ClCompile Include="..\Source\Theory\Interval.cpp" />
     <ClCompile Include="..\Source\Theory\NoteDuration.cpp" />
     <ClCompile Include="..\Source\Theory\Pitch.cpp" />
     <ClCompile Include="..\Source\Theory\Quality.cpp" />

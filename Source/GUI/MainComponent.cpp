@@ -78,7 +78,7 @@ namespace FXG::Stretto::GUI
 
       // Build monophonic piece structure
       Midi::buildMonophonicPiece(midiFile, Theory::NoteDuration::THIRTYSECOND);
-
+      
       // Update label
       m_FileNameLabel.setText(file.getFileName(), juce::sendNotification);
    }

@@ -5,7 +5,7 @@
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  Creation  : February 25, 2017
  Namespace : FXG::Stretto::Theory
- Content   : class Quality
+ Content   : Class Quality
 \**************************************************************************************************/
 
 #include <assert.h>
@@ -23,9 +23,24 @@ namespace FXG::Stretto::Theory
    {
    }
 
-   Quality::Quality(PerfectQuality a_PerfectQuality) noexcept
-   : m_Quality{ static_cast<uint8_t>(a_PerfectQuality) }
+   Quality::Quality(PerfAugDimQuality a_PerfAugDimQuality) noexcept
+   : m_Quality{ static_cast<uint8_t>(a_PerfAugDimQuality) }
    {
+   }
+
+
+   /************************************************************************/
+   /* Comparison operators                                                 */
+   /************************************************************************/
+
+   bool Quality::operator==(Quality const & a_RHS) const
+   {
+      return m_Quality == a_RHS.m_Quality;
+   }
+
+   bool Quality::operator!=(Quality const & a_RHS) const
+   {
+      return !(*this == a_RHS);
    }
 
 
@@ -35,14 +50,14 @@ namespace FXG::Stretto::Theory
 
    ImperfectQuality Quality::getImperfectQuality() const
    {
-      assert(isImperfect());
+      assert(getQualityType() == Type::IMPERFECT);
       return ImperfectQuality(m_Quality);
    }
 
-   PerfectQuality Quality::getPerfectQuality() const
+   PerfAugDimQuality Quality::getPerfAugDimQuality() const
    {
-      assert(isPerfect());
-      return PerfectQuality(m_Quality);
+      assert(getQualityType() == Type::PERF_AUG_DIM);
+      return PerfAugDimQuality(m_Quality);
    }
 
 
@@ -50,13 +65,9 @@ namespace FXG::Stretto::Theory
    /* Status                                                               */
    /************************************************************************/
 
-   bool Quality::isImperfect() const
+   Quality::Type Quality::getQualityType() const
    {
-      return m_Quality <= static_cast<uint8_t>(ImperfectQuality::MAJOR);
-   }
-
-   bool Quality::isPerfect() const
-   {
-      return !isImperfect();
+      return m_Quality <= static_cast<uint8_t>(ImperfectQuality::MAJOR) ? Type::IMPERFECT
+                                                                        : Type::PERF_AUG_DIM;
    }
 }

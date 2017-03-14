@@ -96,11 +96,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Source\UnitTests\IntervalTest.cpp" />
     <ClCompile Include="..\Source\UnitTests\Main.cpp" />
     <ClCompile Include="..\Source\UnitTests\MidiReaderTest.cpp" />
     <ClCompile Include="..\Source\UnitTests\PluginTest.cpp" />
     <ClCompile Include="..\Source\UnitTests\QualityTest.cpp" />
-    <ClCompile Include="..\Source\UnitTests\StringEnum.cpp" />
+    <ClCompile Include="..\Source\UnitTests\StringEnumTest.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

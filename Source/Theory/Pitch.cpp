@@ -44,14 +44,14 @@ namespace FXG::Stretto::Theory
    /* Comparison Operators                                                 */
    /************************************************************************/
 
-   bool Pitch::operator==(Pitch const & a_Other) const
+   bool Pitch::operator==(Pitch const & a_RHS) const
    {
-      return !(*this != a_Other);
+      return !(*this != a_RHS);
    }
 
-   bool Pitch::operator!=(Pitch const & a_Other) const
+   bool Pitch::operator!=(Pitch const & a_RHS) const
    {
-      return m_Tone != a_Other.m_Tone && m_Octave != a_Other.m_Octave;
+      return m_Tone != a_RHS.m_Tone && m_Octave != a_RHS.m_Octave;
    }
 
 

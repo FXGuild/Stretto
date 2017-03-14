@@ -42,8 +42,8 @@ namespace FXG::Stretto::Theory
       /* Comparison Operators                                                 */
       /************************************************************************/
 
-      bool operator==(Pitch const & a_Other) const;
-      bool operator!=(Pitch const & a_Other) const;
+      bool operator==(Pitch const & a_RHS) const;
+      bool operator!=(Pitch const & a_RHS) const;
 
 
       /************************************************************************/

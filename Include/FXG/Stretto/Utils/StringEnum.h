@@ -25,7 +25,7 @@
    inline std::string const & toString(Name a_Value)                                               \
    {                                                                                               \
       static auto const names{ FXG::Stretto::Utils::splitEnumValues(#__VA_ARGS__) };               \
-      return names[static_cast<uint32_t>(a_Value)];                                                \
+      return names[static_cast<Type>(a_Value)];                                                    \
    }                                                                                               \
                                                                                                    \
    inline std::ostream & operator<<(std::ostream & a_OS, Name a_Value)                             \

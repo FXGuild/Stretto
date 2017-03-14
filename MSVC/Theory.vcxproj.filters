@@ -17,16 +17,10 @@
     <ClInclude Include="..\Include\FXG\Stretto\Theory\CanonicNote.h">
       <Filter>Include</Filter>
     </ClInclude>
-    <ClInclude Include="..\Include\FXG\Stretto\Theory\ImperfectQuality.h">
-      <Filter>Include</Filter>
-    </ClInclude>
     <ClInclude Include="..\Include\FXG\Stretto\Theory\NoteDuration.h">
       <Filter>Include</Filter>
     </ClInclude>
     <ClInclude Include="..\Include\FXG\Stretto\Theory\NoteLetter.h">
-      <Filter>Include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Include\FXG\Stretto\Theory\PerfectQuality.h">
       <Filter>Include</Filter>
     </ClInclude>
     <ClInclude Include="..\Include\FXG\Stretto\Theory\Pitch.h">
@@ -42,6 +36,9 @@
       <Filter>Include</Filter>
     </ClInclude>
     <ClInclude Include="..\Include\FXG\Stretto\Theory\Accidental.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\FXG\Stretto\Theory\Interval.h">
       <Filter>Include</Filter>
     </ClInclude>
   </ItemGroup>
@@ -68,6 +65,9 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\Theory\Accidental.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Theory\Interval.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>

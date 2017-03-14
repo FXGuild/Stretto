@@ -42,14 +42,14 @@ namespace FXG::Stretto::Theory
    /* Comparison Operators                                                 */
    /************************************************************************/
 
-   bool Tone::operator==(Tone const & a_Other) const
+   bool Tone::operator==(Tone const & a_RHS) const
    {
-      return !(*this != a_Other);
+      return !(*this != a_RHS);
    }
 
-   bool Tone::operator!=(Tone const & a_Other) const
+   bool Tone::operator!=(Tone const & a_RHS) const
    {
-      return m_NoteLetter != a_Other.m_NoteLetter && m_Accidental != a_Other.m_Accidental;
+      return m_NoteLetter != a_RHS.m_NoteLetter && m_Accidental != a_RHS.m_Accidental;
    }
 
 

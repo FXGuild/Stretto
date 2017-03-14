@@ -43,8 +43,8 @@ namespace FXG::Stretto::Theory
       /* Comparison Operators                                                 */
       /************************************************************************/
 
-      bool operator==(Tone const & a_Other) const;
-      bool operator!=(Tone const & a_Other) const;
+      bool operator==(Tone const & a_RHS) const;
+      bool operator!=(Tone const & a_RHS) const;
 
    private:
       NoteLetter m_NoteLetter : 3;
