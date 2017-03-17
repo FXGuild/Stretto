@@ -10,6 +10,7 @@
 
 #pragma once
 
+#include <FXG/Stretto/Result.h>
 #include <FXG/Stretto/Theory/Pitch.h>
 #include <FXG/Stretto/Theory/Quality.h>
 #include <FXG/Stretto/StringEnum.h>
@@ -106,4 +107,5 @@ namespace FXG::Stretto::Theory
 
    Interval::Number normalize(Interval::Number a_Number);
    Quality::Type associatedQualityType(Interval::Number a_Number);
+   Result computeInterval(Pitch const & a_From, Pitch const & a_To);
 }
