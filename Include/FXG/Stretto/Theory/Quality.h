@@ -10,7 +10,7 @@
 
 #pragma once
 
-#include <FXG/Stretto/Utils/StringEnum.h>
+#include <FXG/Stretto/StringEnum.h>
 
 namespace FXG::Stretto::Theory
 {

@@ -62,13 +62,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\Include\FXG\Stretto\Utils\ClassDeclHelpers.h" />
-    <ClInclude Include="..\Include\FXG\Stretto\Utils\FXGAlgorithms.h" />
-    <ClInclude Include="..\Include\FXG\Stretto\Utils\StdContainersUtils.h" />
-    <ClInclude Include="..\Include\FXG\Stretto\Utils\StringEnum.h" />
+    <ClCompile Include="..\Source\Utils\StringEnum.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Source\Utils\StringEnum.cpp" />
+    <ClInclude Include="..\Include\FXG\Stretto\ClassDeclHelpers.h" />
+    <ClInclude Include="..\Include\FXG\Stretto\FXGAlgorithms.h" />
+    <ClInclude Include="..\Include\FXG\Stretto\StdAliases.h" />
+    <ClInclude Include="..\Include\FXG\Stretto\StringEnum.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

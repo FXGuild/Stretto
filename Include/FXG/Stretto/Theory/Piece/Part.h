@@ -14,7 +14,7 @@
 
 #include <FXG/Stretto/Theory/Piece/AggregatedNode.h>
 #include <FXG/Stretto/Theory/Piece/CanonicNode.h>
-#include <FXG/Stretto/Utils/ClassDeclHelpers.h>
+#include <FXG/Stretto/ClassDeclHelpers.h>
 
 namespace FXG::Stretto::Theory::Piece
 {

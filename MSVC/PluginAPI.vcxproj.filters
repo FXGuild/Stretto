@@ -17,5 +17,28 @@
     <ClInclude Include="..\Include\FXG\Stretto\PluginAPI\DllAPI.h">
       <Filter>Include</Filter>
     </ClInclude>
+    <ClInclude Include="..\Include\FXG\Stretto\PluginAPI\IAnalysisProfile.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\FXG\Stretto\PluginAPI\AnalysisModule.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\FXG\Stretto\PluginAPI\StructuralHierarchyLink.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\FXG\Stretto\PluginAPI\IMDS.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Source\PluginAPI\AnalysisModule.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\PluginAPI\StructuralHierarchyLink.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\PluginAPI\IPlugin.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

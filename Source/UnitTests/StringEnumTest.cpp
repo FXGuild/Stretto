@@ -12,7 +12,7 @@
 
 #include <FXG/Stretto/Theory/Accidental.h>
 #include <FXG/Stretto/Theory/NoteLetter.h>
-#include <FXG/Stretto/Utils/StringEnum.h>
+#include <FXG/Stretto/StringEnum.h>
 
 namespace FXG::Stretto::Utils
 {

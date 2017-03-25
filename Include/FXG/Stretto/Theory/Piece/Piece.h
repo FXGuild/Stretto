@@ -13,7 +13,7 @@
 #include <vector>
 
 #include <FXG/Stretto/Theory/Piece/Part.h>
-#include <FXG/Stretto/Utils/ClassDeclHelpers.h>
+#include <FXG/Stretto/ClassDeclHelpers.h>
 
 namespace FXG::Stretto::Theory::Piece
 {

@@ -63,8 +63,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\Include\FXG\Stretto\PluginAPI\AnalysisModule.h" />
     <ClInclude Include="..\Include\FXG\Stretto\PluginAPI\DllAPI.h" />
+    <ClInclude Include="..\Include\FXG\Stretto\PluginAPI\IAnalysisProfile.h" />
+    <ClInclude Include="..\Include\FXG\Stretto\PluginAPI\IMDS.h" />
     <ClInclude Include="..\Include\FXG\Stretto\PluginAPI\IPlugin.h" />
+    <ClInclude Include="..\Include\FXG\Stretto\PluginAPI\StructuralHierarchyLink.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Theory.vcxproj">
@@ -73,6 +77,11 @@
     <ProjectReference Include="Utils.vcxproj">
       <Project>{b86cec5d-3e31-4ae6-9dcf-c336447d5dd5}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Source\PluginAPI\AnalysisModule.cpp" />
+    <ClCompile Include="..\Source\PluginAPI\IPlugin.cpp" />
+    <ClCompile Include="..\Source\PluginAPI\StructuralHierarchyLink.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

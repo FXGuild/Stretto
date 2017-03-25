@@ -72,6 +72,9 @@
     <ClInclude Include="..\Source\BuiltinPlugin\Include\FXG\Stretto\BuiltinPlugin\Internal\BuiltinPlugin.h" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="PluginAPI.vcxproj">
+      <Project>{4e0d45e3-d9ad-499e-a5ab-a67e019c9263}</Project>
+    </ProjectReference>
     <ProjectReference Include="Theory.vcxproj">
       <Project>{c155382c-0c8f-4265-a97b-ad669e9d121d}</Project>
     </ProjectReference>
