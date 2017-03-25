@@ -4,7 +4,7 @@
  See file "LICENSE.txt" at project root for complete license
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  Creation  : February 26, 2017
- Namespace : FXG::Stretto::Piece::Monophonic
+ Namespace : FXG::Stretto::Theory::Piece
  Content   : class Part
 \**************************************************************************************************/
 
@@ -12,11 +12,11 @@
 
 #include <vector>
 
-#include <FXG/Stretto/Piece/Monophonic/AggregatedNode.h>
-#include <FXG/Stretto/Piece/Monophonic/CanonicNode.h>
+#include <FXG/Stretto/Theory/Piece/AggregatedNode.h>
+#include <FXG/Stretto/Theory/Piece/CanonicNode.h>
 #include <FXG/Stretto/Utils/ClassDeclHelpers.h>
 
-namespace FXG::Stretto::Piece::Monophonic
+namespace FXG::Stretto::Theory::Piece
 {
    class Part final
    {

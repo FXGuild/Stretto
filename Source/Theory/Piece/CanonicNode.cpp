@@ -4,30 +4,29 @@
  See file "LICENSE.txt" at project root for complete license
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  Creation  : February 25, 2017
- Namespace : FXG::Stretto::Piece::Monophonic
- Content   : class AggregatedNode
+ Namespace : FXG::Stretto::Theory::Piece
+ Content   : class CanonicNode
 \**************************************************************************************************/
 
 #include <assert.h>
-#include <sstream>
 
-#include <FXG/Stretto/Piece/Monophonic/AggregatedNode.h>
+#include <FXG/Stretto/Theory/Piece/CanonicNode.h>
 
-namespace FXG::Stretto::Piece::Monophonic
+namespace FXG::Stretto::Theory::Piece
 {
    /************************************************************************/
    /* Constructors / Destructor / Assignment Operators                     */
    /************************************************************************/
 
-   AggregatedNode::AggregatedNode(Theory::AggregatedNote const & a_Note) noexcept
+   CanonicNode::CanonicNode(Theory::CanonicNote const & a_Note, bool a_IsTied) noexcept
    : m_Note{ a_Note }
-   , m_IsRest{ false }
+   , m_Type{ a_IsTied ? Type::TIED_NOTE : Type::STARTING_NOTE }
    {
    }
 
-   AggregatedNode::AggregatedNode(uint32_t a_RestDuration) noexcept
-   : m_Note{ Theory::AggregatedNote{ Theory::Pitch::A_440HZ, a_RestDuration } }
-   , m_IsRest{ true }
+   CanonicNode::CanonicNode(Theory::NoteDuration a_RestDuration) noexcept
+   : m_Note{ Theory::CanonicNote{ Theory::Pitch::A_440HZ, a_RestDuration } }
+   , m_Type{ Type::REST }
    {
    }
 
@@ -36,15 +35,20 @@ namespace FXG::Stretto::Piece::Monophonic
    /* Getters                                                              */
    /************************************************************************/
 
-   Theory::AggregatedNote const & AggregatedNode::getNote() const
+   Theory::CanonicNote const & CanonicNode::getNote() const
    {
       assert(!isRest());
       return m_Note;
    }
 
-   uint32_t AggregatedNode::getDurationTU() const
+   Theory::NoteDuration CanonicNode::getDuration() const
    {
-      return m_Note.getDurationTU();
+      return m_Note.getDuration();
+   }
+
+   CanonicNode::Type CanonicNode::getType() const
+   {
+      return m_Type;
    }
 
 
@@ -52,9 +56,9 @@ namespace FXG::Stretto::Piece::Monophonic
    /* Status                                                               */
    /************************************************************************/
 
-   bool AggregatedNode::isRest() const
+   bool CanonicNode::isRest() const
    {
-      return m_IsRest;
+      return m_Type == Type::REST;
    }
 
 
@@ -62,11 +66,15 @@ namespace FXG::Stretto::Piece::Monophonic
    /* Serialization                                                        */
    /************************************************************************/
 
-   std::ostream & operator<<(std::ostream & a_OS, AggregatedNode const & a_Node)
+   std::ostream & operator<<(std::ostream & a_OS, CanonicNode const & a_Node)
    {
-      if (a_Node.isRest())
+      if (a_Node.getType() == CanonicNode::Type::REST)
       {
-         a_OS << "-R- " << a_Node.getDurationTU();
+         a_OS << "Rest" << a_Node.getDuration();
+      }
+      else if (a_Node.getType() == CanonicNode::Type::STARTING_NOTE)
+      {
+         a_OS << '_' << a_Node.getNote();
       }
       else
       {

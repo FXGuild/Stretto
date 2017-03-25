@@ -4,7 +4,7 @@
  See file "LICENSE.txt" at project root for complete license
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  Creation  : February 25, 2017
- Namespace : FXG::Stretto::Piece::Monophonic
+ Namespace : FXG::Stretto::Theory::Piece
  Content   : class CanonicNode
 \**************************************************************************************************/
 
@@ -12,7 +12,7 @@
 
 #include <FXG/Stretto/Theory/CanonicNote.h>
 
-namespace FXG::Stretto::Piece::Monophonic
+namespace FXG::Stretto::Theory::Piece
 {
    class CanonicNode final
    {

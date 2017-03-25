@@ -67,9 +67,6 @@
     <ClInclude Include="..\Include\FXG\Stretto\PluginAPI\IPlugin.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Piece.vcxproj">
-      <Project>{6a889dc7-4175-40fe-b985-189acdbafab4}</Project>
-    </ProjectReference>
     <ProjectReference Include="Theory.vcxproj">
       <Project>{c155382c-0c8f-4265-a97b-ad669e9d121d}</Project>
     </ProjectReference>

@@ -24,8 +24,13 @@ namespace FXG::Stretto::Analysis
       /************************************************************************/
 
       PluginDllRAII(std::string const & a_PluginName) noexcept;
+      PluginDllRAII(PluginDllRAII const &) noexcept = delete;
+      PluginDllRAII(PluginDllRAII &&) noexcept = delete;
       ~PluginDllRAII() noexcept = default;
 
+      PluginDllRAII & operator=(PluginDllRAII const &) noexcept = delete;
+      PluginDllRAII & operator=(PluginDllRAII &&) noexcept = delete;
+      
 
       /************************************************************************/
       /* Factory methods                                                      */

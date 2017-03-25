@@ -11,17 +11,17 @@
 #include <assert.h>
 
 #include <FXG/Stretto/Midi/MidiReader.h>
-#include <FXG/Stretto/Piece/Monophonic/PartBuilder.h>
+#include <FXG/Stretto/Theory/Piece/PartBuilder.h>
 
 namespace FXG::Stretto::Midi
 {
-   static Piece::Monophonic::Part assemblePart(std::vector<Theory::Pitch> a_Pitches,
-                                               std::vector<uint32_t>      a_TimeUnits,
-                                               Theory::NoteDuration       a_DurationUnit)
+   static Theory::Piece::Part assemblePart(std::vector<Theory::Pitch> a_Pitches,
+                                           std::vector<uint32_t>      a_TimeUnits,
+                                           Theory::NoteDuration       a_DurationUnit)
    {
       assert(2 * a_Pitches.size() == a_TimeUnits.size());
 
-      Piece::Monophonic::PartBuilder builder{ a_DurationUnit };
+      Theory::Piece::PartBuilder builder{ a_DurationUnit };
 
       uint32_t prevNoteEnd = 0;
 
@@ -88,9 +88,9 @@ namespace FXG::Stretto::Midi
       }
    }
 
-   static Piece::Monophonic::Part processMonophonicTrack(juce::MidiMessageSequence const & a_Track,
-                                                         uint32_t             a_TicksPerTU,
-                                                         Theory::NoteDuration a_DurationUnit)
+   static Theory::Piece::Part processMonophonicTrack(juce::MidiMessageSequence const & a_Track,
+                                                     uint32_t                          a_TicksPerTU,
+                                                     Theory::NoteDuration a_DurationUnit)
    {
       using namespace Theory;
 
@@ -159,8 +159,8 @@ namespace FXG::Stretto::Midi
       return stream.openedOk() && a_MidiFile.readFrom(stream);
    }
 
-   Piece::Monophonic::Piece buildMonophonicPiece(juce::MidiFile const & a_MidiFile,
-                                                Theory::NoteDuration   a_DurationUnit)
+   Theory::Piece::Piece buildMonophonicPiece(juce::MidiFile const & a_MidiFile,
+                                             Theory::NoteDuration   a_DurationUnit)
    {
       // Check if time format is supported
       short timeFormat = a_MidiFile.getTimeFormat();
@@ -173,7 +173,7 @@ namespace FXG::Stretto::Midi
       uint32_t ticksPerTU = timeFormat / tuPerQuarter;
 
       // Create empty piece structure
-      Piece::Monophonic::Piece piece;
+      Theory::Piece::Piece piece;
 
       // Process tracks
       for (uint8_t i = 0; i < a_MidiFile.getNumTracks(); ++i)

@@ -9,6 +9,12 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="Source\Piece">
+      <UniqueIdentifier>{313bf381-52b7-4b96-b0c6-18386dd3789f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Include\Piece">
+      <UniqueIdentifier>{e187e128-fbd1-44d7-ac09-c2dc8ec81f20}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Include\FXG\Stretto\Theory\AggregatedNote.h">
@@ -41,6 +47,21 @@
     <ClInclude Include="..\Include\FXG\Stretto\Theory\Interval.h">
       <Filter>Include</Filter>
     </ClInclude>
+    <ClInclude Include="..\Include\FXG\Stretto\Theory\Piece\AggregatedNode.h">
+      <Filter>Include\Piece</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\FXG\Stretto\Theory\Piece\CanonicNode.h">
+      <Filter>Include\Piece</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\FXG\Stretto\Theory\Piece\Part.h">
+      <Filter>Include\Piece</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\FXG\Stretto\Theory\Piece\PartBuilder.h">
+      <Filter>Include\Piece</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\FXG\Stretto\Theory\Piece\Piece.h">
+      <Filter>Include\Piece</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\Theory\NoteDuration.cpp">
@@ -69,6 +90,21 @@
     </ClCompile>
     <ClCompile Include="..\Source\Theory\Interval.cpp">
       <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Theory\Piece\CanonicNode.cpp">
+      <Filter>Source\Piece</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Theory\Piece\Part.cpp">
+      <Filter>Source\Piece</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Theory\Piece\PartBuilder.cpp">
+      <Filter>Source\Piece</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Theory\Piece\Piece.cpp">
+      <Filter>Source\Piece</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Theory\Piece\AggregatedNode.cpp">
+      <Filter>Source\Piece</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -68,6 +68,11 @@
     <ClInclude Include="..\Include\FXG\Stretto\Theory\Interval.h" />
     <ClInclude Include="..\Include\FXG\Stretto\Theory\NoteDuration.h" />
     <ClInclude Include="..\Include\FXG\Stretto\Theory\NoteLetter.h" />
+    <ClInclude Include="..\Include\FXG\Stretto\Theory\Piece\AggregatedNode.h" />
+    <ClInclude Include="..\Include\FXG\Stretto\Theory\Piece\CanonicNode.h" />
+    <ClInclude Include="..\Include\FXG\Stretto\Theory\Piece\Part.h" />
+    <ClInclude Include="..\Include\FXG\Stretto\Theory\Piece\PartBuilder.h" />
+    <ClInclude Include="..\Include\FXG\Stretto\Theory\Piece\Piece.h" />
     <ClInclude Include="..\Include\FXG\Stretto\Theory\Pitch.h" />
     <ClInclude Include="..\Include\FXG\Stretto\Theory\Quality.h" />
     <ClInclude Include="..\Include\FXG\Stretto\Theory\TimeSignature.h" />
@@ -79,6 +84,11 @@
     <ClCompile Include="..\Source\Theory\CanonicNote.cpp" />
     <ClCompile Include="..\Source\Theory\Interval.cpp" />
     <ClCompile Include="..\Source\Theory\NoteDuration.cpp" />
+    <ClCompile Include="..\Source\Theory\Piece\AggregatedNode.cpp" />
+    <ClCompile Include="..\Source\Theory\Piece\CanonicNode.cpp" />
+    <ClCompile Include="..\Source\Theory\Piece\Part.cpp" />
+    <ClCompile Include="..\Source\Theory\Piece\PartBuilder.cpp" />
+    <ClCompile Include="..\Source\Theory\Piece\Piece.cpp" />
     <ClCompile Include="..\Source\Theory\Pitch.cpp" />
     <ClCompile Include="..\Source\Theory\Quality.cpp" />
     <ClCompile Include="..\Source\Theory\TimeSignature.cpp" />

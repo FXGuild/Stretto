@@ -12,12 +12,12 @@
 
 #include <Juce/AudioBasics.h>
 
-#include <FXG/Stretto/Piece/Monophonic/Piece.h>
+#include <FXG/Stretto/Theory/Piece/Piece.h>
 
 namespace FXG::Stretto::Midi
 {
    bool readMidiFile(juce::File const & a_File, juce::MidiFile & a_MidiFile);
 
-   Piece::Monophonic::Piece buildMonophonicPiece(juce::MidiFile const & a_MidiFile,
-                                                Theory::NoteDuration   a_DurationUnit);
+   Theory::Piece::Piece buildMonophonicPiece(juce::MidiFile const & a_MidiFile,
+                                             Theory::NoteDuration   a_DurationUnit);
 }

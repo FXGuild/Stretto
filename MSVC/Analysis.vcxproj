@@ -80,9 +80,6 @@
     <ProjectReference Include="Midi.vcxproj">
       <Project>{edc35972-d4c4-4f41-befb-9f73d3c94f10}</Project>
     </ProjectReference>
-    <ProjectReference Include="Piece.vcxproj">
-      <Project>{6a889dc7-4175-40fe-b985-189acdbafab4}</Project>
-    </ProjectReference>
     <ProjectReference Include="Theory.vcxproj">
       <Project>{c155382c-0c8f-4265-a97b-ad669e9d121d}</Project>
     </ProjectReference>

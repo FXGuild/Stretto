@@ -4,15 +4,15 @@
  See file "LICENSE.txt" at project root for complete license
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  Creation  : February 26, 2017
- Namespace : FXG::Stretto::Piece::Monophonic
+ Namespace : FXG::Stretto::Theory::Piece
  Content   : class Part
 \**************************************************************************************************/
 
 #include <assert.h>
 
-#include <FXG/Stretto/Piece/Monophonic/Part.h>
+#include <FXG/Stretto/Theory/Piece/Part.h>
 
-namespace FXG::Stretto::Piece::Monophonic
+namespace FXG::Stretto::Theory::Piece
 {
    /************************************************************************/
    /* Constructors / Destructor / Assignment Operators                     */
