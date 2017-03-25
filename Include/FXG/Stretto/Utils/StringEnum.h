@@ -4,7 +4,7 @@
  See file "LICENSE.txt" at project root for complete license
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  Creation  : March 11, 2017
- Namespace : FXG::Stretto::Utils
+ Namespace : Global scope and FXG::Stretto
  Content   : String enum utilities
 \**************************************************************************************************/
 
@@ -24,7 +24,7 @@
                                                                                                    \
    inline std::string const & toString(Name a_Value)                                               \
    {                                                                                               \
-      static auto const names{ FXG::Stretto::Utils::splitEnumValues(#__VA_ARGS__) };               \
+      static auto const names{ FXG::Stretto::splitEnumValues(#__VA_ARGS__) };                      \
       return names[static_cast<Type>(a_Value)];                                                    \
    }                                                                                               \
                                                                                                    \
@@ -34,7 +34,7 @@
       return a_OS;                                                                                 \
    }
 
-namespace FXG::Stretto::Utils
+namespace FXG::Stretto
 {
    std::vector<std::string> splitEnumValues(char const * a_Values);
 }

@@ -4,7 +4,7 @@
  See file "LICENSE.txt" at project root for complete license
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  Creation  : March 11, 2017
- Namespace : FXG::Stretto::Utils
+ Namespace : FXG::Stretto
  Content   : String enum utilities
 \**************************************************************************************************/
 
@@ -13,7 +13,7 @@
 
 #include <FXG/Stretto/Utils/StringEnum.h>
 
-namespace FXG::Stretto::Utils
+namespace FXG::Stretto
 {
    std::vector<std::string> splitEnumValues(char const * a_Values)
    {

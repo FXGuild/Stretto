@@ -4,7 +4,7 @@
  See file "LICENSE.txt" at project root for complete license
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  Creation  : February 26, 2017
- Namespace : FXG::Stretto::Utils
+ Namespace : Global scope
  Content   : Class methods declaration helper macros
 \**************************************************************************************************/
 
