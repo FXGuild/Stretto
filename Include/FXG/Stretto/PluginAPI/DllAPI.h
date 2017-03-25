@@ -18,7 +18,10 @@ Content   : Dll api definitions
 #define STRETTO_PLUGIN_API __declspec(dllimport)
 #endif
 
+// PluginDllRAII needs to know the name of the dlls entry point function
+#define PLUGIN_FACTORY_FUNC_NAME CreatePluginClassInstance
+
 namespace FXG::Stretto::PluginAPI
 {
-   extern "C" STRETTO_PLUGIN_API IPlugin * CreatePluginClassInstance();
+   extern "C" STRETTO_PLUGIN_API IPlugin * PLUGIN_FACTORY_FUNC_NAME();
 }

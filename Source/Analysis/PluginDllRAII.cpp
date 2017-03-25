@@ -21,7 +21,10 @@ namespace FXG::Stretto::Analysis
 
    std::unique_ptr<PluginAPI::IPlugin> PluginDllRAII::createPluginInstance()
    {
-      std::string const factoryFuncName = "CreatePluginClassInstance";
+#define TEXT(text) #text
+      std::string const factoryFuncName = TEXT(PLUGIN_FACTORY_FUNC_NAME);
+#undef TEXT
+
       auto factory = static_cast<PluginAPI::IPlugin * (*) ()>(getFunction(factoryFuncName));
       if (factory == nullptr)
       {
