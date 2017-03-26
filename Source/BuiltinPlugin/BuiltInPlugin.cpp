@@ -28,13 +28,13 @@ namespace FXG::Stretto::BuiltinPlugin
    /* Initialize                                                           */
    /************************************************************************/
 
-   void BuiltinPlugin::createAnalysisModules()
+   void BuiltinPlugin::registerAnalysisModules()
    {
-      createAnalysisModule<Part, BarCount>("Bar Counter", &countBars);
    }
 
-   void BuiltinPlugin::createStructuralHierarchyLinks()
+   void BuiltinPlugin::createAndUpgradeStructualHierarchies(
+      StringMap<PluginAPI::StructuralHierarchy> & a_Hierarchies)
    {
-      createStructuralHierarchyLink<Piece, Part>("Part", &extractPartsFromPiece);
+
    }
 }

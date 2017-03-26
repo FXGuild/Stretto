@@ -32,7 +32,8 @@ namespace FXG::Stretto::Analysis
       }
 
       auto plugin = std::unique_ptr<PluginAPI::IPlugin>(factory());
-      plugin->initialize();
+      StringMap<PluginAPI::StructuralHierarchy> map;
+      plugin->registerComponents(map);
 
       return plugin;
    }

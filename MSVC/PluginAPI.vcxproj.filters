@@ -23,10 +23,10 @@
     <ClInclude Include="..\Include\FXG\Stretto\PluginAPI\AnalysisModule.h">
       <Filter>Include</Filter>
     </ClInclude>
-    <ClInclude Include="..\Include\FXG\Stretto\PluginAPI\StructuralHierarchyLink.h">
+    <ClInclude Include="..\Include\FXG\Stretto\PluginAPI\StructuralHierarchy.h">
       <Filter>Include</Filter>
     </ClInclude>
-    <ClInclude Include="..\Include\FXG\Stretto\PluginAPI\IMDS.h">
+    <ClInclude Include="..\Include\FXG\Stretto\PluginAPI\MusicalDataStructure.h">
       <Filter>Include</Filter>
     </ClInclude>
   </ItemGroup>
@@ -34,10 +34,13 @@
     <ClCompile Include="..\Source\PluginAPI\AnalysisModule.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\PluginAPI\StructuralHierarchyLink.cpp">
+    <ClCompile Include="..\Source\PluginAPI\IPlugin.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\PluginAPI\IPlugin.cpp">
+    <ClCompile Include="..\Source\PluginAPI\MusicalDataStructure.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\PluginAPI\StructuralHierarchy.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>

@@ -19,7 +19,6 @@ namespace FXG::Stretto::PluginAPI
    IPlugin::IPlugin(std::string const & a_Name) noexcept
    : m_Name{ a_Name }
    , m_AnalysisModules{}
-   , m_Links{}
    {
    }
 
@@ -28,10 +27,10 @@ namespace FXG::Stretto::PluginAPI
    /* Initialize                                                           */
    /************************************************************************/
 
-   void IPlugin::initialize()
+   void IPlugin::registerComponents(StringMap<StructuralHierarchy> & a_Hierarchies)
    {
-      createAnalysisModules();
-      createStructuralHierarchyLinks();
+      registerAnalysisModules();
+      createAndUpgradeStructualHierarchies(a_Hierarchies);
    }
 
 
@@ -44,13 +43,8 @@ namespace FXG::Stretto::PluginAPI
       return m_Name;
    }
 
-   UPtrs<AnalysisModule> const & IPlugin::getAnalysisModules() const
+   std::vector<AnalysisModule> const & IPlugin::getAnalysisModules() const
    {
       return m_AnalysisModules;
-   }
-
-   UPtrs<StructuralHierarchyLink> const & IPlugin::getStructuralHierarchyLinks() const
-   {
-      return m_Links;
    }
 }

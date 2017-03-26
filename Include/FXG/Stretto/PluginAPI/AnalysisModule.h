@@ -16,14 +16,15 @@
 #include <typeindex>
 
 #include <FXG/Stretto/PluginAPI/IAnalysisProfile.h>
-#include <FXG/Stretto/PluginAPI/IMDS.h>
+#include <FXG/Stretto/PluginAPI/MusicalDataStructure.h>
 
 namespace FXG::Stretto::PluginAPI
 {
    template <typename I, typename O>
    using AnalyseFunc = std::function<std::unique_ptr<O>(I const &)>;
 
-   using AnalyseFuncInterface = std::function<std::unique_ptr<IAnalysisProfile>(IMDS const *)>;
+   using AnalyseFuncInterface =
+      std::function<std::unique_ptr<IAnalysisProfile>(MusicalDataStructure const *)>;
 
    class AnalysisModule
    {

@@ -11,74 +11,58 @@
 #pragma once
 
 #include <FXG/Stretto/PluginAPI/IAnalysisProfile.h>
-#include <FXG/Stretto/PluginAPI/IMDS.h>
 #include <FXG/Stretto/PluginAPI/IPlugin.h>
 
 namespace FXG::Stretto::BuiltinPlugin
 {
-   ////////////////////////////// DUMMY STUFF //////////////////////////////
-
-   struct Note : public PluginAPI::IMDS
-   {
-      std::string note;
-   };
-   struct Bar : public PluginAPI::IMDS
-   {
-      std::vector<Note> notes;
-   };
-   struct Part : public PluginAPI::IMDS
-   {
-      std::vector<Bar> bars;
-   };
-   struct Piece : public PluginAPI::IMDS
-   {
-      std::vector<Part> parts;
-   };
-
-   static UPtrs<Part> extractPartsFromPiece(Piece const & a_Piece)
-   {
-      UPtrs<Part> parts;
-      // for ( Part const & part : a_Piece.parts )
-      {
-         parts.emplace_back(std::make_unique<Part>());
-      }
-      return parts;
-   }
-
-   class BarCount final : public PluginAPI::IAnalysisProfile
-   {
-   };
-
-   static std::unique_ptr<BarCount> countBars(Part const & a_Part)
-   {
-      return std::make_unique<BarCount>();
-   }
-
-   ////////////////////////////// DUMMY STUFF //////////////////////////////
-
+   std::string const BUILTIN_PIECE_HIERARCHY_NAME = "Builtin Piece";
 
    class BuiltinPlugin final : public PluginAPI::IPlugin
    {
+      /************************************************************************/
+      /* Nested types                                                         */
+      /************************************************************************/
    public:
+      enum class PieceHierarchyDim;
+      enum class PieceHierarchyLayeringDimLevel;
+      enum class PieceHierarchyTemporalDimLevel;
+      enum class PieceHierarchyTexturalDimLevel;
+
+
       /************************************************************************/
       /* Constructors / Destructor / Assignment Operators                     */
       /************************************************************************/
-
+   public:
       BuiltinPlugin() noexcept;
-      BuiltinPlugin(BuiltinPlugin const &)     = default;
-      BuiltinPlugin(BuiltinPlugin &&) noexcept = default;
-      ~BuiltinPlugin() noexcept                = default;
-
-      BuiltinPlugin & operator=(BuiltinPlugin const &) = default;
-      BuiltinPlugin & operator=(BuiltinPlugin &&) noexcept = default;
 
 
-   protected:
       /************************************************************************/
       /* Initialize                                                           */
       /************************************************************************/
-
-      void createAnalysisModules() override;
-      void createStructuralHierarchyLinks() override;
+   protected:
+      void registerAnalysisModules() override;
+      void createAndUpgradeStructualHierarchies(
+         StringMap<PluginAPI::StructuralHierarchy> & a_Hierarchies) override;
    };
+
+
+   /************************************************************************/
+   /* Nested types                                                         */
+   /************************************************************************/
+
+   DECLARE_STRING_ENUM(BuiltinPlugin::PieceHierarchyDim, Layering, Temporal, Textural);
+   DECLARE_STRING_ENUM(BuiltinPlugin::PieceHierarchyLayeringDimLevel, Piece, Part, Octave, Pitch);
+   DECLARE_STRING_ENUM(BuiltinPlugin::PieceHierarchyTemporalDimLevel,
+                       Piece,
+                       FullyAggregatedStack,
+                       TimeSignatureSection,
+                       TempoSection,
+                       Bar,
+                       InBarAggregatedStack,
+                       CanonicStack,
+                       Slice);
+   DECLARE_STRING_ENUM(BuiltinPlugin::PieceHierarchyTexturalDimLevel,
+                       Monophonic,
+                       ChordsOnly,
+                       Freeform);
 }

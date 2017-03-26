@@ -13,7 +13,7 @@
 #include <iterator>
 
 #include <FXG/Stretto/PluginAPI/AnalysisModule.h>
-#include <FXG/Stretto/PluginAPI/StructuralHierarchyLink.h>
+#include <FXG/Stretto/PluginAPI/StructuralHierarchy.h>
 #include <FXG/Stretto/StdAliases.h>
 
 namespace FXG::Stretto::PluginAPI
@@ -26,58 +26,39 @@ namespace FXG::Stretto::PluginAPI
       /************************************************************************/
 
       explicit IPlugin(std::string const & a_Name) noexcept;
-      IPlugin(IPlugin const &)     = default;
-      IPlugin(IPlugin &&) noexcept = default;
-      virtual ~IPlugin() noexcept  = default;
-
-      IPlugin & operator=(IPlugin const &) = default;
-      IPlugin & operator=(IPlugin &&) noexcept = default;
+      virtual ~IPlugin() noexcept = default;
 
 
       /************************************************************************/
-      /* Initialize                                                           */
+      /* Register components                                                  */
       /************************************************************************/
 
-      void initialize();
+      void registerComponents(StringMap<StructuralHierarchy> & a_Hierarchies);
 
    protected:
-      virtual void createAnalysisModules()          = 0;
-      virtual void createStructuralHierarchyLinks() = 0;
-
       template <typename I, typename O>
-      void createAnalysisModule(std::string const & a_ModuleName, AnalyseFunc<I, O> a_AnalyseFunc)
+      void registerAnalysisModule(std::string const & a_ModuleName, AnalyseFunc<I, O> a_AnalyseFunc)
       {
-         m_AnalysisModules.emplace_back(std::make_unique<AnalysisModule>(
-            a_ModuleName, typeid(I), typeid(O), [a_AnalyseFunc](IMDS const * a_MDS) {
-               return a_AnalyseFunc(*static_cast<I const *>(a_MDS));
-            }));
+         m_AnalysisModules.emplace_back(a_ModuleName, typeid(I), typeid(O),
+                                        [a_AnalyseFunc](IMDS const * a_MDS) {
+                                           return a_AnalyseFunc(*static_cast<I const *>(a_MDS));
+                                        });
       }
 
-      template <typename I, typename O>
-      void createStructuralHierarchyLink(std::string const & a_ChildTypeName,
-                                         ExtractChildMDSFunc<I, O> a_ExtractFunc)
-      {
-         m_Links.emplace_back(std::make_unique<StructuralHierarchyLink>(
-            a_ChildTypeName, typeid(I), typeid(O), [a_ExtractFunc](IMDS const * a_MDS) {
-               UPtrs<O>    children{ a_ExtractFunc(*static_cast<I const *>(a_MDS)) };
-               UPtrs<IMDS> out;
-               std::move(begin(children), end(children), std::back_inserter(out));
-               return out;
-            }));
-      }
+      virtual void registerAnalysisModules() = 0;
+      virtual void createAndUpgradeStructualHierarchies(
+         StringMap<StructuralHierarchy> & a_Hierarchies) = 0;
 
-   public:
+
       /************************************************************************/
       /* Getters                                                              */
       /************************************************************************/
-
-      std::string const &                    getName() const;
-      UPtrs<AnalysisModule> const &          getAnalysisModules() const;
-      UPtrs<StructuralHierarchyLink> const & getStructuralHierarchyLinks() const;
+   public:
+      std::string const &                 getName() const;
+      std::vector<AnalysisModule> const & getAnalysisModules() const;
 
    private:
-      std::string                    m_Name;
-      UPtrs<AnalysisModule>          m_AnalysisModules;
-      UPtrs<StructuralHierarchyLink> m_Links;
+      std::string                 m_Name;
+      std::vector<AnalysisModule> m_AnalysisModules;
    };
 }

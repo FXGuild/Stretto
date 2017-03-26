@@ -11,9 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{4E0D45E3-D9AD-499E-A5AB-A67E019C9263}</ProjectGuid>
-    <RootNamespace>PluginAPI</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <ProjectGuid>{B86CEC5D-3E31-4AE6-9DCF-C336447D5DD5}</ProjectGuid>
+    <RootNamespace>Utils</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
@@ -63,26 +62,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\Include\FXG\Stretto\PluginAPI\AnalysisModule.h" />
-    <ClInclude Include="..\Include\FXG\Stretto\PluginAPI\DllAPI.h" />
-    <ClInclude Include="..\Include\FXG\Stretto\PluginAPI\IAnalysisProfile.h" />
-    <ClInclude Include="..\Include\FXG\Stretto\PluginAPI\MusicalDataStructure.h" />
-    <ClInclude Include="..\Include\FXG\Stretto\PluginAPI\IPlugin.h" />
-    <ClInclude Include="..\Include\FXG\Stretto\PluginAPI\StructuralHierarchy.h" />
+    <ClCompile Include="..\Source\Utils\StringEnum.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Theory.vcxproj">
-      <Project>{c155382c-0c8f-4265-a97b-ad669e9d121d}</Project>
-    </ProjectReference>
-    <ProjectReference Include="Utils.vcxproj">
-      <Project>{b86cec5d-3e31-4ae6-9dcf-c336447d5dd5}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\Source\PluginAPI\AnalysisModule.cpp" />
-    <ClCompile Include="..\Source\PluginAPI\IPlugin.cpp" />
-    <ClCompile Include="..\Source\PluginAPI\MusicalDataStructure.cpp" />
-    <ClCompile Include="..\Source\PluginAPI\StructuralHierarchy.cpp" />
+    <ClInclude Include="..\Include\FXG\Stretto\ClassDeclHelpers.h" />
+<<<<<<< HEAD
+    <ClInclude Include="..\Include\FXG\Stretto\ConstexprStringEnum.h" />
+    <ClInclude Include="..\Include\FXG\Stretto\FXGAlgorithms.h" />
+    <ClInclude Include="..\Include\FXG\Stretto\MetaprogramingUtils.h" />
+=======
+    <ClInclude Include="..\Include\FXG\Stretto\FXGAlgorithms.h" />
+>>>>>>> 17d636c... cul
+    <ClInclude Include="..\Include\FXG\Stretto\StdAliases.h" />
+    <ClInclude Include="..\Include\FXG\Stretto\StringEnum.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
