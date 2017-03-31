@@ -12,7 +12,5 @@
 
 #include <FXG/Stretto/StringEnum.h>
 
-namespace FXG::Stretto::Theory
-{
-   DECLARE_STRING_ENUM_OF_EXPLICIT_TYPE(NoteLetter, uint8_t, C, D, E, F, G, A, B);
-}
+DECLARE_STRING_ENUM_OF_EXPLICIT_TYPE(
+   FXG::Stretto::Theory, NoteLetter, uint8_t, C, D, E, F, G, A, B);

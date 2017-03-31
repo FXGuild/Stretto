@@ -22,10 +22,11 @@ namespace FXG::Stretto::Theory
       /* Constructors / Destructor / Assignment Operators                     */
       /************************************************************************/
 
-      Tone(NoteLetter a_NoteLetter, Accidental a_Accidental = Accidental::NATURAL) noexcept;
-      Tone(Tone const &) noexcept = default;
-      Tone(Tone &&) noexcept      = default;
-      ~Tone() noexcept            = default;
+      explicit Tone(NoteLetter a_NoteLetter,
+                    Accidental a_Accidental = Accidental::NATURAL) noexcept;
+      Tone(Tone const &) noexcept           = default;
+      Tone(Tone &&) noexcept                = default;
+      ~Tone() noexcept                      = default;
 
       Tone & operator=(Tone const &) noexcept = default;
       Tone & operator=(Tone &&) noexcept = default;

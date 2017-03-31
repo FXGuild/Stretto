@@ -25,7 +25,13 @@
     <ClInclude Include="..\Include\FXG\Stretto\StdAliases.h">
       <Filter>Include</Filter>
     </ClInclude>
+    <ClInclude Include="..\Include\FXG\Stretto\MetaprogramingUtils.h">
+      <Filter>Include</Filter>
+    </ClInclude>
     <ClInclude Include="..\Include\FXG\Stretto\StringEnum.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\FXG\Stretto\ConstexprStringEnum.h">
       <Filter>Include</Filter>
     </ClInclude>
   </ItemGroup>
