@@ -118,9 +118,4 @@ namespace FXG::Stretto::Theory
                 ? Quality::Type::PERF_AUG_DIM
                 : Quality::Type::IMPERFECT;
    }
-
-   Result computeInterval(Pitch const & a_From, Pitch const & a_To)
-   {
-
-   }
 }

@@ -93,6 +93,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Source\UnitTests\ConstexprHelpersTest.cpp" />
     <ClCompile Include="..\Source\UnitTests\IntervalTest.cpp" />
     <ClCompile Include="..\Source\UnitTests\Main.cpp" />
     <ClCompile Include="..\Source\UnitTests\MidiReaderTest.cpp" />

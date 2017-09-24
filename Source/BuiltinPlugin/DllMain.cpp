@@ -22,6 +22,6 @@ namespace FXG::Stretto::PluginAPI
 {
    STRETTO_PLUGIN_API IPlugin * CreatePluginClassInstance()
    {
-      return new BuiltinPlugin::BuiltinPlugin();
+      return new Stretto::BuiltinPlugin::BuiltinPlugin();
    }
 }

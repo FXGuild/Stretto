@@ -107,5 +107,4 @@ namespace FXG::Stretto::Theory
 
    Interval::Number normalize(Interval::Number a_Number);
    Quality::Type associatedQualityType(Interval::Number a_Number);
-   Result computeInterval(Pitch const & a_From, Pitch const & a_To);
 }

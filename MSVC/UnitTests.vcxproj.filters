@@ -25,5 +25,8 @@
     <ClCompile Include="..\Source\UnitTests\StringEnumTest.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\UnitTests\ConstexprHelpersTest.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
