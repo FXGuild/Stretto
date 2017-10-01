@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source\Utils">
+      <UniqueIdentifier>{e8f2de23-f335-4e38-9a51-4bc4531da361}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Stretto">
+      <UniqueIdentifier>{63d35b33-db08-4e74-bdbd-b7ddc16328d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Stretto\Plugin">
+      <UniqueIdentifier>{1279e52d-e03b-4137-9a89-b4c677078325}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Stretto\Plugin\TestPlugin">
+      <UniqueIdentifier>{a9c14958-1ea8-4099-8bbf-1cab5fd11c82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Stretto\Theory">
+      <UniqueIdentifier>{4a8f3fb3-f629-4266-bc2d-b280a2f772ee}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\Source\SGG\UnitTests\Utils\ClassDeclarationUtilsUnitTests.cpp">
+      <Filter>Source\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\SGG\UnitTests\Utils\ConstexprUtilsUnitTests.cpp">
+      <Filter>Source\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\SGG\UnitTests\Utils\Main.cpp">
+      <Filter>Source\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\SGG\UnitTests\Utils\ResultUnitTests.cpp">
+      <Filter>Source\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\SGG\UnitTests\Utils\SGGAlgorithmsUnitTests.cpp">
+      <Filter>Source\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\SGG\UnitTests\Utils\StringEnumUnitTests.cpp">
+      <Filter>Source\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\SGG\UnitTests\Stretto\Plugin\TestPlugin\UnitTests.cpp">
+      <Filter>Source\Stretto\Plugin\TestPlugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\SGG\UnitTests\Stretto\Theory\ElementaryTests.cpp">
+      <Filter>Source\Stretto\Theory</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

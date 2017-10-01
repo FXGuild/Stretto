@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source\Piece">
+      <UniqueIdentifier>{235f0416-a43b-4902-af99-4b6bf51efb10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Elementary">
+      <UniqueIdentifier>{d275594d-dba6-4450-943b-681220102227}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Theory\Piece\AggregatedNode.h">
+      <Filter>Source\Piece</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Theory\Piece\CanonicNode.h">
+      <Filter>Source\Piece</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Theory\Piece\Part.h">
+      <Filter>Source\Piece</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Theory\Piece\Piece.h">
+      <Filter>Source\Piece</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Theory\Elementary\CanonicNote.h">
+      <Filter>Source\Elementary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Theory\Elementary\Interval.h">
+      <Filter>Source\Elementary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Theory\Elementary\NoteDuration.h">
+      <Filter>Source\Elementary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Theory\Elementary\NoteLetter.h">
+      <Filter>Source\Elementary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Theory\Elementary\Pitch.h">
+      <Filter>Source\Elementary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Theory\Elementary\Quality.h">
+      <Filter>Source\Elementary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Theory\Elementary\TimeSignature.h">
+      <Filter>Source\Elementary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Theory\Elementary\Tone.h">
+      <Filter>Source\Elementary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Theory\Elementary\Accidental.h">
+      <Filter>Source\Elementary</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Theory\Elementary\AggregatedNote.h">
+      <Filter>Source\Elementary</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\Source\SGG\Stretto\Theory\Piece\AggregatedNode.cpp">
+      <Filter>Source\Piece</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\SGG\Stretto\Theory\Piece\CanonicNode.cpp">
+      <Filter>Source\Piece</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\SGG\Stretto\Theory\Piece\Part.cpp">
+      <Filter>Source\Piece</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\SGG\Stretto\Theory\Piece\Piece.cpp">
+      <Filter>Source\Piece</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\SGG\Stretto\Theory\Elementary\CanonicNote.cpp">
+      <Filter>Source\Elementary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\SGG\Stretto\Theory\Elementary\Interval.cpp">
+      <Filter>Source\Elementary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\SGG\Stretto\Theory\Elementary\NoteDuration.cpp">
+      <Filter>Source\Elementary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\SGG\Stretto\Theory\Elementary\Pitch.cpp">
+      <Filter>Source\Elementary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\SGG\Stretto\Theory\Elementary\Quality.cpp">
+      <Filter>Source\Elementary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\SGG\Stretto\Theory\Elementary\TimeSignature.cpp">
+      <Filter>Source\Elementary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\SGG\Stretto\Theory\Elementary\Tone.cpp">
+      <Filter>Source\Elementary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\SGG\Stretto\Theory\Elementary\Accidental.cpp">
+      <Filter>Source\Elementary</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\SGG\Stretto\Theory\Elementary\AggregatedNote.cpp">
+      <Filter>Source\Elementary</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

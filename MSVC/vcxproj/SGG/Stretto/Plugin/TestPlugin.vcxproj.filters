@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source\Hierarchy">
+      <UniqueIdentifier>{4b8497f6-b59d-4066-91ab-f09e1d4b7386}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Fragment">
+      <UniqueIdentifier>{35c97289-4808-47ae-a0ba-7da118ab1592}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\TestPlugin\Hierarchy\Dimension.h">
+      <Filter>Source\Hierarchy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\TestPlugin\Hierarchy\Extractor.h">
+      <Filter>Source\Hierarchy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\TestPlugin\Hierarchy\Fragment.h">
+      <Filter>Source\Hierarchy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\TestPlugin\Hierarchy\Converter.h">
+      <Filter>Source\Hierarchy</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
