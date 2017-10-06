@@ -12,8 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Theory\Elementary\Accidental.h" />
-    <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Theory\Elementary\AggregatedNote.h" />
-    <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Theory\Elementary\CanonicNote.h" />
+    <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Theory\Elementary\BasicNote.h" />
     <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Theory\Elementary\Interval.h" />
     <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Theory\Elementary\NoteDuration.h" />
     <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Theory\Elementary\NoteLetter.h" />
@@ -21,25 +20,16 @@
     <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Theory\Elementary\Quality.h" />
     <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Theory\Elementary\TimeSignature.h" />
     <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Theory\Elementary\Tone.h" />
-    <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Theory\Piece\AggregatedNode.h" />
-    <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Theory\Piece\CanonicNode.h" />
-    <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Theory\Piece\Part.h" />
-    <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Theory\Piece\Piece.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\Source\SGG\Stretto\Theory\Elementary\Accidental.cpp" />
-    <ClCompile Include="..\..\..\..\Source\SGG\Stretto\Theory\Elementary\AggregatedNote.cpp" />
-    <ClCompile Include="..\..\..\..\Source\SGG\Stretto\Theory\Elementary\CanonicNote.cpp" />
+    <ClCompile Include="..\..\..\..\Source\SGG\Stretto\Theory\Elementary\BasicNote.cpp" />
     <ClCompile Include="..\..\..\..\Source\SGG\Stretto\Theory\Elementary\Interval.cpp" />
     <ClCompile Include="..\..\..\..\Source\SGG\Stretto\Theory\Elementary\NoteDuration.cpp" />
     <ClCompile Include="..\..\..\..\Source\SGG\Stretto\Theory\Elementary\Pitch.cpp" />
     <ClCompile Include="..\..\..\..\Source\SGG\Stretto\Theory\Elementary\Quality.cpp" />
     <ClCompile Include="..\..\..\..\Source\SGG\Stretto\Theory\Elementary\TimeSignature.cpp" />
     <ClCompile Include="..\..\..\..\Source\SGG\Stretto\Theory\Elementary\Tone.cpp" />
-    <ClCompile Include="..\..\..\..\Source\SGG\Stretto\Theory\Piece\AggregatedNode.cpp" />
-    <ClCompile Include="..\..\..\..\Source\SGG\Stretto\Theory\Piece\CanonicNode.cpp" />
-    <ClCompile Include="..\..\..\..\Source\SGG\Stretto\Theory\Piece\Part.cpp" />
-    <ClCompile Include="..\..\..\..\Source\SGG\Stretto\Theory\Piece\Piece.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

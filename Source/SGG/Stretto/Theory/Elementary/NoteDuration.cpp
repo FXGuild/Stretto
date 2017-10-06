@@ -6,7 +6,7 @@ namespace SGG::Stretto::Theory
    /* Conversions                                                          */
    /************************************************************************/
 
-   uint32_t convertDurationToTU ( NoteDuration i_DurationToDivide, NoteDuration i_SubDuration )
+   uint32_t convertDurationToTimeunit ( NoteDuration i_DurationToDivide, NoteDuration i_SubDuration )
    {
       uint8_t subDur  = static_cast< uint8_t > ( i_SubDuration );
       uint8_t dur2Div = static_cast< uint8_t > ( i_DurationToDivide );

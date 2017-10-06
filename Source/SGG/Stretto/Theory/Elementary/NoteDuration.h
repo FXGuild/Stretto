@@ -13,6 +13,11 @@
 
 #include <iostream>
 
+namespace SGG::Stretto
+{
+   using TimeUnit = uint32_t;
+}
+
 namespace SGG::Stretto::Theory
 {
    enum class NoteDuration : uint8_t
@@ -30,7 +35,7 @@ namespace SGG::Stretto::Theory
    /* Conversions                                                          */
    /************************************************************************/
 
-   uint32_t convertDurationToTU ( NoteDuration i_Duration, NoteDuration i_DurationUnit );
+   TimeUnit convertDurationToTimeunit ( NoteDuration i_Duration, NoteDuration i_DurationUnit );
 
 
    /************************************************************************/

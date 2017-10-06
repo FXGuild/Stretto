@@ -10,8 +10,8 @@
 
 #include <gtest/gtest.h>
 
-#include <SGG/Stretto/Plugin/TestPlugin/Hierarchy/Converter.h>
-#include <SGG/Stretto/Plugin/TestPlugin/Hierarchy/Extractor.h>
+#include <SGG/Stretto/Plugin/BuiltinPlugin/Converter.h>
+#include <SGG/Stretto/Plugin/BuiltinPlugin/Extractor.h>
 #include <SGG/Stretto/Theory/Piece/Piece.h>
 
 namespace SGG::UnitTests
@@ -19,7 +19,7 @@ namespace SGG::UnitTests
    TEST ( SGG_Stretto_Plugin_TestPlugin, General )
    {
       using namespace SGG::Stretto;
-      using namespace SGG::Stretto::Plugin::TestPlugin;
+      using namespace SGG::Stretto::Plugin::BuiltinPlugin;
 
       // Theory
       UPtr< Theory::Piece > pTheoryPiece{ nullptr };

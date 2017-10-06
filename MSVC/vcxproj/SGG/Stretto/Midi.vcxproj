@@ -64,9 +64,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\Source\SGG\Stretto\Midi\MidiInstrument.cpp" />
+    <ClCompile Include="..\..\..\..\Source\SGG\Stretto\Midi\MidiPiece.cpp" />
+    <ClCompile Include="..\..\..\..\Source\SGG\Stretto\Midi\MidiTrack.cpp" />
     <ClCompile Include="..\..\..\..\Source\SGG\Stretto\Midi\ReadMidiFile.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Midi\Event.h" />
+    <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Midi\MidiInstrument.h" />
+    <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Midi\MidiPiece.h" />
+    <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Midi\MidiTrack.h" />
     <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Midi\ReadMidiFile.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

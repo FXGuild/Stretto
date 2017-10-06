@@ -3,7 +3,7 @@
  Copyright (c) 2017 StainedGlassGuild
  See file "LICENSE.txt" at project root for complete license
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- Creation    : February 25, 2017
+ Creation    : October 1, 2017
  Project     : Theory
  Summary     : NA
  Description : NA
@@ -16,33 +16,32 @@
 
 namespace SGG::Stretto::Theory
 {
-   class CanonicNote final
+   class BasicNote final
    {
    public:
       /************************************************************************/
       /* Constructors / Destructor / Assignment Operators                     */
       /************************************************************************/
 
-      CanonicNote ( Pitch const & i_Pitch, NoteDuration i_Duration ) noexcept;
-      CanonicNote ( CanonicNote const & ) noexcept = default;
-      CanonicNote ( CanonicNote && ) noexcept      = default;
-      ~CanonicNote () noexcept                     = default;
+      BasicNote ( Pitch const & i_Pitch, TimeUnit const i_Duration ) noexcept;
+      BasicNote ( BasicNote const & ) noexcept = default;
+      BasicNote ( BasicNote && ) noexcept      = default;
+      ~BasicNote () noexcept                   = default;
 
-      CanonicNote & operator= ( CanonicNote const & ) noexcept = default;
-      CanonicNote & operator= ( CanonicNote && ) noexcept = default;
+      BasicNote & operator= ( BasicNote const & ) noexcept = default;
+      BasicNote & operator= ( BasicNote && ) noexcept = default;
 
 
       /************************************************************************/
       /* Getters                                                              */
       /************************************************************************/
 
-      Pitch const &        getPitch () const;
-      NoteDuration const & getDuration () const;
-      uint64_t             getDurationTU ( NoteDuration i_DurationUnit ) const;
+      Pitch const & getPitch () const;
+      uint32_t      getDurationTU () const;
 
    private:
-      Pitch        m_Pitch;
-      NoteDuration m_Duration;
+      Pitch    m_Pitch;
+      TimeUnit m_Duration;
    };
 
 
@@ -50,5 +49,5 @@ namespace SGG::Stretto::Theory
    /* Serialization                                                        */
    /************************************************************************/
 
-   std::ostream & operator<< ( std::ostream & io_OS, CanonicNote const & i_Note );
+   std::ostream & operator<< ( std::ostream & io_OS, BasicNote const & i_Note );
 }

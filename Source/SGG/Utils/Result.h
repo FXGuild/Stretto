@@ -13,8 +13,6 @@
 
 #include <SGG/Utils/StdAliases.h>
 
-namespace SGG
-{
 #define ERROR_ON_FALSE( cond, errMsg )                                                             \
                                                                                                    \
    if ( !( cond ) )                                                                                \
@@ -23,8 +21,7 @@ namespace SGG
    }                                                                                               \
    ( void ) 0
 
-
-#define PROPAGATE_ERROR( resExpr, subErrMsg )                                                      \
+#define PROPAGATE_ERROR( resExpr )                                                                 \
                                                                                                    \
    const Result res{ ( resExpr ) };                                                                \
    if ( res.IsFailure () )                                                                         \
@@ -32,7 +29,6 @@ namespace SGG
       return res;                                                                                  \
    }                                                                                               \
    ( void ) 0
-
 
 #define PROPAGATE_ERROR( resExpr, subErrMsg )                                                      \
                                                                                                    \
@@ -44,6 +40,8 @@ namespace SGG
    ( void ) 0
 
 
+namespace SGG
+{
    class Result final
    {
    public:
@@ -71,7 +69,7 @@ namespace SGG
       /* Conversion operators                                                 */
       /************************************************************************/
 
-           operator bool () const noexcept;
+      operator bool () const noexcept;
       bool operator! () const noexcept;
 
 

@@ -4,18 +4,20 @@
  See file "LICENSE.txt" at project root for complete license
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  Creation    : February 25, 2017
- Project     : Theory
+ Project     : BuiltinPlugin
  Summary     : NA
  Description : NA
 \**************************************************************************************************/
 
 #pragma once
 
-#include <SGG/Stretto/Theory/Elementary/CanonicNote.h>
+#include <SGG/Stretto/Plugin/BuiltinPlugin/Dimension.h>
+#include <SGG/Stretto/Schema/Fragment.h>
 
-namespace SGG::Stretto::Theory
+namespace SGG::Stretto::Plugin::Builtin
 {
-   class CanonicNode final
+   class MonophonicCanonicNote final
+      : BuiltinFragment< Temporal::CanonicalNote, Phonal::Pitch, Textural::Monophonic >
    {
    public:
       /************************************************************************/

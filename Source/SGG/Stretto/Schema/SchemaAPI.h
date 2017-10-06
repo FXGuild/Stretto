@@ -10,6 +10,8 @@
 
 #pragma once
 
+#include <stdint.h>
+
 namespace SGG::Stretto::Schema
 {
    template < typename HierarchyID, uint32_t DimIdx >

@@ -1,14 +1,15 @@
-#include <SGG/Stretto/Theory/Elementary/CanonicNote.h>
+#include <assert.h>
 
-namespace SGG::Stretto::Theory
+#include <SGG/Stretto/Plugin/BuiltinPlugin/Fragment/MonophonicTimeunit.h>
+
+namespace SGG::Stretto::Plugin::Builtin
 {
    /************************************************************************/
    /* Constructors / Destructor / Assignment Operators                     */
    /************************************************************************/
 
-   CanonicNote::CanonicNote ( Pitch const & i_Pitch, NoteDuration i_Duration ) noexcept
-   : m_Pitch{ i_Pitch }
-   , m_Duration{ i_Duration }
+   MonophonicTimeunit::MonophonicTimeunit ( bool i_IsRest ) noexcept
+   : m_IsRest{ i_IsRest }
    {
    }
 
@@ -17,19 +18,9 @@ namespace SGG::Stretto::Theory
    /* Getters                                                              */
    /************************************************************************/
 
-   Pitch const & CanonicNote::getPitch () const
+   bool MonophonicTimeunit::isRest () const
    {
-      return m_Pitch;
-   }
-
-   NoteDuration const & CanonicNote::getDuration () const
-   {
-      return m_Duration;
-   }
-
-   uint64_t CanonicNote::getDurationTU ( NoteDuration i_DurationUnit ) const
-   {
-      return convertDurationToTU ( m_Duration, i_DurationUnit );
+      return m_IsRest;
    }
 
 
@@ -37,9 +28,16 @@ namespace SGG::Stretto::Theory
    /* Serialization                                                        */
    /************************************************************************/
 
-   std::ostream & operator<< ( std::ostream & io_OS, CanonicNote const & i_Note )
+   std::wostream & operator<< ( std::wostream & io_OS, MonophonicTimeunit const & i_Timeunit )
    {
-      io_OS << i_Note.getPitch () << " " << i_Note.getDuration ();
+      if ( i_Timeunit.isRest () )
+      {
+         io_OS << L"Rest";
+      }
+      else
+      {
+         io_OS << "Note";
+      }
       return io_OS;
    }
 }

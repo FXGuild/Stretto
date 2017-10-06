@@ -1,7 +1,7 @@
 #include <assert.h>
 
 #include <SGG/Stretto/Midi/ReadMidiFile.h>
-#include <SGG/Stretto/Theory/Piece/PartBuilder.h>
+#include <SGG/Stretto/Theory/Elementary/Pitch.h>
 #include <ThirdParty/Juce/AudioBasics.h>
 
 namespace SGG::Stretto::Midi
@@ -79,10 +79,10 @@ namespace SGG::Stretto::Midi
       }
    }
 
-   static Result createPart ( juce::MidiMessageSequence const & i_Track,
-                              uint32_t                          i_TicksPerTU,
-                              Theory::NoteDuration              i_DurationUnit,
-                              UPtr< Theory::Part > &            o_pPart )
+   static Result readTrack ( juce::MidiMessageSequence const & i_MidiTrack,
+                             uint32_t const                    i_TicksPerTU,
+                             Theory::NoteDuration const        i_DurationUnit,
+                             MidiTrack &                       o_Track )
    {
       using namespace Theory;
 
@@ -105,9 +105,9 @@ namespace SGG::Stretto::Midi
       juce::MidiMessageSequence::MidiEventHolder * lastNoteOff{ nullptr };
 
       // Process Midi events in track
-      for ( int32_t j = 0; j < i_Track.getNumEvents (); ++j )
+      for ( int32_t j = 0; j < i_MidiTrack.getNumEvents (); ++j )
       {
-         auto const & eventPtr = i_Track.getEventPointer ( j );
+         auto const & eventPtr = i_MidiTrack.getEventPointer ( j );
          auto const & msg      = eventPtr->message;
          uint32_t     tick     = static_cast< uint32_t > ( msg.getTimeStamp () );
 
@@ -145,15 +145,17 @@ namespace SGG::Stretto::Midi
       return assemblePart ( pitches, ticks, i_DurationUnit );
    }
 
-   Result readMidiFile ( String const &          i_FilePath,
-                         Theory::NoteDuration    i_DurationUnit,
-                         UPtr< Theory::Piece > & o_pPiece )
+   Result readMidiFile ( String const &             i_FilePath,
+                         Theory::NoteDuration const i_DurationUnit,
+                         MidiPiece &                o_Piece )
    {
+      o_Piece.clear ();
+
       // Open file
       juce::File const file{ juce::String{ i_FilePath.c_str () } };
       ERROR_ON_FALSE ( file.existsAsFile (), L"File not found" );
 
-      // Read Midi file using JUCE
+      // Read midi file using JUCE
       juce::FileInputStream stream{ file };
       ERROR_ON_FALSE ( stream.openedOk (), L"Error opening file" );
       juce::MidiFile midiFile;
@@ -161,27 +163,27 @@ namespace SGG::Stretto::Midi
 
       // Check if time format is supported
       short const timeFormat{ midiFile.getTimeFormat () };
-      ERROR_ON_FALSE ( timeFormat > 0, L"Invalid time format" );
+      ERROR_ON_FALSE ( timeFormat > 0, L"Unsupported time format" );
 
-      // Compute timeunit to Midi tick conversion factor
+      // Compute timeunit to midi tick conversion factor
       uint32_t const tuPerQuarter{ convertDurationToTU ( Theory::NoteDuration::QUARTER,
                                                          i_DurationUnit ) };
       ERROR_ON_FALSE ( timeFormat % tuPerQuarter == 0, L"Invalid duration unit" );
       uint32_t const ticksPerTU{ timeFormat / tuPerQuarter };
 
       // Process tracks
-      UPtrs< Theory::Part > parts ( midiFile.getNumTracks () );
       for ( uint32_t i = 0; i < midiFile.getNumTracks (); ++i )
       {
          // TODO remove me
          std::wcout << "Processing track #" << ( i + 1 ) << std::endl;
-         auto const & track = *( midiFile.getTrack ( i ) );
-         PROPAGATE_ERROR ( createPart ( track, ticksPerTU, i_DurationUnit, parts[ i ] ),
-                           L"Error processing track #" + ( i + 1 ) );
-      }
 
-      // Create piece
-      o_pPiece = std::make_unique< Theory::Piece > ( std::move ( parts ) );
+         juce::MidiMessageSequence const & midiTrack{ *midiFile.getTrack ( i ) };
+         MidiTrack                         track;
+         PROPAGATE_ERROR ( readTrack ( midiTrack, ticksPerTU, i_DurationUnit, track ),
+                           L"Error processing track #" + ( i + 1 ) );
+
+         o_Piece.addTrack ( std::move ( track ) );
+      }
 
       return Result::ok ();
    }

@@ -2,7 +2,7 @@
 
 #include <SGG/Stretto/Schema/SchemaAPI.h>
 
-namespace SGG::Stretto::Plugin::TestPlugin
+namespace SGG::Stretto::Plugin::BuiltinPlugin
 {
    struct HierarchyID_t;
 
@@ -36,7 +36,7 @@ namespace SGG::Stretto::Plugin::TestPlugin
 
 namespace SGG::Stretto::Schema
 {
-   using namespace Plugin::TestPlugin;
+   using namespace Plugin::BuiltinPlugin;
 
    template <> struct DimensionType< HierarchyID_t, 0 > { using Type = Temporal; };
    template <> struct DimensionType< HierarchyID_t, 1 > { using Type = Phonal;   };

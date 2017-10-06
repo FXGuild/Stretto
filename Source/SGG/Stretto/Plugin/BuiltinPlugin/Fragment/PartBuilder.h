@@ -11,7 +11,7 @@
 
 #pragma once
 
-#include <SGG/Stretto/Theory/Piece/Part.h>
+#include <SGG/Stretto/Theory/Track/Part.h>
 
 namespace SGG::Stretto::Theory
 {

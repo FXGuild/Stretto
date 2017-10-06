@@ -10,9 +10,30 @@
     <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Midi\ReadMidiFile.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Midi\MidiPiece.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Midi\MidiTrack.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Midi\Event.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Midi\MidiInstrument.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\Source\SGG\Stretto\Midi\ReadMidiFile.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\SGG\Stretto\Midi\MidiPiece.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\SGG\Stretto\Midi\MidiTrack.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\SGG\Stretto\Midi\MidiInstrument.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>

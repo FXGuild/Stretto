@@ -1,6 +1,6 @@
 #include <iomanip>
 
-#include <SGG/Stretto/Theory/Elementary/AggregatedNote.h>
+#include <SGG/Stretto/Theory/Elementary/BasicNote.h>
 
 namespace SGG::Stretto::Theory
 {
@@ -8,9 +8,9 @@ namespace SGG::Stretto::Theory
    /* Constructors / Destructor / Assignment Operators                     */
    /************************************************************************/
 
-   AggregatedNote::AggregatedNote ( Pitch const & i_Pitch, uint32_t i_DurationTU ) noexcept
+   BasicNote::BasicNote ( Pitch const & i_Pitch, TimeUnit const i_Duration ) noexcept
    : m_Pitch{ i_Pitch }
-   , m_DurationTU{ i_DurationTU }
+   , m_Duration{ i_Duration }
    {
    }
 
@@ -19,14 +19,14 @@ namespace SGG::Stretto::Theory
    /* Getters                                                              */
    /************************************************************************/
 
-   Pitch const & AggregatedNote::getPitch () const
+   Pitch const & BasicNote::getPitch () const
    {
       return m_Pitch;
    }
 
-   uint32_t AggregatedNote::getDurationTU () const
+   uint32_t BasicNote::getDurationTU () const
    {
-      return m_DurationTU;
+      return m_Duration;
    }
 
 
@@ -34,7 +34,7 @@ namespace SGG::Stretto::Theory
    /* Serialization                                                        */
    /************************************************************************/
 
-   std::ostream & operator<< ( std::ostream & io_OS, AggregatedNote const & i_Note )
+   std::ostream & operator<< ( std::ostream & io_OS, BasicNote const & i_Note )
    {
       io_OS << i_Note.getPitch () << " " << i_Note.getDurationTU ();
       return io_OS;

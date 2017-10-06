@@ -22,7 +22,7 @@ namespace SGG::Stretto::Theory
    uint32_t TimeSignature::getNumTimeUnitsInABar ( NoteDuration i_TimeUnitDuration ) const
    {
       uint32_t count =
-         convertDurationToTU ( NoteDuration ( m_DenominatorPower ), i_TimeUnitDuration );
+         convertDurationToTimeunit ( NoteDuration ( m_DenominatorPower ), i_TimeUnitDuration );
       assert ( count != 0 );
       return m_Numerator * count;
    }

@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source\Fragment">
+      <UniqueIdentifier>{6f552cb0-55f8-4d67-99d7-4cc13e0d0a57}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Converter.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Dimension.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Extractor.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Fragment\Fragment.h">
+      <Filter>Source\Fragment</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Fragment\Part.h">
+      <Filter>Source\Fragment</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Fragment\PartBuilder.h">
+      <Filter>Source\Fragment</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Fragment\Piece.h">
+      <Filter>Source\Fragment</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Fragment\AggregatedNode.h">
+      <Filter>Source\Fragment</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Fragment\MonophonicCanonicNode.h">
+      <Filter>Source\Fragment</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Fragment\MonophonicTimeunit.h">
+      <Filter>Source\Fragment</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Fragment\Part.cpp">
+      <Filter>Source\Fragment</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Fragment\PartBuilder.cpp">
+      <Filter>Source\Fragment</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Fragment\Piece.cpp">
+      <Filter>Source\Fragment</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Fragment\AggregatedNode.cpp">
+      <Filter>Source\Fragment</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Fragment\MonophonicCanonicNode.cpp">
+      <Filter>Source\Fragment</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Fragment\MonophonicTimeunit.cpp">
+      <Filter>Source\Fragment</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

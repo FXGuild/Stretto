@@ -29,17 +29,23 @@ namespace SGG
    using Vec = std::vector< T >;
 
    template < typename T >
+   using Set = std::set< T >;
+
+   template < typename T >
+   using MSet = std::multiset< T >;
+
+   template < typename T >
    using UPtr = std::unique_ptr< T >;
 
    template < typename T >
    using UPtrs = Vec< UPtr< T > >;
+
+   template < typename T >
+   using Map = Map< T >;
 
    template < typename T, typename U >
    using UMap = std::unordered_map< T, U >;
 
    template < typename T >
    using TypeMap = UMap< std::type_index, T >;
-
-   template < typename T >
-   using CustomComparatorSet = std::set< T, std::function< bool( T const &, T const & ) > >;
 }

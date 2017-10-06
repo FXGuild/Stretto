@@ -1,6 +1,7 @@
 #include <assert.h>
+#include <sstream>
 
-#include <SGG/Stretto/Theory/Piece/CanonicNode.h>
+#include <SGG/Stretto/Theory/Track/AggregatedNode.h>
 
 namespace SGG::Stretto::Theory
 {
@@ -8,15 +9,15 @@ namespace SGG::Stretto::Theory
    /* Constructors / Destructor / Assignment Operators                     */
    /************************************************************************/
 
-   CanonicNode::CanonicNode ( Theory::CanonicNote const & i_Note, bool i_IsTied ) noexcept
+   AggregatedNode::AggregatedNode ( Theory::AggregatedNote const & i_Note ) noexcept
    : m_Note{ i_Note }
-   , m_Type{ i_IsTied ? Type::TIED_NOTE : Type::STARTING_NOTE }
+   , m_IsRest{ false }
    {
    }
 
-   CanonicNode::CanonicNode ( Theory::NoteDuration i_RestDuration ) noexcept
-   : m_Note{ Theory::CanonicNote{ Theory::Pitch::A_440HZ, i_RestDuration } }
-   , m_Type{ Type::REST }
+   AggregatedNode::AggregatedNode ( uint32_t i_RestDuration ) noexcept
+   : m_Note{ Theory::AggregatedNote{ Theory::Pitch::A_440HZ, i_RestDuration } }
+   , m_IsRest{ true }
    {
    }
 
@@ -25,20 +26,15 @@ namespace SGG::Stretto::Theory
    /* Getters                                                              */
    /************************************************************************/
 
-   Theory::CanonicNote const & CanonicNode::getNote () const
+   Theory::AggregatedNote const & AggregatedNode::getNote () const
    {
       assert ( !isRest () );
       return m_Note;
    }
 
-   Theory::NoteDuration CanonicNode::getDuration () const
+   uint32_t AggregatedNode::getDurationTU () const
    {
-      return m_Note.getDuration ();
-   }
-
-   CanonicNode::Type CanonicNode::getType () const
-   {
-      return m_Type;
+      return m_Note.getDurationTU ();
    }
 
 
@@ -46,9 +42,9 @@ namespace SGG::Stretto::Theory
    /* Status                                                               */
    /************************************************************************/
 
-   bool CanonicNode::isRest () const
+   bool AggregatedNode::isRest () const
    {
-      return m_Type == Type::REST;
+      return m_IsRest;
    }
 
 
@@ -56,15 +52,11 @@ namespace SGG::Stretto::Theory
    /* Serialization                                                        */
    /************************************************************************/
 
-   std::ostream & operator<< ( std::ostream & io_OS, CanonicNode const & i_Node )
+   std::ostream & operator<< ( std::ostream & io_OS, AggregatedNode const & i_Node )
    {
-      if ( i_Node.getType () == CanonicNode::Type::REST )
+      if ( i_Node.isRest () )
       {
-         io_OS << "Rest" << i_Node.getDuration ();
-      }
-      else if ( i_Node.getType () == CanonicNode::Type::STARTING_NOTE )
-      {
-         io_OS << '_' << i_Node.getNote ();
+         io_OS << "-R- " << i_Node.getDurationTU ();
       }
       else
       {

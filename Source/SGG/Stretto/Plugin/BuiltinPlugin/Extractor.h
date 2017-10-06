@@ -1,21 +1,21 @@
 #pragma once
 
-#include <SGG/Stretto/Plugin/TestPlugin/Hierarchy/Fragment.h>
+#include <SGG/Stretto/Plugin/BuiltinPlugin/Fragment.h>
 #include <SGG/Stretto/Schema/SchemaAPI.h>
 
 namespace SGG::Stretto::Schema
 {
-   using namespace Plugin::TestPlugin;
+   using namespace Plugin::BuiltinPlugin;
 
    template <>
    struct Extractor< HierarchyID_t,
                      Temporal,
-                     Temporal::Piece,
+                     Temporal::Track,
                      Temporal::TempoSection >
    {
-      bool extract( Theory::Piece const & i_Piece )
+      bool extract( Theory::Track const & i_Track )
       {
-         printf( "[%-8s] %-20s -> %s\n", "Temporal", "Piece", "TempoSection" );
+         printf( "[%-8s] %-20s -> %s\n", "Temporal", "Track", "TempoSection" );
          return true;
       }
    };
@@ -23,12 +23,12 @@ namespace SGG::Stretto::Schema
    template <>
    struct Extractor< HierarchyID_t,
                      Temporal,
-                     Temporal::Piece,
+                     Temporal::Track,
                      Temporal::TimeSignatureSection >
    {
-      bool extract( Theory::Piece const & i_Piece )
+      bool extract( Theory::Track const & i_Track )
       {
-         printf( "[%-8s] %-20s -> %s\n", "Temporal", "Piece", "TimeSignatureSection" );
+         printf( "[%-8s] %-20s -> %s\n", "Temporal", "Track", "TimeSignatureSection" );
          return true;
       }
    };
@@ -36,12 +36,12 @@ namespace SGG::Stretto::Schema
    template <>
    struct Extractor< HierarchyID_t,
                      Temporal,
-                     Temporal::Piece,
+                     Temporal::Track,
                      Temporal::FullyAggregatedNote >
    {
-      bool extract( Theory::Piece const & i_Piece )
+      bool extract( Theory::Track const & i_Track )
       {
-         printf( "[%-8s] %-20s -> %s\n", "Temporal", "Piece", "FullyAggregatedNote" );
+         printf( "[%-8s] %-20s -> %s\n", "Temporal", "Track", "FullyAggregatedNote" );
          return true;
       }
    };
@@ -52,7 +52,7 @@ namespace SGG::Stretto::Schema
                      Temporal::TempoSection,
                      Temporal::Bar >
    {
-      bool extract( Theory::Piece const & i_Piece )
+      bool extract( Theory::Track const & i_Track )
       {
          printf( "[%-8s] %-20s -> %s\n", "Temporal", "TempoSection", "Bar" );
          return true;
@@ -65,7 +65,7 @@ namespace SGG::Stretto::Schema
                      Temporal::TimeSignatureSection,
                      Temporal::Bar >
    {
-      bool extract( Theory::Piece const & i_Piece )
+      bool extract( Theory::Track const & i_Track )
       {
          printf( "[%-8s] %-20s -> %s\n", "Temporal", "TimeSignatureSection", "Bar" );
          return true;
@@ -78,7 +78,7 @@ namespace SGG::Stretto::Schema
                      Temporal::FullyAggregatedNote,
                      Temporal::InBarAggregatedNote >
    {
-      bool extract( Theory::Piece const & i_Piece )
+      bool extract( Theory::Track const & i_Track )
       {
          printf( "[%-8s] %-20s -> %s\n", "Temporal", "FullyAggregatedNote", "InBarAggregatedNote" );
          return true;
@@ -91,7 +91,7 @@ namespace SGG::Stretto::Schema
                      Temporal::Bar,
                      Temporal::InBarAggregatedNote >
    {
-      bool extract( Theory::Piece const & i_Piece )
+      bool extract( Theory::Track const & i_Track )
       {
          printf( "[%-8s] %-20s -> %s\n", "Temporal", "Bar", "InBarAggregatedNote" );
          return true;
@@ -104,7 +104,7 @@ namespace SGG::Stretto::Schema
                      Temporal::InBarAggregatedNote,
                      Temporal::CanonicalNote >
    {
-      bool extract( Theory::Piece const & i_Piece )
+      bool extract( Theory::Track const & i_Track )
       {
          printf( "[%-8s] %-20s -> %s\n", "Temporal", "InBarAggregatedNote", "CanonicalNote" );
          return true;
@@ -117,7 +117,7 @@ namespace SGG::Stretto::Schema
                      Temporal::CanonicalNote,
                      Temporal::Timeunit >
    {
-      bool extract( Theory::Piece const & i_Piece )
+      bool extract( Theory::Track const & i_Track )
       {
          printf( "[%-8s] %-20s -> %s\n", "Temporal", "CanonicalNote", "Timeunit" );
          return true;
@@ -127,12 +127,12 @@ namespace SGG::Stretto::Schema
    template <>
    struct Extractor< HierarchyID_t,
                      Phonal,
-                     Phonal::Piece,
+                     Phonal::Track,
                      Phonal::Part >
    {
-      bool extract( Theory::Piece const & i_Piece )
+      bool extract( Theory::Track const & i_Track )
       {
-         printf( "[%-8s] %-20s -> %s\n", "Phonal", "Piece", "Part" );
+         printf( "[%-8s] %-20s -> %s\n", "Phonal", "Track", "Part" );
          return true;
       }
    };
@@ -143,7 +143,7 @@ namespace SGG::Stretto::Schema
                      Phonal::Part,
                      Phonal::Octave >
    {
-      bool extract( Theory::Piece const & i_Piece )
+      bool extract( Theory::Track const & i_Track )
       {
          printf( "[%-8s] %-20s -> %s\n", "Phonal", "Part", "Octave" );
          return true;
@@ -156,7 +156,7 @@ namespace SGG::Stretto::Schema
                      Phonal::Octave,
                      Phonal::Pitch >
    {
-      bool extract( Theory::Piece const & i_Piece )
+      bool extract( Theory::Track const & i_Track )
       {
          printf( "[%-8s] %-20s -> %s\n", "Phonal", "Octave", "Pitch" );
          return true;

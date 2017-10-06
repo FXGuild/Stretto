@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
@@ -12,8 +12,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{B86AE318-5AC9-41AF-A1A9-19DC1C599738}</ProjectGuid>
-    <RootNamespace>TestPlugin</RootNamespace>
+    <ProjectGuid>{DA891AD3-9CC6-4F13-AABE-B8924A9C0980}</ProjectGuid>
+    <RootNamespace>BuiltinPlugin</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -24,7 +24,7 @@
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -36,11 +36,9 @@
   <ImportGroup Label="Shared">
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <Import Project="TestPlugin.props" />
+    <Import Project="BuiltinPlugin.props" />
   </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <Import Project="TestPlugin.props" />
-  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -63,6 +61,26 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Converter.h" />
+    <ClInclude Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Dimension.h" />
+    <ClInclude Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Extractor.h" />
+    <ClInclude Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Fragment\AggregatedNode.h" />
+    <ClInclude Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Fragment\MonophonicCanonicNode.h" />
+    <ClInclude Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Fragment\Fragment.h" />
+    <ClInclude Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Fragment\MonophonicTimeunit.h" />
+    <ClInclude Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Fragment\Part.h" />
+    <ClInclude Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Fragment\PartBuilder.h" />
+    <ClInclude Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Fragment\Piece.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Fragment\AggregatedNode.cpp" />
+    <ClCompile Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Fragment\MonophonicCanonicNode.cpp" />
+    <ClCompile Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Fragment\MonophonicTimeunit.cpp" />
+    <ClCompile Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Fragment\Part.cpp" />
+    <ClCompile Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Fragment\PartBuilder.cpp" />
+    <ClCompile Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Fragment\Piece.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
