@@ -48,9 +48,9 @@ namespace SGG::Stretto::Theory
    /* Serialization                                                        */
    /************************************************************************/
 
-   std::ostream & operator << ( std::ostream & io_OS, Tone const & i_Tone )
+   std::wostream & operator << ( std::wostream & io_OS, Tone const & i_Tone )
    {
-      io_OS << i_Tone.getNoteLetter() << i_Tone.getAccidental();
+      io_OS << Utils::Enum::toString( i_Tone.getNoteLetter() ) << i_Tone.getAccidental();
       return io_OS;
    }
 }

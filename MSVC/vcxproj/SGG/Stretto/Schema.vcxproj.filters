@@ -13,5 +13,8 @@
     <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Schema\SchemaAPI.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Schema\StaticFragmentExtractionCheck.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

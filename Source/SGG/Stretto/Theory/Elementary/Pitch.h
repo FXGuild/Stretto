@@ -64,5 +64,5 @@ namespace SGG::Stretto::Theory
    /* Serialization                                                        */
    /************************************************************************/
 
-   std::ostream & operator<< ( std::ostream & io_OS, Pitch const & i_Pitch );
+   std::wostream & operator<< ( std::wostream & io_OS, Pitch const & i_Pitch );
 }

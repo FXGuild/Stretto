@@ -71,5 +71,5 @@ namespace SGG::Stretto::Plugin::Builtin
    /* Serialization                                                        */
    /************************************************************************/
 
-   std::ostream & operator<< ( std::ostream & io_OS, CanonicNode const & i_Node );
+   std::wostream & operator<< ( std::wostream & io_OS, CanonicNode const & i_Node );
 }

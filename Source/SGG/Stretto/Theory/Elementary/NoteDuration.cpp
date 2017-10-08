@@ -6,11 +6,12 @@ namespace SGG::Stretto::Theory
    /* Conversions                                                          */
    /************************************************************************/
 
-   uint32_t convertDurationToTimeunit ( NoteDuration i_DurationToDivide, NoteDuration i_SubDuration )
+   TimeUnit convertDurationToTimeunit ( NoteDuration i_DurationToDivide,
+                                        NoteDuration i_SubDuration )
    {
-      uint8_t subDur  = static_cast< uint8_t > ( i_SubDuration );
-      uint8_t dur2Div = static_cast< uint8_t > ( i_DurationToDivide );
-      int8_t  delta   = subDur - dur2Div;
+      uint8_t const subDur  = static_cast< uint8_t > ( i_SubDuration );
+      uint8_t const dur2Div = static_cast< uint8_t > ( i_DurationToDivide );
+      int8_t const  delta   = subDur - dur2Div;
       return delta >= 0 ? 1 << delta : 0;
    }
 
@@ -19,7 +20,7 @@ namespace SGG::Stretto::Theory
    /* Serialization                                                        */
    /************************************************************************/
 
-   std::ostream & operator<< ( std::ostream & io_OS, NoteDuration const & i_Note )
+   std::wostream & operator<< ( std::wostream & io_OS, NoteDuration const & i_Note )
    {
       switch ( i_Note )
       {

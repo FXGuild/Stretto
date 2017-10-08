@@ -3,6 +3,7 @@
   <ImportGroup Label="PropertySheets">
     <Import Project="..\..\props\Base config.props" />
     <Import Project="..\..\props\Needs googletest.props" />
+    <Import Project="..\..\props\Needs JUCE.props" />
     <Import Project="..\..\props\Is unit test.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />

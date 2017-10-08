@@ -16,6 +16,7 @@
 #include <string>
 #include <vector>
 
+#include <SGG/Utils/ConstexprUtils.h>
 #include <SGG/Utils/StdAliases.h>
 
 #define DECLARE_STRING_ENUM( Namespace, Name, ... )                                                \
@@ -106,12 +107,14 @@ namespace SGG::Utils::Enum
          io_Func ( static_cast< E > ( i ) );
       }
    }
-
 }
-
-template < typename E, typename = std::void_t< decltype (SGG:Utils::Enum::toString(E)) > >
-inline std::ostream & operator<< (std::ostream & io_OS, E const & i_Value)
-{
-   io_OS << SGG::Utils::Enum::toString(i_Value).c_str();
-   return io_OS;
-}
+// decltype( SGG::Utils::Enum::toString( std::declval( TStrEnum ) ) )
+// TODO_SGG create an operator << for string enum
+//template < typename TStrEnum,
+//   typename = std::enable_if_t<
+//   std::is_same_v< decltype (SGG::Utils::Enum::Internal::g_EnumTypeName< TStrEnum >),
+//   SGG::String const > > >
+//   std::wostream & operator<< (std::wostream & io_OS, TStrEnum const & i_Val)
+//{
+//   return io_OS;
+//}

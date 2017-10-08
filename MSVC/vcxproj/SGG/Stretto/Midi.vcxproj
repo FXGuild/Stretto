@@ -76,6 +76,17 @@
     <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Midi\MidiTrack.h" />
     <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Midi\ReadMidiFile.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ThirdParty\JUCE.vcxproj">
+      <Project>{9ba9d2e0-7a6a-49f7-98e5-59bfcf5be918}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Utils.vcxproj">
+      <Project>{9d1ace4c-febc-413e-b349-18286f735ea2}</Project>
+    </ProjectReference>
+    <ProjectReference Include="Theory.vcxproj">
+      <Project>{b73307ae-c05e-4b5d-8877-c7e270f058d6}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

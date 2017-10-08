@@ -58,5 +58,5 @@ namespace SGG::Stretto::Theory
    /* Serialization                                                        */
    /************************************************************************/
 
-   std::ostream & operator<< ( std::ostream & io_OS, AggregatedNode const & i_Node );
+   std::wostream & operator<< ( std::wostream & io_OS, AggregatedNode const & i_Node );
 }

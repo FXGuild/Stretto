@@ -56,5 +56,5 @@ namespace SGG::Stretto::Theory
    /* Serialization                                                        */
    /************************************************************************/
 
-   std::ostream & operator<< ( std::ostream & io_OS, Tone const & i_Tone );
+   std::wostream & operator<< ( std::wostream & io_OS, Tone const & i_Tone );
 }

@@ -86,7 +86,7 @@ namespace SGG::Stretto::Theory
    /* Serialization                                                        */
    /************************************************************************/
 
-   std::ostream & operator<< ( std::ostream & io_OS, Part::AggregatedView const & i_View );
+   std::wostream & operator<< ( std::wostream & io_OS, Part::AggregatedView const & i_View );
 
 
    class Part::CanonicView
@@ -120,5 +120,5 @@ namespace SGG::Stretto::Theory
    /* Serialization                                                        */
    /************************************************************************/
 
-   std::ostream & operator<< ( std::ostream & io_OS, Part::CanonicView const & i_View );
+   std::wostream & operator<< ( std::wostream & io_OS, Part::CanonicView const & i_View );
 }

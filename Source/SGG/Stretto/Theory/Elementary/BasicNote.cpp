@@ -34,7 +34,7 @@ namespace SGG::Stretto::Theory
    /* Serialization                                                        */
    /************************************************************************/
 
-   std::ostream & operator<< ( std::ostream & io_OS, BasicNote const & i_Note )
+   std::wostream & operator<< ( std::wostream & io_OS, BasicNote const & i_Note )
    {
       io_OS << i_Note.getPitch () << " " << i_Note.getDurationTU ();
       return io_OS;

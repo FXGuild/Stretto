@@ -14,6 +14,7 @@
 #include <SGG/Stretto/Midi/Event.h>
 #include <SGG/Stretto/Midi/MidiInstrument.h>
 #include <SGG/Stretto/Theory/Elementary/BasicNote.h>
+#include <SGG/Utils/Result.h>
 
 namespace SGG::Stretto::Midi
 {
@@ -40,8 +41,8 @@ namespace SGG::Stretto::Midi
       /* Add                                                                  */
       /************************************************************************/
 
-      void addNoteEvent ( NoteEvent const & i_NoteEvent );
-      void addInstrumentChange ( InstrumentChange const & i_InstrChange );
+      Result addNoteEvent ( Theory::BasicNote const & i_Note, TimeUnit i_Time );
+      Result addInstrumentChange ( MidiInstrument i_Instr, TimeUnit i_Time );
 
    private:
       /************************************************************************/

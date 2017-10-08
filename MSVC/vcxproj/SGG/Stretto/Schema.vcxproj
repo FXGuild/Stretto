@@ -66,6 +66,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Schema\Fragment.h" />
     <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Schema\SchemaAPI.h" />
+    <ClInclude Include="..\..\..\..\Source\SGG\Stretto\Schema\StaticFragmentExtractionCheck.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

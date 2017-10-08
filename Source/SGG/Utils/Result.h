@@ -21,21 +21,22 @@
    }                                                                                               \
    ( void ) 0
 
-#define PROPAGATE_ERROR( resExpr )                                                                 \
+#define ERROR_ON_NULL( cond )                                                                      \
                                                                                                    \
-   const Result res{ ( resExpr ) };                                                                \
-   if ( res.IsFailure () )                                                                         \
+   if ( cond == nullptr )                                                                          \
    {                                                                                               \
-      return res;                                                                                  \
+      return Result::fail ( L#cond );                                                              \
    }                                                                                               \
    ( void ) 0
 
 #define PROPAGATE_ERROR( resExpr, subErrMsg )                                                      \
-                                                                                                   \
-   const Result res{ ( resExpr ) };                                                                \
-   if ( res.IsFailure () )                                                                         \
    {                                                                                               \
-      return Result::fail ( res.getErrorMessage () + L": " + ( subErrMsg ) );                      \
+      const Result res{ ( resExpr ) };                                                             \
+                                                                                                   \
+      if ( res.IsFailure () )                                                                      \
+      {                                                                                            \
+         return Result::fail ( res.getErrorMessage () + L": " + ( subErrMsg ) );                   \
+      }                                                                                            \
    }                                                                                               \
    ( void ) 0
 
@@ -59,7 +60,8 @@ namespace SGG
 
       Result ( Result const & ) noexcept;
       Result ( Result && ) noexcept = default;
-      ~Result () noexcept           = default;
+      // TODO_SGG: error when not checkin a result
+      ~Result () noexcept = default;
 
       Result & operator= ( Result const & ) noexcept;
       Result & operator= ( Result && ) noexcept = default;
@@ -69,7 +71,7 @@ namespace SGG
       /* Conversion operators                                                 */
       /************************************************************************/
 
-      operator bool () const noexcept;
+           operator bool () const noexcept;
       bool operator! () const noexcept;
 
 

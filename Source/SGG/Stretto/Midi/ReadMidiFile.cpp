@@ -1,88 +1,121 @@
-#include <assert.h>
-
 #include <SGG/Stretto/Midi/ReadMidiFile.h>
 #include <SGG/Stretto/Theory/Elementary/Pitch.h>
 #include <ThirdParty/Juce/AudioBasics.h>
 
 namespace SGG::Stretto::Midi
 {
-   static Theory::Piece::Part assemblePart ( std::vector< Theory::Pitch > a_Pitches,
-                                             std::vector< uint32_t >      a_TimeUnits,
-                                             Theory::NoteDuration         a_DurationUnit )
+   using EventPtr = juce::MidiMessage const *;
+
+   struct ExtractedTrackMidiEvents
    {
-      assert ( 2 * a_Pitches.size () == a_TimeUnits.size () );
+      // NoteOn Event + NoteOff timestamp
+      Vec< Pair< EventPtr, uint32_t > > m_NoteOnEvents;
+      Vec< EventPtr >                   m_InstrChangeEvents;
+   };
 
-      Theory::Piece::PartBuilder builder{ a_DurationUnit };
+   struct ExtractedPieceMidiEvents
+   {
+      Vec< ExtractedTrackMidiEvents > m_PerTrackEvents;
+      Vec< EventPtr >                 m_TempoChangeEvents;
+      Vec< EventPtr >                 m_TimeSignChangeEvents;
+   };
 
-      uint32_t prevNoteEnd = 0;
+   Result extractMidiEvents ( juce::MidiFile const &     i_MidiFile,
+                              ExtractedPieceMidiEvents & o_ExtractedEvents,
+                              Set< uint32_t > &          o_Ticks )
+   {
+      uint8_t const numTracks = i_MidiFile.getNumTracks ();
+      o_ExtractedEvents.m_PerTrackEvents.resize ( numTracks );
 
-      for ( uint32_t i = 0; i < a_Pitches.size (); ++i )
+      for ( uint32_t i = 0; i < numTracks; ++i )
       {
-         uint32_t noteBeg = a_TimeUnits[ i * 2 ];
-         uint32_t noteEnd = a_TimeUnits[ i * 2 + 1 ];
-         assert ( noteBeg < noteEnd );
-         assert ( noteBeg >= prevNoteEnd );
+         juce::MidiMessageSequence const & midiTrack = *i_MidiFile.getTrack ( i );
 
-         // If needed, add rest between previous note (or track beginning) and current note
-         if ( noteBeg > prevNoteEnd )
+         ExtractedTrackMidiEvents & trackEvents = o_ExtractedEvents.m_PerTrackEvents[ i ];
+
+         for ( int32_t j = 0; j < midiTrack.getNumEvents (); ++j )
          {
-            builder.addRest ( noteBeg - prevNoteEnd );
+            auto const &   eventHolder = *midiTrack.getEventPointer ( j );
+            auto const &   event       = eventHolder.message;
+            uint32_t const tick        = static_cast< uint32_t > ( event.getTimeStamp () );
+
+            // TODO_SGG remove me
+            std::wcout << L"\t" << tick << L"\t" << event.getDescription () << std::endl;
+
+            if ( event.isNoteOn () )
+            {
+               auto const * noteOffEventHolder = eventHolder.noteOffObject;
+               ERROR_ON_NULL ( noteOffEventHolder );
+               auto const &   pNoteOffEvent = noteOffEventHolder->message;
+               uint32_t const tick = static_cast< uint32_t > ( pNoteOffEvent.getTimeStamp () );
+               o_Ticks.emplace ( tick );
+               trackEvents.m_NoteOnEvents.emplace_back ( std::make_pair ( &event, tick ) );
+            }
+            else if ( event.isProgramChange () )
+            {
+               trackEvents.m_InstrChangeEvents.emplace_back ( &event );
+            }
+            else if ( event.isTempoMetaEvent () )
+            {
+               o_ExtractedEvents.m_TempoChangeEvents.emplace_back ( &event );
+            }
+            else if ( event.isTimeSignatureMetaEvent () )
+            {
+               o_ExtractedEvents.m_TimeSignChangeEvents.emplace_back ( &event );
+            }
+            else
+            {
+               continue;
+            }
+
+            o_Ticks.emplace ( tick );
          }
-
-         // Add note to part
-         Theory::AggregatedNote note{ a_Pitches[ i ], noteEnd - noteBeg };
-         builder.addNote ( note );
-
-         // Update previous note end
-         prevNoteEnd = noteEnd;
       }
 
-      // TODO: add rest at the end until the actual end of the part
-
-      return builder.build ();
+      return Result::ok ();
    }
 
-   static void convertTicksToTimeUnits ( std::vector< uint32_t > & a_Ticks,
-                                         uint32_t                  a_TicksPerTU,
-                                         uint32_t                  a_AnacrusisCorrection )
+   static Result createTickToTimeUnitMap ( Set< uint32_t > &           i_Ticks,
+                                           Theory::NoteDuration const  i_DurationUnit,
+                                           short const                 i_TimeFormat,
+                                           Map< uint32_t, TimeUnit > & o_TickToTU )
    {
+      o_TickToTU.clear ();
+
+      ERROR_ON_FALSE ( i_TimeFormat > 0, L"Unsupported time format" );
+
+      Theory::NoteDuration const quarter = Theory::NoteDuration::QUARTER;
+      uint32_t const tuPerQuarter        = convertDurationToTimeunit ( quarter, i_DurationUnit );
+
+      ERROR_ON_FALSE ( i_TimeFormat % tuPerQuarter == 0, L"Invalid duration unit" );
+
+      uint32_t const ticksPerTU = i_TimeFormat / tuPerQuarter;
+      double const   tuPerTick  = 1.0 / static_cast< double > ( ticksPerTU );
+
       int32_t currDeltaTick = 0;
-      double  tuPerTick     = 1.0 / static_cast< double > ( a_TicksPerTU );
 
-      // For all Midi ticks timestamps
-      for ( uint32_t i = 0; i < a_Ticks.size (); ++i )
+      for ( uint32_t const tick : i_Ticks )
       {
-         // Raw midi tick value
-         uint32_t tick = a_Ticks[ i ] + ( rand () % 11 - 5 );
+         // Delta corrected tick value
+         uint32_t const corrTick = tick + currDeltaTick;
 
-         // Anacrusis correction tick value
-         uint32_t corrTick = tick + a_AnacrusisCorrection;
-
-         // Anacrusis and delta correction tick value
-         uint32_t deltaCorrTick = corrTick + currDeltaTick;
-
-         // Rounded final timeunit value
-         uint32_t roundedTU = static_cast< uint32_t > ( std::rint ( deltaCorrTick * tuPerTick ) );
-         a_Ticks[ i ]       = roundedTU;
+         // Timeunit value
+         uint32_t const tu = static_cast< uint32_t > ( std::rint ( corrTick * tuPerTick ) );
+         o_TickToTU.emplace ( tick, tu );
 
          // Rounded tick value
-         uint32_t roundedTick = roundedTU * a_TicksPerTU;
-
-         // Delta tick
-         int32_t deltaTick = roundedTick - corrTick;
-
-         // Delta delta
-         int32_t deltaDelta = deltaTick - currDeltaTick;
+         uint32_t const roundedTick = tu * ticksPerTU;
 
          // Update current delta
-         currDeltaTick = deltaTick;
+         currDeltaTick = roundedTick - tick;
       }
+
+      return Result::ok ();
    }
 
-   static Result readTrack ( juce::MidiMessageSequence const & i_MidiTrack,
-                             uint32_t const                    i_TicksPerTU,
-                             Theory::NoteDuration const        i_DurationUnit,
-                             MidiTrack &                       o_Track )
+   static Result buildMidiTrack ( ExtractedTrackMidiEvents const &  i_Events,
+                                  Map< uint32_t, TimeUnit > const & i_TickToTU,
+                                  MidiTrack &                       o_Track )
    {
       using namespace Theory;
 
@@ -95,54 +128,60 @@ namespace SGG::Stretto::Midi
          { NoteLetter::B, Accidental::FLAT },    { NoteLetter::B, Accidental::FLAT }
       };
 
-      // Sequential note pitches
-      Vec< Pitch > pitches;
-
-      // Chronologically sorted timestamps
-      Vec< uint32_t > ticks;
-
-      // Used to verify that part is monophonic
-      juce::MidiMessageSequence::MidiEventHolder * lastNoteOff{ nullptr };
-
-      // Process Midi events in track
-      for ( int32_t j = 0; j < i_MidiTrack.getNumEvents (); ++j )
+      for ( auto const & noteOnAndOff : i_Events.m_NoteOnEvents )
       {
-         auto const & eventPtr = i_MidiTrack.getEventPointer ( j );
-         auto const & msg      = eventPtr->message;
-         uint32_t     tick     = static_cast< uint32_t > ( msg.getTimeStamp () );
+         auto const &   noteOnEvent = *noteOnAndOff.first;
+         uint32_t const startTick   = static_cast< uint32_t > ( noteOnEvent.getTimeStamp () );
+         TimeUnit const startTU     = i_TickToTU.at ( startTick );
+         TimeUnit const endTU       = i_TickToTU.at ( noteOnAndOff.second );
+         int8_t const   midiNote    = static_cast< int8_t > ( noteOnEvent.getNoteNumber () );
 
-         // TODO remove me
-         std::cout << "\t" << tick << "\t" << msg.getDescription () << std::endl;
+         Theory::Pitch const pitch{ DEFAULT_TONES[ midiNote % 12 ], ( midiNote / 12 ) - 1 };
+         Theory::BasicNote   note{ pitch, endTU - startTick };
 
-         if ( msg.isNoteOn () )
-         {
-            // Check that part is monophonic
-            assert ( lastNoteOff == nullptr );
-
-            // Create Pitch from midi note number
-            int8_t midiNote = static_cast< int8_t > ( msg.getNoteNumber () );
-            pitches.emplace_back ( DEFAULT_TONES[ midiNote % 12 ], ( midiNote / 12 ) - 1 );
-            ticks.push_back ( tick );
-
-            // Get note off tick
-            lastNoteOff = eventPtr->noteOffObject;
-            ticks.push_back ( static_cast< uint32_t > ( lastNoteOff->message.getTimeStamp () ) );
-         }
-         else if ( msg.isNoteOff () )
-         {
-            // Check that part is monophonic
-            assert ( eventPtr == lastNoteOff );
-            lastNoteOff = nullptr;
-         }
+         PROPAGATE_ERROR ( o_Track.addNoteEvent ( note, startTU ), L"Could not add note" );
       }
 
-      // We don't want last note not to end...
-      assert ( lastNoteOff == nullptr );
+      for ( EventPtr pEvent : i_Events.m_InstrChangeEvents )
+      {
+         MidiInstrument const instr = MidiInstrument ( pEvent->getProgramChangeNumber () );
+         uint32_t const       tick  = static_cast< uint32_t > ( pEvent->getTimeStamp () );
+         PROPAGATE_ERROR ( o_Track.addInstrumentChange ( instr, i_TickToTU.at ( tick ) ),
+                           L"Could not add instrument change" );
+      }
 
-      // TODO: anacrusis correction
-      convertTicksToTimeUnits ( ticks, i_TicksPerTU, 0 );
+      return Result::ok ();
+   }
 
-      return assemblePart ( pitches, ticks, i_DurationUnit );
+   static Result buildMidiPiece ( ExtractedPieceMidiEvents const &  i_MidiEvents,
+                                  Map< uint32_t, TimeUnit > const & i_TickToTU,
+                                  MidiPiece &                       o_Piece )
+   {
+      for ( EventPtr pEvent : i_MidiEvents.m_TempoChangeEvents )
+      {
+         // TODO_SGG
+      }
+
+      for ( EventPtr pEvent : i_MidiEvents.m_TimeSignChangeEvents )
+      {
+         int num, denom;
+         pEvent->getTimeSignatureInfo ( num, denom );
+         Theory::TimeSignature const timeSign{ static_cast< uint8_t > ( num ),
+                                               static_cast< uint8_t > ( denom ) };
+         uint32_t const              tick = static_cast< uint32_t > ( pEvent->getTimeStamp () );
+         PROPAGATE_ERROR ( o_Piece.addTimeSignatureChange ( timeSign, i_TickToTU.at ( tick ) ),
+                           L"Could not add time signature change" );
+      }
+
+      for ( ExtractedTrackMidiEvents const & trackEvents : i_MidiEvents.m_PerTrackEvents )
+      {
+         MidiTrack track;
+         PROPAGATE_ERROR ( buildMidiTrack ( trackEvents, i_TickToTU, track ),
+                           L"Error building track" );
+         o_Piece.addTrack ( std::move ( track ) );
+      }
+
+      return Result::ok ();
    }
 
    Result readMidiFile ( String const &             i_FilePath,
@@ -152,7 +191,7 @@ namespace SGG::Stretto::Midi
       o_Piece.clear ();
 
       // Open file
-      juce::File const file{ juce::String{ i_FilePath.c_str () } };
+      juce::File const file = juce::String{ i_FilePath.c_str () };
       ERROR_ON_FALSE ( file.existsAsFile (), L"File not found" );
 
       // Read midi file using JUCE
@@ -161,30 +200,19 @@ namespace SGG::Stretto::Midi
       juce::MidiFile midiFile;
       ERROR_ON_FALSE ( midiFile.readFrom ( stream ), L"Could not read midi file" );
 
-      // Check if time format is supported
-      short const timeFormat{ midiFile.getTimeFormat () };
-      ERROR_ON_FALSE ( timeFormat > 0, L"Unsupported time format" );
+      // Extract relevant midi events and their timestamps
+      ExtractedPieceMidiEvents extractedEvents;
+      Set< uint32_t >          ticks;
+      PROPAGATE_ERROR ( extractMidiEvents ( midiFile, extractedEvents, ticks ),
+                        L"Error extracting midi events" );
 
-      // Compute timeunit to midi tick conversion factor
-      uint32_t const tuPerQuarter{ convertDurationToTU ( Theory::NoteDuration::QUARTER,
-                                                         i_DurationUnit ) };
-      ERROR_ON_FALSE ( timeFormat % tuPerQuarter == 0, L"Invalid duration unit" );
-      uint32_t const ticksPerTU{ timeFormat / tuPerQuarter };
+      // Convert midi tick timestamps to time units
+      short const               timeFormat = midiFile.getTimeFormat ();
+      Map< uint32_t, TimeUnit > tickToTU;
+      PROPAGATE_ERROR ( createTickToTimeUnitMap ( ticks, i_DurationUnit, timeFormat, tickToTU ),
+                        L"Error creating tick to timeunit map" );
 
-      // Process tracks
-      for ( uint32_t i = 0; i < midiFile.getNumTracks (); ++i )
-      {
-         // TODO remove me
-         std::wcout << "Processing track #" << ( i + 1 ) << std::endl;
-
-         juce::MidiMessageSequence const & midiTrack{ *midiFile.getTrack ( i ) };
-         MidiTrack                         track;
-         PROPAGATE_ERROR ( readTrack ( midiTrack, ticksPerTU, i_DurationUnit, track ),
-                           L"Error processing track #" + ( i + 1 ) );
-
-         o_Piece.addTrack ( std::move ( track ) );
-      }
-
-      return Result::ok ();
+      // Interpret midi events
+      return buildMidiPiece ( extractedEvents, tickToTU, o_Piece );
    }
 }

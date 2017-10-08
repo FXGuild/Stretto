@@ -6,15 +6,19 @@ namespace SGG::Stretto::Midi
    /* Add                                                                  */
    /************************************************************************/
 
-   void MidiTrack::addNoteEvent ( NoteEvent const & i_NoteEvent )
+   Result MidiTrack::addNoteEvent ( Theory::BasicNote const & i_Note, TimeUnit i_Time )
    {
-      // TODO s'assurer de ne pas avoir deux fois la même note superposée
-      m_Notes.emplace ( i_NoteEvent );
+      // TODO_SGG s'assurer de ne pas avoir deux fois la même note superposée
+      m_Notes.emplace ( i_Note, i_Time );
+
+      return Result::ok ();
    }
 
-   void MidiTrack::addInstrumentChange ( InstrumentChange const & i_InstrChange )
+   Result MidiTrack::addInstrumentChange ( MidiInstrument i_Instr, TimeUnit i_Time )
    {
-      // TODO s'assurer qu'il y a bien une exception quand il y a deux changement en même temps
-      m_InstrChanges.emplace ( i_InstrChange );
+      ERROR_ON_FALSE ( m_InstrChanges.emplace ( i_Instr, i_Time ).second,
+                       L"Cannot have two instrument changes at the same timeunit" );
+
+      return Result::ok ();
    }
 }

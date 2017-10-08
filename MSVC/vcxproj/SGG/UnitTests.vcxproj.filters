@@ -14,11 +14,14 @@
     <Filter Include="Source\Stretto\Plugin">
       <UniqueIdentifier>{1279e52d-e03b-4137-9a89-b4c677078325}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Stretto\Plugin\TestPlugin">
-      <UniqueIdentifier>{a9c14958-1ea8-4099-8bbf-1cab5fd11c82}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\Stretto\Theory">
       <UniqueIdentifier>{4a8f3fb3-f629-4266-bc2d-b280a2f772ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Stretto\Midi">
+      <UniqueIdentifier>{ae382920-d436-48ff-b3a5-c7caa63f3e7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Stretto\Plugin\BuiltinPlugin">
+      <UniqueIdentifier>{a9c14958-1ea8-4099-8bbf-1cab5fd11c82}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -40,11 +43,14 @@
     <ClCompile Include="..\..\..\Source\SGG\UnitTests\Utils\StringEnumUnitTests.cpp">
       <Filter>Source\Utils</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Source\SGG\UnitTests\Stretto\Plugin\TestPlugin\UnitTests.cpp">
-      <Filter>Source\Stretto\Plugin\TestPlugin</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\Source\SGG\UnitTests\Stretto\Theory\ElementaryTests.cpp">
       <Filter>Source\Stretto\Theory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\SGG\UnitTests\Stretto\Midi\ReadMidiFileUnitTests.cpp">
+      <Filter>Source\Stretto\Midi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\SGG\UnitTests\Stretto\Plugin\BuiltinPlugin\UnitTests.cpp">
+      <Filter>Source\Stretto\Plugin\BuiltinPlugin</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

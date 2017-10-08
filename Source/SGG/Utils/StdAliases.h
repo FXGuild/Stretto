@@ -12,6 +12,7 @@
 #pragma once
 
 #include <functional>
+#include <map>
 #include <memory>
 #include <set>
 #include <string>
@@ -40,8 +41,11 @@ namespace SGG
    template < typename T >
    using UPtrs = Vec< UPtr< T > >;
 
-   template < typename T >
-   using Map = Map< T >;
+   template < typename T, typename U >
+   using Pair = std::pair< T, U >;
+
+   template < typename T, typename U >
+   using Map = std::map< T, U >;
 
    template < typename T, typename U >
    using UMap = std::unordered_map< T, U >;

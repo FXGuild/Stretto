@@ -23,7 +23,7 @@ namespace SGG::Stretto::Midi
       /* Constructors / Destructor / Assignment Operators                     */
       /************************************************************************/
 
-      Event ( T & i_Event, TimeUnit i_Time )
+      Event ( T const & i_Event, TimeUnit i_Time )
       : m_Event{ i_Event }
       , m_Time{ i_Time }
       {

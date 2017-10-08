@@ -12,7 +12,6 @@
 #pragma once
 
 #include <SGG/Stretto/Midi/MidiPiece.h>
-#include <SGG/Stretto/Theory/Elementary/NoteDuration.h>
 #include <SGG/Utils/Result.h>
 
 namespace SGG::Stretto::Midi

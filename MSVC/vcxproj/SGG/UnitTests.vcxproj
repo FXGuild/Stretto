@@ -64,7 +64,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\Source\SGG\UnitTests\Stretto\Plugin\TestPlugin\UnitTests.cpp" />
+    <ClCompile Include="..\..\..\Source\SGG\UnitTests\Stretto\Midi\ReadMidiFileUnitTests.cpp" />
+    <ClCompile Include="..\..\..\Source\SGG\UnitTests\Stretto\Plugin\BuiltinPlugin\UnitTests.cpp" />
     <ClCompile Include="..\..\..\Source\SGG\UnitTests\Stretto\Theory\ElementaryTests.cpp" />
     <ClCompile Include="..\..\..\Source\SGG\UnitTests\Utils\ClassDeclarationUtilsUnitTests.cpp" />
     <ClCompile Include="..\..\..\Source\SGG\UnitTests\Utils\ConstexprUtilsUnitTests.cpp" />
@@ -76,6 +77,12 @@
   <ItemGroup>
     <ProjectReference Include="..\ThirdParty\googletest.vcxproj">
       <Project>{0b356916-918f-4da0-93af-5cc4ca98e376}</Project>
+    </ProjectReference>
+    <ProjectReference Include="Stretto\Midi.vcxproj">
+      <Project>{3f51e363-0df2-4477-a5cb-5b082d6abc0e}</Project>
+    </ProjectReference>
+    <ProjectReference Include="Stretto\Theory.vcxproj">
+      <Project>{b73307ae-c05e-4b5d-8877-c7e270f058d6}</Project>
     </ProjectReference>
     <ProjectReference Include="Utils.vcxproj">
       <Project>{9d1ace4c-febc-413e-b349-18286f735ea2}</Project>

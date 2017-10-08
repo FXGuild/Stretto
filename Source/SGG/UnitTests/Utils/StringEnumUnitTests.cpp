@@ -37,8 +37,8 @@ namespace SGG::UnitTests
       forEachValue< Color > ( [&numVals]( Color i_Color ) { ++numVals; } );
       EXPECT_EQ ( numVals, 3 );
 
-      std::ostringstream oss;
-      oss << Mood::Angry;
-      EXPECT_EQ ( oss.str (), L"Angry" );
+      std::wostringstream woss;
+      woss << toString( Mood::Angry );
+      EXPECT_EQ ( woss.str (), L"Angry" );
    }
 }

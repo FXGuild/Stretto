@@ -10,28 +10,35 @@
 
 #pragma once
 
+#include <array>
 #include <stdint.h>
 
 namespace SGG::Stretto::Schema
 {
-   template < typename HierarchyID, uint32_t DimIdx >
-   uint32_t const DimensionNumRanks;
+   template < typename THierarchyID >
+   uint32_t const HierarchyNumDimensions;
 
-   template < typename HierarchyID, uint32_t DimIdx >
-   struct DimensionType;
-// {
-//    using Type = ?;
-// };
+   template < typename THierarchyID, uint32_t dimIdx >
+   struct DimensionInfo;
+   // {
+   //    using Type = ?;
+   //    static uint32_t const NumRanks = ?;
+   // };
 
-   template < typename HierarchyID >
+   template < typename THierarchyID >
    struct Converter;
-// {
-//    std::unique_ptr< ? > convert( Theory::Piece const & i_Piece );
-// };
+   // {
+   //    std::unique_ptr< ? > convert( Theory::Piece const & i_Piece );
+   // };
 
-   template < typename HierarchyID, typename Dim, Dim SrcRank, Dim DestRank >
+   template < typename THierarchyID, typename Dim, Dim SrcRank, Dim DestRank >
    struct Extractor;
-// {
-//    bool extract( Theory::Piece const & i_Piece );
-// };
+   // {
+   //    bool extract( Theory::Piece const & i_Piece );
+   //
+   //    TODO_SGG: signature of the extrat method depends on traits:
+   //    TODO_SGG: trait that tells if output if contiguous
+   //    TODO_SGG: trait that tells if output is continuous (no gaps)
+   //
+   // };
 }

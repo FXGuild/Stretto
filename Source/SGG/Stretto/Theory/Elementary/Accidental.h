@@ -27,5 +27,5 @@ namespace SGG::Stretto::Theory
    /* Serialization                                                        */
    /************************************************************************/
 
-   std::ostream & operator<< ( std::ostream & i_OS, Accidental const & i_Accidental );
+   std::wostream & operator<< ( std::wostream & i_OS, Accidental const & i_Accidental );
 }

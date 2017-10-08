@@ -62,12 +62,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Converter.h" />
-    <ClInclude Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Dimension.h" />
+    <ClInclude Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Hierarchy.h" />
     <ClInclude Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Extractor.h" />
     <ClInclude Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Fragment\AggregatedNode.h" />
     <ClInclude Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Fragment\MonophonicCanonicNode.h" />
-    <ClInclude Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Fragment\Fragment.h" />
     <ClInclude Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Fragment\MonophonicTimeunit.h" />
     <ClInclude Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Fragment\Part.h" />
     <ClInclude Include="..\..\..\..\..\Source\SGG\Stretto\Plugin\BuiltinPlugin\Fragment\PartBuilder.h" />

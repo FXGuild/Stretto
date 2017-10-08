@@ -15,13 +15,15 @@
 #include <SGG/Stretto/Theory/Elementary/NoteLetter.h>
 #include <SGG/Stretto/Theory/Elementary/Quality.h>
 
-namespace SGG::Stretto::Theory
+namespace SGG::UnitTests
 {
+   using namespace Stretto::Theory;
+
    TEST ( SGG_Stretto_Theory_Elementary, Accidental )
    {
-      std::ostringstream oss;
-      oss << Accidental::SHARP;
-      EXPECT_EQ ( oss.str (), L"#" );
+      std::wostringstream woss;
+      woss << Accidental::SHARP;
+      EXPECT_EQ ( woss.str (), L"#" );
    }
 
    TEST ( SGG_Stretto_Theory_Elementary, Interval_Constructors )
@@ -55,6 +57,13 @@ namespace SGG::Stretto::Theory
       EXPECT_LT ( i5, i4 );
    }
 
+   TEST ( SGG_Stretto_Theory_Elementary, Interval_Utilities_Output )
+   {
+      std::wostringstream woss;
+      woss << Utils::Enum::toString ( NoteLetter::G );
+      EXPECT_EQ ( woss.str (), L"G" );
+   }
+
    TEST ( SGG_Stretto_Theory_Elementary, Interval_Utilities_normalize )
    {
       Interval i1{ ImperfectQuality::MAJOR, Interval::Number::NINTH };
@@ -75,7 +84,6 @@ namespace SGG::Stretto::Theory
       EXPECT_EQ ( associatedQualityType ( i2.getNumber () ), Quality::Type::PERF_AUG_DIM );
    }
 
-
    TEST ( SGG_Stretto_Theory_Elementary, Quality )
    {
       Quality q1{ ImperfectQuality::MAJOR };
@@ -93,8 +101,8 @@ namespace SGG::Stretto::Theory
 
    TEST ( SGG_Stretto_Theory_Elementary, NoteLetter )
    {
-      std::ostringstream oss;
-      oss << NoteLetter::G;
-      EXPECT_EQ ( oss.str (), L"G" );
+      std::wostringstream woss;
+      woss << Utils::Enum::toString ( NoteLetter::G );
+      EXPECT_EQ ( woss.str (), L"G" );
    }
 }

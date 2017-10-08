@@ -60,9 +60,9 @@ namespace SGG::Stretto::Theory
    /* Serialization                                                        */
    /************************************************************************/
 
-   std::ostream & operator<< ( std::ostream & io_OS, Pitch const & i_Pitch )
+   std::wostream & operator<< ( std::wostream & io_OS, Pitch const & i_Pitch )
    {
-      io_OS << i_Pitch.getTone () << std::to_string ( i_Pitch.getOctave () );
+      io_OS << i_Pitch.getTone () << std::to_wstring ( i_Pitch.getOctave () );
       return io_OS;
    }
 }
